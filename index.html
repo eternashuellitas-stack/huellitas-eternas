@@ -1,37 +1,73 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f2bfd8" />
-    <meta name="description"
-        content="Huellitas Eternas: una experiencia para conservar historias y momentos especiales." />
-    <title>Huellitas Eternas | Preparando...</title>
-    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
-    <link rel="stylesheet" href="assets/css/style.css">
-</head>
-
-<body>
-    <main class="loader-wrap" aria-live="polite">
-        <section class="loader-card">
-            <div class="orbit" aria-hidden="true"><i></i></div>
-            <img class="logo" src="assets/images/icon.png" alt="Huellitas Eternas" />
-            <h1>Huellitas Eternas</h1>
-            <p id="loadStatus" class="status">Preparando tu experiencia…</p>
-            <div class="bar" role="progressbar" aria-label="Cargando" aria-valuemin="0" aria-valuemax="100"
-                aria-valuenow="0">
-                <span id="loadBar"></span>
-            </div>
-            <div class="loader-meta">
-                <span>Personalización</span><span>Espacio digital</span><span>Recuerdos</span>
-            </div>
-            <button id="skipLoad" class="skip-load" type="button">
-                Continuar ahora
-            </button>
-        </section>
-    </main>
-    <script src="assets/js/script.js"></script>
-</body>
-
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="#f2bfd8" name="theme-color"/>
+  <meta content="Huellitas Eternas: una experiencia para conservar historias y momentos especiales." name="description"/>
+  <title>
+   Huellitas Eternas | Cargando recuerdos...
+  </title>
+  <link href="assets/images/favicon.png" rel="icon" type="image/png"/>
+  <link href="assets/css/style.css" rel="stylesheet"/>
+  <meta content="strict-origin-when-cross-origin" name="referrer"/>
+  <meta content="index,follow" name="robots"/>
+  <meta content="Huellitas Eternas" name="author"/>
+  <meta content="Huellitas Eternas" property="og:title"/>
+  <meta content="Recuerdos personalizados y memoriales digitales." property="og:description"/>
+  <link href="manifest.webmanifest" rel="manifest"/>
+  <link href="https://eternashuellitas-stack.github.io/huellitas-eternas/index.html/" rel="canonical"/>
+ </head>
+ <body>
+  <main aria-live="polite" class="loader-wrap">
+   <section class="loader-card">
+    <div aria-hidden="true" class="orbit">
+     <i>
+     </i>
+    </div>
+    <img alt="Huellitas Eternas" class="logo" src="assets/images/icon.png"/>
+    <h1>
+     Huellitas Eternas
+    </h1>
+    <p class="status" id="loadStatus">
+     Preparando tu experiencia&hellip;
+    </p>
+    <p class="loader-tip" id="loaderTip">
+     Tus recuerdos merecen un espacio bonito, seguro y cercano.
+    </p>
+    <div aria-label="Cargando" aria-valuemax="100" aria-valuemin="0" aria-valuenow="0" class="bar" role="progressbar">
+     <span id="loadBar">
+     </span>
+    </div>
+    <div class="loader-meta">
+     <span>
+      Personalizaci&oacute;n
+     </span>
+     <span>
+      Memoriales
+     </span>
+     <span>
+      Recuerdos
+     </span>
+     <span>
+      Privacidad
+     </span>
+    </div>
+    <button class="skip-load" id="skipLoad" type="button">
+     Continuar ahora
+    </button>
+    <noscript>
+     <p class="noscript-note">
+      JavaScript est&aacute; desactivado.
+      <a href="pages/home.html">
+       Entrar al sitio
+      </a>
+      .
+     </p>
+    </noscript>
+   </section>
+  </main>
+  <script src="assets/js/script.js">
+  </script>
+ </body>
 </html>

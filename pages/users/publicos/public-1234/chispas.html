@@ -1,133 +1,178 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Memorial de Chispas | Huellitas Eternas">
-    <title>Memorial de Chispas | Huellitas Eternas</title>
+       <meta charset="utf-8" />
+       <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+       <meta content="Memorial de Chispas | Huellitas Eternas" name="description" />
+       <title>Memorial de Chispas | Huellitas Eternas</title>
+       <link href="assets/images/Chispas-Publica.png" rel="shortcut icon" type="image/x-icon" />
+       <style>
+              body.Chispas-page {
+                     min-height: 100vh;
+                     background: linear-gradient(180deg, #fff9fc, #f8eaf2);
+                     color: #493744;
+                     font-family: Inter, system-ui, sans-serif;
+              }
 
-    <link rel="shortcut icon" href="../../003/images/perro.png" type="image/x-icon">
+              .Chispas-page .container {
+                     width: min(1100px, 92%);
+                     margin: auto;
+              }
 
-    <!-- CSS DEL PROYECTO -->
-    <link rel="stylesheet" href="../../001/css/s.css">
-    <link rel="stylesheet" href="../../001/css/c.css">
-    <link rel="stylesheet" href="../../001/css/b.css">
-    <link rel="stylesheet" href="../../001/css/a.css">
-    <link rel="stylesheet" href="../../001/css/sc.css">
+              .Chispas-page .page-hero-section,
+              .Chispas-page .memorial-section {
+                     padding: 64px 0;
+              }
 
+              .Chispas-page .page-hero-container {
+                     display: grid;
+                     grid-template-columns: 1fr 1fr;
+                     gap: 28px;
+                     align-items: center;
+              }
+
+              .Chispas-page .hero-title,
+              .Chispas-page .section-title {
+                     color: #9b4e78;
+              }
+
+              .Chispas-page .page-hero-image,
+              .Chispas-page .memory-gallery img {
+                     border-radius: 24px;
+                     box-shadow: 0 20px 60px rgba(94, 54, 77, 0.16);
+              }
+
+              .Chispas-page .memory-gallery {
+                     display: grid;
+                     grid-template-columns: repeat(3, 1fr);
+                     gap: 18px;
+              }
+
+              .Chispas-page .memory-gallery figure {
+                     margin: 0;
+              }
+
+              .Chispas-page .media-box {
+                     padding: 16px;
+                     border: 1px solid #ead9e2;
+                     border-radius: 24px;
+                     background: #fff;
+                     box-shadow: 0 15px 45px rgba(94, 54, 77, 0.1);
+              }
+
+              .Chispas-page video,
+              .Chispas-page audio {
+                     width: 100%;
+              }
+
+              @media (max-width: 760px) {
+
+                     .Chispas-page .page-hero-container,
+                     .Chispas-page .memory-gallery {
+                            grid-template-columns: 1fr;
+                     }
+              }
+       </style>
+       <meta content="index,follow,max-image-preview:large" name="robots" />
+       <meta content="strict-origin-when-cross-origin" name="referrer" />
 </head>
 
 <body class="Chispas-page">
-
-    <main id="contenido-principal">
-
-         <!-- =================================================
+       <main id="contenido-principal">
+              <!-- =================================================
              HERO DEL MEMORIAL
              ================================================= -->
-        <section class="page-hero-section memorial-hero" id="memoriales" data-animation="fade-up" aria-labelledby="page-title">
-            <div class="container page-hero-container">
-                <div class="page-hero-content" data-animation="fade-left">
-                    <h1 id="page-title" class="hero-title">
-                        Chispas
-                    </h1>
-                <div class="page-hero-media" data-animation="fade-right" data-delay="200"> 
-                    <img src="../../003/images/users/Chispas-Publica.png" alt="Espacio conmemorativo de Huellitas Eternas" class="page-hero-image">
-                </div>
-            </div>
-        </section>
-
-        <!-- IMÁGENES -->
-        <section id="imagenes" class="memorial-section" >
-            <p class="section-eyebrow">Recuerdos en imágenes</p>
-            <h2 class="section-title">Imágenes de Chispas</h2>
-            <p class="section-description">
-                Agrega aquí las fotografías que quieras conservar en su memorial.
-            </p>
-
-            <div class="memory-gallery">
-                <figure>
-                    <img src="../../003/images/users/Chispas-Publica.png" alt="Fotografía de Chispas" width="300" height="300">
-                    <figcaption>Un recuerdo de Chispas.</figcaption>
-                </figure>
-                <figure>
-                    <img src="../../003/images/users/Chispas-Publica (2).png" alt="Otra fotografía de Chispas"  width="300" height="300">
-                    <figcaption>Un momento especial.</figcaption>
-                </figure>
-                <figure>
-                    <img src="../../003/images/users/Chispas-Publica (3).png" alt="Fotografía adicional de Chispas"  width="300" height="300">
-                    <figcaption>Una huellita para recordar.</figcaption>
-                </figure>
-                <figure>
-                    <img src="../../003/images/users/Chispas-Publica (4).png" alt="Fotografía adicional de Chispas"  width="300" height="300">
-                    <figcaption>Una huellita que adorar.</figcaption>
-                </figure>
-                <figure>
-                    <img src="../../003/images/users/Chispas-Publica (5).png" alt="Fotografía adicional de Chispas"  width="300" height="300">
-                    <figcaption>El mejor momento de sus vidas.</figcaption>
-                </figure>
-            </div>
-        </section>
-
-        <!-- VIDEOS -->
-        <section id="videos" class="memorial-section" >
-            <p class="section-eyebrow">Momentos que vuelven a vivir</p>
-            <h2 class="section-title">Videos de Chispas</h2>
-            <p class="section-description">
-                Puedes colocar aquí videos de momentos especiales para conservarlos
-                como parte de su historia.
-            </p>
-            <div class="media-box">
-                <video controls preload="metadata">
-                    <source src="../../003/videos/Chispas-Publico.mp4" type="video/mp4">
-                    Tu navegador no puede reproducir este video.
-                </video>
-            </div>
-        </section>
-
-        <!-- AUDIOS -->
-        <section id="audios" class="memorial-section" >
-            <p class="section-eyebrow">Ladridos para recordar</p>
-            <h2 class="section-title">Ladridos de Chispas</h2>
-            <p class="section-description">
-                Este espacio puede guardar sonidos, grabaciones o mensajes especiales
-                relacionados con Chispas.
-            </p>
-            <div class="media-box">
-                <audio controls preload="metadata">
-                    <source src="../../003/audios/Chispas-Publico.ogg" type="audio/mpeg">
-                    Tu navegador no puede reproducir este audio.
-                </audio>
-            </div>
-        </section>
-    </main>
-
-    <!-- =====================================================
+              <section aria-labelledby="page-title" class="page-hero-section memorial-hero" data-animation="fade-up"
+                     id="memoriales">
+                     <div class="container page-hero-container">
+                            <div class="page-hero-content" data-animation="fade-left">
+                                   <h1 class="hero-title" id="page-title">Chispas</h1>
+                                   <div class="page-hero-media" data-animation="fade-right" data-delay="200">
+                                          <img alt="Espacio conmemorativo de Huellitas Eternas" class="page-hero-image"
+                                                 src="assets/images/Chispas-Publica.png" />
+                                   </div>
+                            </div>
+                     </div>
+              </section>
+              <!-- IMÁGENES -->
+              <section class="memorial-section" id="imagenes">
+                     <p class="section-eyebrow">Recuerdos en im&aacute;genes</p>
+                     <h2 class="section-title">Im&aacute;genes de Chispas</h2>
+                     <p class="section-description">
+                            Agrega aqu&iacute; las fotograf&iacute;as que quieras conservar en su
+                            memorial.
+                     </p>
+                     <div class="memory-gallery">
+                            <figure>
+                                   <img alt="Fotograf&iacute;a de Chispas" height="300"
+                                          src="assets/images/Chispas-Publica.png" width="300" />
+                                   <figcaption>Un recuerdo de Chispas.</figcaption>
+                            </figure>
+                            <figure>
+                                   <img alt="Otra fotograf&iacute;a de Chispas" height="300"
+                                          src="assets/images/Chispas-Publica (2).png" width="300" />
+                                   <figcaption>Un momento especial.</figcaption>
+                            </figure>
+                            <figure>
+                                   <img alt="Fotograf&iacute;a adicional de Chispas" height="300"
+                                          src="assets/images/Chispas-Publica (3).png" width="300" />
+                                   <figcaption>Una huellita para recordar.</figcaption>
+                            </figure>
+                            <figure>
+                                   <img alt="Fotograf&iacute;a adicional de Chispas" height="300"
+                                          src="assets/images/Chispas-Publica (4).png" width="300" />
+                                   <figcaption>Una huellita que adorar.</figcaption>
+                            </figure>
+                            <figure>
+                                   <img alt="Fotograf&iacute;a adicional de Chispas" height="300"
+                                          src="assets/images/Chispas-Publica (5).png" width="300" />
+                                   <figcaption>El mejor momento de sus vidas.</figcaption>
+                            </figure>
+                     </div>
+              </section>
+              <!-- VIDEOS -->
+              <section class="memorial-section" id="videos">
+                     <p class="section-eyebrow">Momentos que vuelven a vivir</p>
+                     <h2 class="section-title">Videos de Chispas</h2>
+                     <p class="section-description">
+                            Puedes colocar aqu&iacute; videos de momentos especiales para
+                            conservarlos como parte de su historia.
+                     </p>
+                     <div class="media-box">
+                            <video controls="" preload="metadata">
+                                   <source src="assets/videos/Chispas-Publico.mp4" type="video/mp4" />
+                                   Tu navegador no puede reproducir este video.
+                            </video>
+                     </div>
+              </section>
+              <!-- AUDIOS -->
+              <section class="memorial-section" id="audios">
+                     <p class="section-eyebrow">Ladridos para recordar</p>
+                     <h2 class="section-title">Ladridos de Chispas</h2>
+                     <p class="section-description">
+                            Este espacio puede guardar sonidos, grabaciones o mensajes especiales
+                            relacionados con Chispas.
+                     </p>
+                     <div class="media-box">
+                            <audio controls="" preload="metadata">
+                                   <source src="assets/audios/Chispas-Publico.ogg" type="audio/mpeg" />
+                                   Tu navegador no puede reproducir este audio.
+                            </audio>
+                     </div>
+              </section>
+       </main>
+       <!-- =====================================================
          FOOTER
          ===================================================== -->
-
-    <footer class="site-footer">
-
-        <!-- ==================== FOOTER BOTTOM ==================== -->
-
-        <div class="footer-bottom">
-
-            <div class="container">
-
-                <p>
-                    . Publico .
-                </p>
-
-            </div>
-
-        </div>
-
-    </footer>
-
-    <!-- JAVASCRIPT DEL PROYECTO -->
-    <script src="../../002/js/s.js" defer></script>
-    <script src="../../002/js/b.js" defer></script>
-    <script src="../../002/js/a.js" defer></script>
-    <script src="../../002/js/sc.js" defer></script>
-
+       <footer class="site-footer">
+              <!-- ==================== FOOTER BOTTOM ==================== -->
+              <div class="footer-bottom">
+                     <div class="container">
+                            <p>. Publico .</p>
+                     </div>
+              </div>
+       </footer>
 </body>
+
 </html>

@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /pages/users/privados/
+Disallow: /assets/tx/
+Disallow: /_AUDIT_RUTAS.txt
+Sitemap: https://huellitas-eternas.com.pe/sitemap.xml

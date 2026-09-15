@@ -1,15 +1,16 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Personaliza la forma, color y detalles de tu recuerdo." />
-    <meta name="theme-color" content="#f2c8db" />
-    <title>Personalizar | Huellitas Eternas</title>
-    <link rel="icon" type="image/png" href="../assets/images/favicon.png" />
-    <style>
-        :root {
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="Personaliza la forma, color y detalles de tu recuerdo." name="description"/>
+  <meta content="#f2c8db" name="theme-color"/>
+  <title>
+   Personalizar | Huellitas Eternas
+  </title>
+  <link href="../assets/images/favicon.png" rel="icon" type="image/png"/>
+  <style>
+   :root {
             --bg: #fff9fc;
             --surface: rgba(255, 255, 255, 0.82);
             --surface-solid: #fff;
@@ -927,84 +928,179 @@
                 display: none;
             }
         }
-    </style>
-</head>
-
-<body>
-    <a class="skip-link" href="#main">Saltar al contenido</a>
-    <header class="site-header">
-        <a class="brand" href="home.html"><img src="../assets/images/icon.png" alt="Huellitas Eternas" /><span>Huellitas
-                <b>Eternas</b></span></a>
-        <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false">
-            ☰
+  </style>
+  <link href="../assets/css/mejoras.css" rel="stylesheet"/>
+  <meta content="strict-origin-when-cross-origin" name="referrer"/>
+  <meta content="index,follow,max-image-preview:large" name="robots"/>
+  <meta content="Huellitas Eternas" name="author"/>
+  <meta content="Huellitas Eternas" property="og:site_name"/>
+  <meta content="website" property="og:type"/>
+  <link href="https://huellitas-eternas.com.pe/pages/personalizar.html" rel="canonical"/>
+  <link href="../manifest.webmanifest" rel="manifest"/>
+ </head>
+ <body>
+  <div class="he-announcement" role="note">
+   <strong>
+    Huellitas Eternas
+   </strong>
+   <span>
+    Conserva historias, detalles y momentos que siguen significando.
+   </span>
+  </div>
+  <a class="skip-link" href="#main">
+   Saltar al contenido
+  </a>
+  <header class="site-header">
+   <a class="brand" href="home.html">
+    <img alt="Huellitas Eternas" src="../assets/images/icon.png"/>
+    <span>
+     Huellitas
+     <b>
+      Eternas
+     </b>
+    </span>
+   </a>
+   <button aria-expanded="false" aria-label="Abrir men&uacute;" class="menu-btn" type="button">
+    ☰
+   </button>
+   <nav aria-label="Navegaci&oacute;n principal" class="nav">
+    <a href="home.html">
+     Inicio
+    </a>
+    <a href="producto.html">
+     Producto
+    </a>
+    <a href="personalizar.html">
+     Personalizar
+    </a>
+    <a href="nosotros.html">
+     Nosotros
+    </a>
+    <a href="como-funciona.html">
+     C&oacute;mo funciona
+    </a>
+    <a href="memoriales.html">
+     Memoriales
+    </a>
+    <a href="noticias.html">
+     Noticias
+    </a>
+    <a href="redes-sociales.html">
+     Redes sociales
+    </a>
+    <a href="faq.html">
+     Preguntas
+    </a>
+    <a href="ayuda.html">
+     Ayuda
+    </a>
+    <a href="contacto.html">
+     Contacto
+    </a>
+   </nav>
+   <button aria-label="Cambiar modo de color" class="theme-btn" type="button">
+    ◐
+   </button>
+  </header>
+  <div aria-hidden="true" class="backdrop">
+  </div>
+  <main id="main">
+   <section class="section">
+    <div class="container">
+     <div class="section-head reveal">
+      <span class="eyebrow">
+       Personalizaci&oacute;n
+      </span>
+      <h1>
+       Crea una pieza que se sienta tuya.
+      </h1>
+      <p class="muted">
+       Esta pantalla sirve para preparar tu propuesta. Al enviarla, los datos se mandan por Web3Forms para que podamos revisar la personalizaci&oacute;n solicitada.
+      </p>
+     </div>
+     <div class="hero-grid">
+      <div class="card reveal">
+       <form class="form" data-web3forms="" id="customForm">
+        <div class="field">
+         <label for="shape">
+          Forma
+         </label>
+         <select id="shape" name="shape">
+          <option>
+           Coraz&oacute;n
+          </option>
+          <option>
+           Huellita
+          </option>
+          <option>
+           Huesito
+          </option>
+         </select>
+        </div>
+        <div class="field">
+         <label for="tone">
+          Color
+         </label>
+         <select id="tone" name="tone">
+          <option>
+           Rosa pastel
+          </option>
+          <option>
+           Lila suave
+          </option>
+          <option>
+           Celeste pastel
+          </option>
+          <option>
+           Crema
+          </option>
+          <option>
+           Personalizado
+          </option>
+         </select>
+        </div>
+        <div class="field">
+         <label for="name">
+          Nombre o palabra especial
+         </label>
+         <input id="name" maxlength="40" name="name" placeholder="Ej. Luna"/>
+        </div>
+        <div class="field">
+         <label for="note">
+          Idea o detalle
+         </label>
+         <textarea id="note" maxlength="600" name="note" placeholder="Cu&eacute;ntanos c&oacute;mo imaginas tu pieza&hellip;"></textarea>
+        </div>
+        <div class="field">
+         <label for="customEmail">
+          Correo para responderte
+          <span class="he-required">
+           *
+          </span>
+         </label>
+         <input autocomplete="email" id="customEmail" name="email" placeholder="tu-correo@ejemplo.com" required="" type="email"/>
+        </div>
+        <button class="btn primary" type="submit">
+         Guardar configuraci&oacute;n
         </button>
-        <nav class="nav" aria-label="Navegación principal">
-            <a href="home.html">Inicio</a>
-            <a href="producto.html">Producto</a>
-            <a href="personalizar.html">Personalizar</a>
-            <a href="nosotros.html">Nosotros</a>
-            <a href="faq.html">Preguntas</a>
-            <a href="como-funciona.html">Cómo funciona</a>
-            <a href="contacto.html">Contacto</a>
-        </nav>
-        <button class="theme-btn" type="button" aria-label="Cambiar modo de color">
-            ◐
-        </button>
-    </header>
-    <div class="backdrop" aria-hidden="true"></div>
-    <main id="main">
-        <section class="section">
-            <div class="container">
-                <div class="section-head reveal">
-                    <span class="eyebrow">Personalización</span>
-                    <h1>Crea una pieza que se sienta tuya.</h1>
-                    <p class="muted">
-                        Esta pantalla funciona como configurador visual y como base para
-                        conectar después un sistema real de pedidos.
-                    </p>
-                </div>
-                <div class="hero-grid">
-                    <div class="card reveal">
-                        <form class="form" id="customForm">
-                            <div class="field">
-                                <label for="shape">Forma</label><select id="shape" name="shape">
-                                    <option>Corazón</option>
-                                    <option>Huellita</option>
-                                    <option>Huesito</option>
-                                </select>
-                            </div>
-                            <div class="field">
-                                <label for="tone">Color</label><select id="tone" name="tone">
-                                    <option>Rosa pastel</option>
-                                    <option>Lila suave</option>
-                                    <option>Celeste pastel</option>
-                                    <option>Crema</option>
-                                    <option>Personalizado</option>
-                                </select>
-                            </div>
-                            <div class="field">
-                                <label for="name">Nombre o palabra especial</label><input id="name" name="name"
-                                    maxlength="40" placeholder="Ej. Luna" />
-                            </div>
-                            <div class="field">
-                                <label for="note">Idea o detalle</label><textarea id="note" name="note" maxlength="600"
-                                    placeholder="Cuéntanos cómo imaginas tu pieza…"></textarea>
-                            </div>
-                            <button class="btn primary" type="submit">
-                                Guardar configuración
-                            </button>
-                        </form>
-                    </div>
-                    <div class="visual reveal" data-tilt="true">
-                        <div class="symbol" id="previewSymbol">♡</div>
-                        <h2 id="previewName">Tu recuerdo</h2>
-                        <p class="muted">Vista previa de la personalización</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <script>
-            (() => {
+       </form>
+      </div>
+      <div class="visual reveal" data-tilt="true">
+       <div class="symbol" id="previewSymbol">
+        ♡
+       </div>
+       <h2 id="previewName">
+        Tu recuerdo
+       </h2>
+       <p class="muted">
+        Vista previa de la personalizaci&oacute;n
+       </p>
+      </div>
+     </div>
+    </div>
+   </section>
+   <script>
+    (() => {
                 const s = document.getElementById("shape"),
                     n = document.getElementById("name"),
                     p = document.getElementById("previewSymbol"),
@@ -1017,55 +1113,212 @@
                 }
                 s?.addEventListener("change", sync);
                 n?.addEventListener("input", sync);
-                f?.addEventListener("submit", (e) => {
-                    e.preventDefault();
-                    window.heToast?.("Configuración guardada en esta demostración ✓");
-                });
                 sync();
             })();
-        </script>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container footer-grid">
-            <div>
-                <a class="footer-brand" href="home.html">
-                    <span>Huellitas <b>Eternas</b></span></a>
-                <p class="muted">
-                    Un recuerdo bonito, personal y siempre cerca del corazón.
-                </p>
-                <p class="footer-note">
-                    Cada espacio puede crecer contigo y con la historia que quieras
-                    conservar.
-                </p>
-            </div>
-            <div>
-                <h3>Explora</h3>
-                <a href="producto.html">Producto</a>
-                <a href="personalizar.html">Personalizar</a>
-                <a href="memorial.html">Espacio digital</a>
-                <a href="como-funciona.html">Cómo funciona</a>
-            </div>
-            <div>
-                <h3>Ayuda y legal</h3>
-                <a href="faq.html">Preguntas frecuentes</a>
-                <a href="ayuda.html">Centro de ayuda</a>
-                <a href="contacto.html">Contacto</a>
-                <a href="politica-privacidad.html">Privacidad</a>
-                <a href="terminos-condiciones.html">Términos</a>
-                <a href="cookies.html">Cookies</a>
-            </div>
-        </div>
-        <div class="container copyright">
-            © <span id="year"></span> Huellitas Eternas · Hecho con cariño.
-        </div>
-    </footer>
-    <button class="top" id="topBtn" type="button" aria-label="Volver arriba">
-        ↑
+   </script>
+   <section class="section he-extra">
+    <div class="container">
+     <div class="section-head reveal">
+      <span class="he-kicker">
+       M&aacute;s para ti
+      </span>
+      <h2>
+       Tu historia tambi&eacute;n define el dise&ntilde;o
+      </h2>
+      <p class="muted">
+       Personalizar no es solamente escoger un color: tambi&eacute;n puedes decidir qu&eacute; nombre destacar, qu&eacute; tono representa mejor la historia y qu&eacute; contenido quieres asociar al QR.
+      </p>
+     </div>
+     <div class="he-extra-grid">
+      <article class="he-extra-card reveal">
+       <h3>
+        Idea principal
+       </h3>
+       <p>
+        Personalizar no es solamente escoger un color: tambi&eacute;n puedes decidir qu&eacute; nombre destacar, qu&eacute; tono representa mejor la historia y qu&eacute; contenido quieres asociar al QR.
+       </p>
+      </article>
+      <article class="he-extra-card reveal">
+       <h3>
+        Consejo
+       </h3>
+       <p>
+        Revisa cada detalle antes de publicar o enviar tu contenido. Una decisi&oacute;n peque&ntilde;a puede mejorar mucho la experiencia.
+       </p>
+      </article>
+      <article class="he-extra-card reveal">
+       <h3>
+        Siguiente paso
+       </h3>
+       <p>
+        Explora otra secci&oacute;n del sitio desde el men&uacute; o utiliza Contacto cuando necesites una respuesta directa.
+       </p>
+      </article>
+     </div>
+     <blockquote class="he-quote">
+      &ldquo;Los recuerdos cambian de forma, pero siguen teniendo significado cuando elegimos conservarlos.&rdquo;
+     </blockquote>
+    </div>
+   </section>
+  </main>
+  <section class="section">
+   <div class="container">
+    <div class="section-head reveal">
+     <span class="he-kicker">
+      Antes de enviar
+     </span>
+     <h2>
+      Peque&ntilde;os detalles que ayudan a imaginar la pieza.
+     </h2>
+     <p class="muted">
+      Puedes usar estas ideas para escribir una solicitud m&aacute;s clara.
+     </p>
+    </div>
+    <div class="grid">
+     <article class="card reveal">
+      <h3>
+       🎨 Color
+      </h3>
+      <p class="muted">
+       Combina el tono con la personalidad, el pelaje o un color importante para la historia.
+      </p>
+     </article>
+     <article class="card reveal">
+      <h3>
+       ✍️ Nombre
+      </h3>
+      <p class="muted">
+       Elige un nombre, apodo o palabra que tenga significado para ti.
+      </p>
+     </article>
+     <article class="card reveal">
+      <h3>
+       ✨ Detalle
+      </h3>
+      <p class="muted">
+       Puedes mencionar una fecha, frase, s&iacute;mbolo, textura o idea especial.
+      </p>
+     </article>
+    </div>
+    <ul class="he-checklist" style="margin-top:24px">
+     <li>
+      Indicar forma y color preferidos.
+     </li>
+     <li>
+      Escribir el nombre o palabra especial.
+     </li>
+     <li>
+      Explicar cualquier detalle importante.
+     </li>
+     <li>
+      Aceptar el uso de los datos para responder la solicitud.
+     </li>
+    </ul>
+   </div>
+  </section>
+  <footer class="site-footer">
+   <div class="container footer-grid">
+    <div>
+     <a class="footer-brand" href="home.html">
+      <span>
+       Huellitas
+       <b>
+        Eternas
+       </b>
+      </span>
+     </a>
+     <p class="muted">
+      Un recuerdo bonito, personal y siempre cerca del coraz&oacute;n.
+     </p>
+     <p class="footer-note">
+      Conserva historias, detalles y momentos que siguen significando.
+     </p>
+    </div>
+    <div>
+     <h3>
+      Explora
+     </h3>
+     <a href="producto.html">
+      Producto
+     </a>
+     <a href="personalizar.html">
+      Personalizar
+     </a>
+     <a href="memoriales.html">
+      Memoriales
+     </a>
+     <a href="como-funciona.html">
+      C&oacute;mo funciona
+     </a>
+     <a href="noticias.html">
+      Noticias
+     </a>
+     <a href="redes-sociales.html">
+      Redes sociales
+     </a>
+    </div>
+    <div>
+     <h3>
+      Ayuda y legal
+     </h3>
+     <a href="faq.html">
+      Preguntas frecuentes
+     </a>
+     <a href="ayuda.html">
+      Centro de ayuda
+     </a>
+     <a href="contacto.html">
+      Contacto
+     </a>
+     <a href="nosotros.html">
+      Nosotros
+     </a>
+     <a href="politica-privacidad.html">
+      Privacidad
+     </a>
+     <a href="terminos-condiciones.html">
+      T&eacute;rminos
+     </a>
+     <a href="cookies.html">
+      Cookies
+     </a>
+    </div>
+   </div>
+   <div class="container he-site-links">
+    <a href="home.html">
+     Inicio
+    </a>
+    <a href="memoriales.html">
+     Ver memoriales
+    </a>
+    <a href="personalizar.html">
+     Personalizar
+    </a>
+    <a href="contacto.html">
+     Contactar
+    </a>
+    <button class="btn secondary" data-copy-link="" type="button">
+     Copiar enlace
     </button>
-
-    <script>
-        (() => {
+    <button class="btn secondary" data-print="" type="button">
+     Imprimir
+    </button>
+   </div>
+   <div class="container he-privacy-box">
+    Publica &uacute;nicamente contenido que tengas autorizaci&oacute;n para compartir. Los memoriales privados est&aacute;ticos no sustituyen una cuenta con autenticaci&oacute;n real.
+   </div>
+   <div class="container copyright">
+    &copy;
+    <span id="year">
+    </span>
+    Huellitas Eternas &middot; Hecho con cari&ntilde;o.
+   </div>
+  </footer>
+  <button aria-label="Volver arriba" class="top" id="topBtn" type="button">
+   &uarr;
+  </button>
+  <script>
+   (() => {
             "use strict";
             const $ = (s, c = document) => c.querySelector(s),
                 $$ = (s, c = document) => [...c.querySelectorAll(s)];
@@ -1379,7 +1632,8 @@
             window.addEventListener("online", () => toast("Conexión recuperada ✓"));
             window.HuellitasEternas = { version: "3.1.0", toast, openModal };
         })();
-    </script>
-</body>
-
+  </script>
+  <script defer="" src="../assets/js/mejoras.js">
+  </script>
+ </body>
 </html>
