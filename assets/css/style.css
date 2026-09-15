@@ -1,0 +1,198 @@
+:root {
+            --bg: #fff8fc;
+            --pink: #f2bfd8;
+            --rose: #d98eb2;
+            --text: #493744;
+            --line: #ead9e2;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        body {
+            font-family:
+                Inter,
+                system-ui,
+                -apple-system,
+                "Segoe UI",
+                sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 15% 15%, #fff 0, transparent 30%),
+                radial-gradient(circle at 85% 75%, #f2bfd855, transparent 28%),
+                linear-gradient(145deg, #fff9fc, #f7e7f0);
+            display: grid;
+            place-items: center;
+            overflow: hidden;
+        }
+
+        .loader-wrap {
+            position: relative;
+            width: min(760px, 92vw);
+            padding: clamp(30px, 6vw, 70px);
+            text-align: center;
+        }
+
+        .loader-card {
+            position: relative;
+            padding: clamp(32px, 6vw, 68px);
+            border: 1px solid rgba(255, 255, 255, 0.75);
+            border-radius: 42px;
+            background: rgba(255, 255, 255, 0.62);
+            backdrop-filter: blur(24px);
+            box-shadow: 0 35px 100px rgba(120, 70, 100, 0.16);
+            overflow: hidden;
+        }
+
+        .loader-card:before {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px solid #d98eb244;
+            border-radius: 50%;
+            box-shadow: 0 0 50px #f2bfd822;
+            z-index: -1;
+            animation: loaderRing 7s linear infinite;
+        }
+
+        .orbit {
+            position: absolute;
+            width: 230px;
+            height: 230px;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            border: 1px dashed #d98eb255;
+            border-radius: 50%;
+            animation: loaderOrbit 9s linear infinite;
+            pointer-events: none;
+        }
+
+        .orbit i {
+            position: absolute;
+            top: -4px;
+            left: 50%;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #d98eb2;
+            box-shadow: 0 0 20px #d98eb2;
+        }
+
+        .logo {
+            width: 108px;
+            height: 108px;
+            object-fit: contain;
+            filter: drop-shadow(0 13px 25px #d98eb255);
+            animation: float 2.8s ease-in-out infinite;
+        }
+
+        h1 {
+            margin: 18px 0 7px;
+            font-size: clamp(1.7rem, 5vw, 3rem);
+            letter-spacing: -0.04em;
+        }
+
+        p {
+            margin: 0;
+            color: #756773;
+        }
+
+        .status {
+            margin-top: 12px;
+            min-height: 1.5em;
+            font-weight: 650;
+        }
+
+        .bar {
+            width: min(360px, 78vw);
+            height: 8px;
+            margin: 28px auto 0;
+            background: #ead9e2;
+            border-radius: 99px;
+            overflow: hidden;
+        }
+
+        .bar span {
+            display: block;
+            width: 0;
+            height: 100%;
+            border-radius: inherit;
+            background: linear-gradient(90deg, var(--pink), var(--rose));
+            transition: width 0.15s linear;
+        }
+
+        .loader-meta {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 18px;
+            font-size: 0.86rem;
+            color: #756773;
+        }
+
+        .loader-meta span {
+            padding: 6px 10px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: #ffffff66;
+        }
+
+        .skip-load {
+            margin-top: 20px;
+            border: 0;
+            background: transparent;
+            color: #8f5876;
+            font-weight: 800;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        @keyframes loaderRing {
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes loaderOrbit {
+            to {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes float {
+            50% {
+                transform: translateY(-10px) rotate(2deg);
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+
+            .loader-card:before,
+            .orbit {
+                animation: none !important;
+            }
+
+            .logo {
+                animation: none !important;
+            }
+        }

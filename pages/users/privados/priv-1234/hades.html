@@ -1,0 +1,971 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Memorial de Hares | Huellitas Eternas">
+    <title>Memorial de Hares | Huellitas Eternas</title>
+
+
+    <!-- CSS ESPECÍFICO DEL MEMORIAL -->
+    <style>
+        .Hares-page {
+            min-height: 100vh;
+        }
+
+        .Hares-hero {
+            text-align: center;
+            padding: 80px 20px 45px;
+        }
+
+        .Hares-subtitle {
+            max-width: 720px;
+            margin: 0 auto;
+        }
+
+        .memorial-navigation {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin: 25px auto 45px;
+            padding: 0 20px;
+        }
+
+        .memorial-tab {
+            cursor: pointer;
+        }
+
+        .memorial-section {
+            max-width: 950px;
+            margin: 0 auto 35px;
+            padding: 35px 25px;
+            border-radius: 20px;
+        }
+
+        .memorial-section[hidden] {
+            display: none;
+        }
+
+        .memorial-placeholder {
+            margin-top: 15px;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .memory-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+            gap: 18px;
+            margin-top: 20px;
+        }
+
+        .memory-gallery figure {
+            margin: 0;
+        }
+
+        .memory-gallery img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            border-radius: 16px;
+        }
+
+        .memory-gallery figcaption {
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        .media-box {
+            margin-top: 20px;
+        }
+
+        .media-box video,
+        .media-box audio {
+            width: 100%;
+            max-width: 750px;
+        }
+
+        .reflection {
+            text-align: center;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin: 10px auto 50px;
+        }
+
+        @media (max-width: 600px) {
+            .Hares-hero {
+                padding-top: 55px;
+            }
+
+            .memorial-section {
+                margin-left: 15px;
+                margin-right: 15px;
+                padding: 25px 18px;
+            }
+        }
+
+        /* ================================
+           PANTALLA DE ACCESO PRIVADO
+           ================================ */
+        .private-access-screen {
+            position: fixed;
+            inset: 0;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 24px;
+            background: rgba(255, 250, 244, 0.98);
+            backdrop-filter: blur(8px);
+        }
+
+        .private-access-card {
+            width: min(440px, 100%);
+            padding: 34px 28px;
+            text-align: center;
+            border-radius: 24px;
+            background: #ffffff;
+            box-shadow: 0 18px 55px rgba(50, 38, 36, 0.16);
+        }
+
+        .private-access-icon {
+            font-size: 3rem;
+            margin-bottom: 8px;
+        }
+
+        .private-access-card h1 {
+            margin: 0 0 10px;
+        }
+
+        .private-access-card p {
+            margin: 0 auto 20px;
+            line-height: 1.6;
+        }
+
+        .private-access-form {
+            display: grid;
+            gap: 12px;
+        }
+
+        .private-access-input {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 13px 15px;
+            border: 1px solid #d8cfc9;
+            border-radius: 12px;
+            font: inherit;
+            outline: none;
+        }
+
+        .private-access-input:focus {
+            border-color: #b99686;
+            box-shadow: 0 0 0 3px rgba(185, 150, 134, 0.14);
+        }
+
+        .private-access-message {
+            min-height: 24px;
+            margin-top: 4px;
+            font-weight: 600;
+        }
+
+        .private-access-screen.is-unlocked {
+            display: none;
+        }
+
+        body.private-locked {
+            overflow: hidden;
+        }
+
+        body.private-unlocked {
+            overflow: auto;
+        }
+
+
+        /* ===== DISEÑO ESPECIAL DEL GALLO Hares ===== */
+        :root {
+            --Hares-red: #9d2f2f;
+            --Hares-dark-red: #682020;
+            --Hares-gold: #d79a35;
+            --Hares-cream: #fff8e9;
+            --Hares-ink: #30241f;
+        }
+
+        body.Hares-page {
+            background:
+                radial-gradient(circle at 50% 0%, rgba(215,154,53,.20), transparent 32%),
+                linear-gradient(180deg, #fffaf0 0%, #f7ead6 100%);
+            color: var(--Hares-ink);
+        }
+
+        body.Hares-page::before {
+            content: "🐓";
+            position: fixed;
+            top: 18px;
+            right: 22px;
+            font-size: 2rem;
+            opacity: .16;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .Hares-page .Hares-hero {
+            position: relative;
+            overflow: hidden;
+            padding: 70px 20px 48px;
+        }
+
+        .Hares-page .Hares-hero::before,
+        .Hares-page .Hares-hero::after {
+            content: "🪶";
+            position: absolute;
+            font-size: 4rem;
+            opacity: .12;
+            pointer-events: none;
+        }
+
+        .Hares-page .Hares-hero::before {
+            left: 8%;
+            top: 35px;
+            transform: rotate(-25deg);
+        }
+
+        .Hares-page .Hares-hero::after {
+            right: 8%;
+            bottom: 25px;
+            transform: rotate(25deg);
+        }
+
+        .Hares-page .section-eyebrow {
+            color: var(--Hares-red);
+            font-weight: 800;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+        }
+
+        .Hares-page .hero-title,
+        .Hares-page .section-title {
+            color: var(--Hares-dark-red);
+        }
+
+        .Hares-page .hero-title::before {
+            content: "🐓 ";
+        }
+
+        .Hares-page .hero-title::after {
+            content: " 🐓";
+        }
+
+        .Hares-page .memorial-navigation {
+            position: sticky;
+            top: 10px;
+            z-index: 50;
+            max-width: 1050px;
+            padding: 12px;
+            border: 1px solid rgba(157,47,47,.14);
+            border-radius: 22px;
+            background: rgba(255,248,233,.90);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 12px 35px rgba(72,43,27,.10);
+        }
+
+        .Hares-page .memorial-tab {
+            border-radius: 999px;
+            transition: transform .2s ease, box-shadow .2s ease;
+        }
+
+        .Hares-page .memorial-tab:hover {
+            transform: translateY(-2px);
+        }
+
+        .Hares-page .memorial-section {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(157,47,47,.12);
+            background: rgba(255,255,255,.84);
+            box-shadow: 0 15px 45px rgba(72,43,27,.08);
+            border-radius: 28px;
+        }
+
+        .Hares-page .memorial-section::after {
+            content: "🪶";
+            position: absolute;
+            right: 22px;
+            top: 15px;
+            font-size: 2.2rem;
+            opacity: .12;
+            pointer-events: none;
+        }
+
+        .Hares-page .memorial-placeholder {
+            border: 1px dashed rgba(157,47,47,.25);
+            background: var(--Hares-cream);
+        }
+
+        .Hares-page .memory-gallery figure {
+            padding: 10px;
+            border-radius: 20px;
+            background: #fff;
+            box-shadow: 0 8px 25px rgba(72,43,27,.10);
+            transition: transform .25s ease;
+        }
+
+        .Hares-page .memory-gallery figure:hover {
+            transform: translateY(-5px) rotate(-1deg);
+        }
+
+        .Hares-page .memory-gallery img {
+            border-radius: 14px;
+        }
+
+        .Hares-page .reflection {
+            padding: 28px;
+            border-radius: 22px;
+            background: linear-gradient(135deg, #fff8e9, #f5dfba);
+            border-left: 5px solid var(--Hares-gold);
+            color: var(--Hares-dark-red);
+            font-weight: 700;
+        }
+
+        /* Acceso privado */
+        .Hares-page .private-access-screen {
+            background:
+                radial-gradient(circle at 50% 20%, rgba(215,154,53,.24), transparent 30%),
+                rgba(43,25,21,.97);
+        }
+
+        .Hares-page .private-access-card {
+            border: 2px solid rgba(215,154,53,.55);
+            background: linear-gradient(160deg, #fffaf0, #f7e6c8);
+            box-shadow: 0 25px 80px rgba(0,0,0,.35);
+        }
+
+        .Hares-page .private-access-card::before {
+            content: "🐓";
+            display: block;
+            font-size: 4.5rem;
+            line-height: 1;
+            margin-bottom: 12px;
+        }
+
+        .Hares-page .private-access-icon {
+            display: none;
+        }
+
+        .Hares-page .private-access-card h1 {
+            color: var(--Hares-dark-red);
+        }
+
+        .Hares-page .private-access-form .button-primary {
+            background: var(--Hares-red);
+            border-color: var(--Hares-red);
+        }
+
+        .Hares-page .private-access-message {
+            color: var(--Hares-red);
+        }
+
+        .Hares-page .memorial-section.Hares-enter {
+            animation: HaresSectionIn .35s ease both;
+        }
+
+        .Hares-hero-badge {
+            display: inline-block;
+            margin-top: 18px;
+            padding: 9px 16px;
+            border-radius: 999px;
+            background: rgba(157,47,47,.09);
+            color: var(--Hares-dark-red);
+            font-weight: 700;
+            font-size: .92rem;
+        }
+
+        .Hares-visit-message {
+            margin: 12px 0 0;
+            font-size: .86rem;
+            opacity: .65;
+        }
+
+        @keyframes HaresSectionIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 600px) {
+            .Hares-page .memorial-navigation {
+                top: 5px;
+                border-radius: 16px;
+            }
+
+            .Hares-page .hero-title::before,
+            .Hares-page .hero-title::after {
+                content: "";
+            }
+        }
+
+
+        /* ==========================================
+           ESTILO ELEGANTE — MEMORIAL DE Hares
+           ========================================== */
+        body.Hares-page {
+            background:
+                radial-gradient(circle at 50% -10%, rgba(190, 160, 100, .16), transparent 34%),
+                linear-gradient(180deg, #fbfaf7 0%, #f1eee7 100%);
+            color: #292724;
+        }
+
+        .Hares-page .Hares-hero {
+            padding: 86px 20px 58px;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,.92), rgba(247,244,237,.78));
+            border-bottom: 1px solid rgba(100, 83, 57, .14);
+        }
+
+        .Hares-page .Hares-hero::before {
+            content: "✦";
+            left: 10%;
+            top: 38px;
+            color: #a88a55;
+            font-size: 2rem;
+            opacity: .45;
+        }
+
+        .Hares-page .Hares-hero::after {
+            content: "✦";
+            right: 10%;
+            bottom: 30px;
+            color: #a88a55;
+            font-size: 2rem;
+            opacity: .45;
+        }
+
+        .Hares-page .section-eyebrow {
+            color: #927444;
+            font-size: .78rem;
+            letter-spacing: .22em;
+        }
+
+        .Hares-page .hero-title {
+            color: #28251f;
+            font-family: Georgia, "Times New Roman", serif;
+            font-weight: 500;
+            letter-spacing: .02em;
+        }
+
+        .Hares-page .hero-title::before {
+            content: "";
+        }
+
+        .Hares-page .hero-title::after {
+            content: "";
+        }
+
+        .Hares-page .Hares-subtitle {
+            color: #6b675f;
+            max-width: 680px;
+        }
+
+        .Hares-page .Hares-hero-badge {
+            background: transparent;
+            border: 1px solid rgba(146,116,68,.32);
+            color: #806536;
+            letter-spacing: .03em;
+        }
+
+        .Hares-page .memorial-navigation {
+            border: 1px solid rgba(100, 83, 57, .15);
+            border-radius: 14px;
+            background: rgba(250,249,246,.94);
+            box-shadow: 0 10px 30px rgba(40,34,26,.07);
+        }
+
+        .Hares-page .memorial-tab {
+            border-radius: 8px;
+            color: #625d54;
+            transition: all .25s ease;
+        }
+
+        .Hares-page .memorial-tab:hover {
+            transform: translateY(-1px);
+        }
+
+        .Hares-page .memorial-section {
+            border: 1px solid rgba(100, 83, 57, .13);
+            border-radius: 18px;
+            background: rgba(255,255,255,.90);
+            box-shadow: 0 14px 40px rgba(40,34,26,.06);
+        }
+
+        .Hares-page .memorial-section::after {
+            content: "✦";
+            color: #a88a55;
+            opacity: .16;
+        }
+
+        .Hares-page .section-title {
+            color: #302c26;
+            font-family: Georgia, "Times New Roman", serif;
+            font-weight: 500;
+        }
+
+        .Hares-page .memory-gallery figure {
+            border: 1px solid rgba(100, 83, 57, .10);
+            box-shadow: 0 8px 22px rgba(40,34,26,.07);
+        }
+
+        .Hares-page .reflection {
+            background: linear-gradient(135deg, #f8f5ed, #eee7d9);
+            border-left: 3px solid #aa8b55;
+            color: #514734;
+            font-family: Georgia, "Times New Roman", serif;
+        }
+
+        /* Pantalla privada elegante */
+        .Hares-page .private-access-screen {
+            background:
+                radial-gradient(circle at 50% 15%, rgba(184,150,90,.15), transparent 30%),
+                rgba(25,24,22,.98);
+        }
+
+        .Hares-page .private-access-card {
+            max-width: 430px;
+            border: 1px solid rgba(190,160,100,.45);
+            border-radius: 20px;
+            background: #faf9f5;
+            box-shadow: 0 30px 90px rgba(0,0,0,.42);
+        }
+
+        .Hares-page .private-access-card::before {
+            content: "♜";
+            color: #a88a55;
+            font-size: 2.4rem;
+            margin-bottom: 18px;
+        }
+
+        .Hares-page .private-access-card h1 {
+            color: #2d2923;
+            font-family: Georgia, "Times New Roman", serif;
+            font-weight: 500;
+        }
+
+        .Hares-page .private-access-input {
+            border-radius: 9px;
+            border-color: rgba(100,83,57,.20);
+        }
+
+        .Hares-page .private-access-form .button-primary {
+            background: #806536;
+            border-color: #806536;
+        }
+
+        .Hares-page .private-access-message {
+            color: #806536;
+        }
+
+        .Hares-page .Hares-visit-message {
+            color: #8a8378;
+            font-style: italic;
+        }
+
+        @media (max-width: 600px) {
+            .Hares-page .Hares-hero {
+                padding-top: 65px;
+            }
+        }
+
+    </style>
+</head>
+
+<body class="Hares-page">
+
+    <!-- ================================
+         ACCESO AL MEMORIAL PRIVADO
+         ================================ -->
+    <div class="private-access-screen" id="private-access-screen">
+        <div class="private-access-card">
+            <div class="private-access-icon" aria-hidden="true">🔒🐓</div>
+            <h1>Memorial privado de Hares</h1>
+            <p>
+                Este memorial es privado. Introduce la contraseña para poder ingresar
+                y conocer la historia y los recuerdos de Hares.
+            </p>
+
+            <form class="private-access-form" id="private-access-form">
+                <label for="memorial-password">Contraseña</label>
+                <input
+                    type="password"
+                    id="memorial-password"
+                    class="private-access-input"
+                    autocomplete="off"
+                    placeholder="Escribe la contraseña"
+                    required
+                >
+                <button type="submit" class="button button-primary">
+                    Ingresar al memorial
+                </button>
+                <div
+                    class="private-access-message"
+                    id="private-access-message"
+                    role="alert"
+                    aria-live="polite"
+                ></div>
+            </form>
+        </div>
+    </div>
+
+    <main id="contenido-principal">
+
+        <section class="Hares-hero" aria-labelledby="Hares-title">
+            <p class="section-eyebrow">Memorial privado</p>
+            <h1 id="Hares-title" class="hero-title">El recuerdo de Hares</h1>
+            <p class="Hares-subtitle section-description">
+                Un rincón especial para conservar la historia, los recuerdos y la huella de Hares.
+            </p>
+            <div class="Hares-hero-badge" aria-label="Memorial privado de Hares">
+                🪶 Recuerdo privado · 🐓 Hares
+            </div>
+        </section>
+
+        <!-- CATEGORÍAS -->
+        <nav class="memorial-navigation" aria-label="Categorías del memorial">
+            <button type="button" class="button button-primary memorial-tab" data-target="introduccion">
+                Introducción
+            </button>
+            <button type="button" class="button button-secondary memorial-tab" data-target="historia">
+                Historia
+            </button>
+            <button type="button" class="button button-secondary memorial-tab" data-target="imagenes">
+                Imágenes
+            </button>
+            <button type="button" class="button button-secondary memorial-tab" data-target="videos">
+                Videos
+            </button>
+            <button type="button" class="button button-secondary memorial-tab" data-target="audios">
+                Audios
+            </button>
+            <button type="button" class="button button-secondary memorial-tab" data-target="reflexion">
+                Una frase de reflexión
+            </button>
+        </nav>
+
+        <!-- INTRODUCCIÓN -->
+        <section id="introduccion" class="memorial-section" data-memorial-section>
+            <p class="section-eyebrow">Una huellita que permanece</p>
+            <h2 class="section-title">Bienvenido al memorial de Hares</h2>
+            <p class="section-description">
+                Este memorial fue creado para conservar y recordar a Hares, un gallo
+                que dejó una huella especial en el corazón de quienes compartieron su vida.
+                Aquí se reúnen fotografías, videos, audios, historias y palabras especiales sobre Hares
+                para mantener vivo su recuerdo.
+            </p>
+        </section>
+
+        <!-- HISTORIA -->
+        <section id="historia" class="memorial-section" data-memorial-section hidden>
+            <p class="section-eyebrow">Su historia</p>
+            <h2 class="section-title">Una historia que merece ser recordada</h2>
+            <p class="section-description">
+                Aquí puedes conservar la historia de Hares: sus momentos importantes,
+                sus costumbres, sus momentos especiales, sus cantos y todos esos pequeños detalles
+                que hicieron especial cada momento compartido.
+            </p>
+            <div class="memorial-placeholder">
+                <p><strong>Historia de Hares:</strong>
+                este espacio está preparado para agregar su historia real, anécdotas,
+                momentos favoritos y recuerdos que quieras conservar.</p>
+            </div>
+        </section>
+
+        <!-- IMÁGENES -->
+        <section id="imagenes" class="memorial-section" data-memorial-section hidden>
+            <p class="section-eyebrow">Recuerdos en imágenes</p>
+            <h2 class="section-title">Imágenes de Hares</h2>
+            <p class="section-description">
+                Aquí puedes conservar las fotografías más especiales de Hares y volver a ellas cuando quieras recordar esos momentos.
+            </p>
+
+            <div class="memory-gallery">
+                <figure>
+                    <img src="../../003/images/Hares-1.jpg" alt="Fotografía de Hares">
+                    <figcaption>Un recuerdo de Hares.</figcaption>
+                </figure>
+                <figure>
+                    <img src="../../003/images/Hares-2.jpg" alt="Otra fotografía de Hares">
+                    <figcaption>Un momento especial.</figcaption>
+                </figure>
+                <figure>
+                    <img src="../../003/images/Hares-3.jpg" alt="Fotografía adicional de Hares">
+                    <figcaption>Una huellita para recordar.</figcaption>
+                </figure>
+            </div>
+        </section>
+
+        <!-- VIDEOS -->
+        <section id="videos" class="memorial-section" data-memorial-section hidden>
+            <p class="section-eyebrow">Momentos que vuelven a vivir</p>
+            <h2 class="section-title">Videos de Hares</h2>
+            <p class="section-description">
+                Puedes colocar aquí videos de momentos especiales para conservarlos
+                como parte de su historia.
+            </p>
+            <div class="media-box">
+                <video controls preload="metadata">
+                    <source src="../../003/videos/Hares.mp4" type="video/mp4">
+                    Tu navegador no puede reproducir este video.
+                </video>
+            </div>
+        </section>
+
+        <!-- AUDIOS -->
+        <section id="audios" class="memorial-section" data-memorial-section hidden>
+            <p class="section-eyebrow">Voces y sonidos para recordar</p>
+            <h2 class="section-title">Audios de Hares</h2>
+            <p class="section-description">
+                Este espacio puede guardar sonidos, grabaciones o mensajes especiales
+                relacionados con Hares.
+            </p>
+            <div class="media-box">
+                <audio controls preload="metadata">
+                    <source src="../../003/audios/Hares.mp3" type="audio/mpeg">
+                    Tu navegador no puede reproducir este audio.
+                </audio>
+            </div>
+        </section>
+
+        <!-- REFLEXIÓN -->
+        <section id="reflexion" class="memorial-section" data-memorial-section hidden>
+            <p class="section-eyebrow">Para recordar</p>
+            <h2 class="section-title">Una frase de reflexión</h2>
+            <p class="reflection">
+                “Una mascota puede dejar de caminar a nuestro lado,
+                pero la huella que dejó en nuestro corazón puede permanecer para siempre.”
+            </p>
+            <p class="section-description" style="text-align:center;">
+                Cada recuerdo es una forma de mantener viva una historia.
+            </p>
+        </section>
+
+    </main>
+
+    <!-- JAVASCRIPT DEL ACCESO PRIVADO DE Hares -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const ACCESS_PASSWORD = "Hares";
+            const MAX_ATTEMPTS = 3;
+            const LOCK_TIME = 60 * 1000; // 1 minuto
+
+            const screen = document.getElementById("private-access-screen");
+            const form = document.getElementById("private-access-form");
+            const input = document.getElementById("memorial-password");
+            const message = document.getElementById("private-access-message");
+            const submitButton = form.querySelector("button[type='submit']");
+
+            const ATTEMPTS_KEY = "Hares_failed_attempts";
+            const LOCK_KEY = "Hares_lock_until";
+
+            let failedAttempts = Number(localStorage.getItem(ATTEMPTS_KEY)) || 0;
+            let lockUntil = Number(localStorage.getItem(LOCK_KEY)) || 0;
+            let countdownInterval = null;
+
+            document.body.classList.add("private-locked");
+
+            const updateLockScreen = () => {
+                const remaining = Math.max(0, lockUntil - Date.now());
+
+                if (remaining <= 0) {
+                    localStorage.removeItem(LOCK_KEY);
+                    localStorage.removeItem(ATTEMPTS_KEY);
+                    failedAttempts = 0;
+                    lockUntil = 0;
+
+                    input.disabled = false;
+                    submitButton.disabled = false;
+                    message.textContent = "";
+                    input.focus();
+
+                    if (countdownInterval) {
+                        clearInterval(countdownInterval);
+                        countdownInterval = null;
+                    }
+
+                    return;
+                }
+
+                input.disabled = true;
+                submitButton.disabled = true;
+
+                const seconds = Math.ceil(remaining / 1000);
+
+                message.textContent =
+                    `🔒 Demasiados intentos incorrectos. El acceso está bloqueado. ` +
+                    `Intenta nuevamente en ${seconds} segundo${seconds === 1 ? "" : "s"}.`;
+            };
+
+            const startLockCountdown = () => {
+                updateLockScreen();
+
+                if (countdownInterval) {
+                    clearInterval(countdownInterval);
+                }
+
+                countdownInterval = setInterval(updateLockScreen, 1000);
+            };
+
+            // Si ya había un bloqueo activo, se mantiene incluso al recargar.
+            if (lockUntil > Date.now()) {
+                startLockCountdown();
+            } else {
+                localStorage.removeItem(LOCK_KEY);
+                input.focus();
+            }
+
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+
+                // No permite intentar mientras exista un bloqueo.
+                if (Date.now() < lockUntil) {
+                    updateLockScreen();
+                    return;
+                }
+
+                if (input.value === ACCESS_PASSWORD) {
+                    localStorage.removeItem(ATTEMPTS_KEY);
+                    localStorage.removeItem(LOCK_KEY);
+
+                    failedAttempts = 0;
+                    lockUntil = 0;
+
+                    screen.classList.add("is-unlocked");
+                    document.body.classList.remove("private-locked");
+                    document.body.classList.add("private-unlocked");
+
+                    message.textContent = "";
+                    input.value = "";
+
+                    if (countdownInterval) {
+                        clearInterval(countdownInterval);
+                        countdownInterval = null;
+                    }
+                } else {
+                    failedAttempts += 1;
+                    localStorage.setItem(ATTEMPTS_KEY, String(failedAttempts));
+
+                    input.value = "";
+
+                    if (failedAttempts >= MAX_ATTEMPTS) {
+                        lockUntil = Date.now() + LOCK_TIME;
+                        localStorage.setItem(LOCK_KEY, String(lockUntil));
+
+                        input.disabled = true;
+                        submitButton.disabled = true;
+
+                        message.textContent =
+                            "🔒 Has alcanzado 3 intentos incorrectos. " +
+                            "El memorial queda bloqueado durante 1 minuto.";
+
+                        startLockCountdown();
+                    } else {
+                        const remainingAttempts = MAX_ATTEMPTS - failedAttempts;
+
+                        message.textContent =
+                            `❌ Contraseña incorrecta. Te quedan ${remainingAttempts} ` +
+                            `intento${remainingAttempts === 1 ? "" : "s"}.`;
+
+                        input.focus();
+                    }
+                }
+            });
+        });
+    </script>
+
+    <!-- JAVASCRIPT DEL MEMORIAL -->
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const tabs = Array.from(document.querySelectorAll(".memorial-tab"));
+            const sections = Array.from(
+                document.querySelectorAll("[data-memorial-section]")
+            );
+
+            const showSection = (targetId, updateHash = true) => {
+                sections.forEach((section) => {
+                    const active = section.id === targetId;
+                    section.hidden = !active;
+
+                    if (active) {
+                        section.classList.remove("Hares-enter");
+                        void section.offsetWidth;
+                        section.classList.add("Hares-enter");
+                    }
+                });
+
+                tabs.forEach((tab) => {
+                    const active = tab.dataset.target === targetId;
+                    tab.classList.toggle("button-primary", active);
+                    tab.classList.toggle("button-secondary", !active);
+                    tab.setAttribute("aria-selected", String(active));
+                });
+
+                if (updateHash) {
+                    history.replaceState(null, "", `#${targetId}`);
+                }
+            };
+
+            tabs.forEach((tab, index) => {
+                tab.addEventListener("click", () => {
+                    showSection(tab.dataset.target);
+                });
+
+                tab.addEventListener("keydown", (event) => {
+                    if (event.key !== "ArrowRight" && event.key !== "ArrowLeft") {
+                        return;
+                    }
+
+                    event.preventDefault();
+                    const direction = event.key === "ArrowRight" ? 1 : -1;
+                    const nextIndex = (index + direction + tabs.length) % tabs.length;
+
+                    tabs[nextIndex].focus();
+                    showSection(tabs[nextIndex].dataset.target);
+                });
+            });
+
+            window.addEventListener("hashchange", () => {
+                const target = window.location.hash.substring(1);
+                if (sections.some((section) => section.id === target)) {
+                    showSection(target, false);
+                }
+            });
+
+            const initialSection = window.location.hash
+                ? window.location.hash.substring(1)
+                : "introduccion";
+
+            const validSection = sections.some(
+                (section) => section.id === initialSection
+            );
+
+            showSection(validSection ? initialSection : "introduccion", false);
+
+            // Contador local de visitas en este navegador.
+            const VISIT_KEY = "Hares_memorial_visits";
+            const visits = (Number(localStorage.getItem(VISIT_KEY)) || 0) + 1;
+            localStorage.setItem(VISIT_KEY, String(visits));
+
+            const hero = document.querySelector(".Hares-hero");
+            if (hero) {
+                const welcome = document.createElement("p");
+                welcome.className = "Hares-visit-message";
+                welcome.textContent =
+                    `Gracias por visitar el memorial de Hares. Visita local n.º ${visits}.`;
+                hero.appendChild(welcome);
+            }
+        });
+    </script>
+
+</body>
+</html>

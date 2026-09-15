@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Memorial dedicado a Duke y Ken, dos compañeros que dejaron una huella eterna."
+    >
+
+    <title>Duke & Ken | Memorial</title>
+
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+    <!-- =========================================================
+         PANTALLA DE CARGA
+    ========================================================= -->
+
+    <div id="pantallaCarga">
+        <div class="huella-carga">🐾</div>
+        <div class="texto-carga">Preparando el recuerdo...</div>
+    </div>
+
+    <!-- =========================================================
+         HUELLAS DECORATIVAS
+    ========================================================= -->
+
+    <div id="contenedorHuellas" aria-hidden="true"></div>
+
+    <!-- =========================================================
+         NAVEGACIÓN FIJA
+    ========================================================= -->
+
+    <nav class="navegacion" id="navegacion">
+
+        <div class="nav-contenido">
+
+            <a href="#inicio" class="marca">
+                Duke & Ken
+                <small>Memorial</small>
+            </a>
+
+            <button
+                class="boton-menu"
+                id="botonMenu"
+                aria-label="Abrir menú"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+
+            <div class="nav-enlaces" id="navEnlaces">
+                <a href="#inicio" class="nav-link activo">Inicio</a>
+                <a href="#historia" class="nav-link">Historia</a>
+                <a href="#duke-ken" class="nav-link">Duke y Ken</a>
+                <a href="#recuerdos" class="nav-link">Recuerdos</a>
+                <a href="#imagenes" class="nav-link">Imágenes</a>
+                <a href="#videos" class="nav-link">Videos</a>
+                <a href="#audios" class="nav-link">Audios</a>
+                <a href="#despedida" class="nav-link">Despedida</a>
+            </div>
+
+        </div>
+
+    </nav>
+
+    <!-- =========================================================
+         HERO
+    ========================================================= -->
+
+    <header class="hero" id="inicio">
+
+        <div class="hero-contenido">
+
+            <div class="hero-simbolo"><img src="assets/images/icon.png" alt="duke-and-ken" width="150" height="150"></div>
+
+            <h1>
+                Duke <span>&</span> Ken
+            </h1>
+
+            <p class="hero-subtitulo">
+                Dos nombres, dos historias y una huella que permanecerá
+                para siempre en el corazón.
+            </p>
+
+            <p class="hero-fecha">
+                EN MEMORIA DE DOS COMPAÑEROS ESPECIALES
+            </p>
+
+            <a href="#despedida" class="boton-recuerdo">
+                Ver despedida
+            </a>
+
+        </div>
+
+    </header>
+
+    <!-- =========================================================
+         CONTENIDO PRINCIPAL
+    ========================================================= -->
+
+    <main>
+
+        <!-- HISTORIA -->
+
+        <section class="seccion" id="historia">
+
+            <h2 class="titulo-seccion" id="historia">
+                Su historia
+            </h2>
+
+            <p class="subtitulo-seccion" id="historia">
+                Un pequeño espacio para conservar aquello que el tiempo
+                nunca debería borrar.
+            </p>
+
+            <div class="historia" id="historia">
+
+                <p>
+                    Duke y Ken formaron parte de momentos que merecen ser
+                    recordados. Cada día compartido, cada mirada, cada juego
+                    y cada instante de compañía forma parte de una historia
+                    que continúa viviendo en la memoria.
+                </p>
+
+                <div class="frase" id="historia">
+                    “Algunos compañeros pasan por nuestra vida por un tiempo,
+                    pero permanecen en nuestro corazón para siempre.”
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- DUKE Y KEN -->
+
+        <section class="seccion" id="duke-ken">
+
+            <h2 class="titulo-seccion" id="duke-ken">
+                Duke y Ken
+            </h2>
+
+            <p class="subtitulo-seccion" id="duke-ken">
+                Dos compañeros que merecen ser recordados individualmente
+                y juntos.
+            </p>
+
+            <div class="mascotas" id="duke-ken">
+
+                <article class="mascota">
+
+                    <div class="mascota-simbolo" id="duke-ken">
+                        🐶
+                    </div>
+
+                    <h3 id="duke-ken">Duke</h3>
+
+                    <p id="duke-ken">
+                        Duke fue un compañero especial. Su presencia,
+                        sus gestos y los momentos compartidos dejaron
+                        recuerdos que permanecen vivos.
+                    </p>
+
+                </article>
+
+                <article class="mascota" id="duke-ken">
+
+                    <div class="mascota-simbolo" id="duke-ken">
+                        🐕
+                    </div>
+
+                    <h3 id="duke-ken">Ken</h3>
+
+                    <p id="duke-ken">
+                        Ken dejó su propia huella. Cada recuerdo suyo
+                        representa una parte importante de una historia
+                        llena de cariño y compañía.
+                    </p>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- RECUERDOS -->
+
+        <section class="seccion" id="recuerdos">
+
+            <h2 class="titulo-seccion" id="recuerdos">
+                Recuerdos
+            </h2>
+
+            <p class="subtitulo-seccion" id="recuerdos">
+                Pequeños momentos que hacen que una vida compartida
+                continúe presente.
+            </p>
+
+            <div class="contador-recuerdos" id="recuerdos">
+
+                <span
+                    class="numero-recuerdos"
+                    id="contadorRecuerdos"
+                >
+                    0
+                </span>
+
+                <span class="texto-contador" id="recuerdos">
+                    recuerdos guardados en este memorial
+                </span>
+
+            </div>
+
+            <div class="recuerdos-grid">
+
+                <article class="recuerdo">
+                    <h3 id="recuerdos">Momentos juntos</h3>
+                    <p id="recuerdos">
+                        Los instantes sencillos de todos los días son
+                        muchas veces los recuerdos que más permanecen.
+                    </p>
+                </article>
+
+                <article class="recuerdo" id="recuerdos">
+                    <h3 id="recuerdos">Compañía</h3>
+                    <p id="recuerdos">
+                        Nunca fue solamente estar juntos. Fue compartir
+                        una parte de la vida.
+                    </p>
+                </article>
+
+                <article class="recuerdo" id="recuerdos">
+                    <h3 id="recuerdos">Una huella eterna</h3>
+                    <p id="recuerdos">
+                        El tiempo puede cambiar muchas cosas, pero no
+                        puede borrar aquello que realmente significó algo.
+                    </p>
+                </article>
+
+                <article class="recuerdo" id="recuerdos">
+                    <h3 id="recuerdos">Miradas</h3>
+                    <p id="recuerdos">
+                        Hay recuerdos que no necesitan palabras para
+                        permanecer.
+                    </p>
+                </article>
+
+                <article class="recuerdo">
+                    <h3>Juegos</h3>
+                    <p>
+                        Cada juego y cada momento de alegría puede
+                        convertirse en un recuerdo para toda la vida.
+                    </p>
+                </article>
+
+                <article class="recuerdo">
+                    <h3>Siempre presentes</h3>
+                    <p>
+                        Duke y Ken continúan presentes en la memoria de
+                        quienes compartieron su historia.
+                    </p>
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================================
+             IMÁGENES
+        ====================================================== -->
+
+        <section class="seccion" id="imagenes">
+
+            <h2 class="titulo-seccion">
+                Imágenes
+            </h2>
+
+            <p class="subtitulo-seccion">
+                Una colección exclusiva para las fotografías de Duke y Ken.
+                Haz clic en cualquier imagen para verla ampliada.
+            </p>
+
+            <div class="galeria">
+
+                <div class="foto">
+                    <img
+                        src="assets/images/duke-1.png"
+                        alt="Duke"
+                    >
+                </div>
+
+                <div class="foto">
+                    <img
+                        src="assets/images/duke-2.png"
+                        alt="Duke"
+                    >
+                </div>
+
+                <div class="foto">
+                    <img
+                        src="assets/images/duke-3.png"
+                        alt="Duke"
+                    >
+                </div>
+
+                <div class="foto">
+                    <img
+                        src="assets/images/ken-1.png"
+                        alt="Ken"
+                    >
+                </div>
+
+                <div class="foto">
+                    <img
+                        src="assets/images/ken-2.png"
+                        alt="Ken"
+                    >
+                </div>
+
+                <div class="foto">
+                    <img
+                        src="assets/images/ken-3.png"
+                        alt="Ken"
+                    >
+                </div>
+
+                <div class="foto">
+                    <img
+                        src="assets/images/duke-ken-1.png"
+                        alt="Duke y Ken juntos"
+                    >
+                </div>
+
+                <div class="foto">
+                    <img
+                        src="assets/images/duke-ken-2.png"
+                        alt="Duke y Ken juntos"
+                    >
+                </div>
+
+                <div class="foto">
+                    <img
+                        src="assets/images/duke-ken-3.png"
+                        alt="Duke y Ken juntos"
+                    >
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================================
+             VIDEOS
+        ====================================================== -->
+
+        <section class="seccion" id="videos">
+
+            <h2 class="titulo-seccion">
+                Videos
+            </h2>
+
+            <p class="subtitulo-seccion">
+                Recuerdos en movimiento para conservar momentos especiales.
+            </p>
+
+            <div class="videos">
+
+                <article class="video-card">
+
+                    <video controls preload="metadata" width="500" height="500">
+                        <source
+                            src="assets/videos/duke-1.mp4"
+                            type="video/mp4"
+                        >
+                        Tu navegador no puede reproducir este video.
+                    </video>
+
+                    <h3>
+                        Recuerdo de Duke
+                    </h3>
+
+                </article>
+
+                <article class="video-card">
+
+                    <video controls preload="metadata" width="500" height="500">
+                        <source
+                            src="assets/videos/duke-2.mp4"
+                            type="video/mp4"
+                        >
+                        Tu navegador no puede reproducir este video.
+                    </video>
+
+                    <h3>
+                        Otro momento de Duke
+                    </h3>
+
+                </article>
+
+                <article class="video-card">
+
+                    <video controls preload="metadata" width="500" height="500">
+                        <source
+                            src="assets/videos/ken-1.mp4"
+                            type="video/mp4"
+                        >
+                        Tu navegador no puede reproducir este video.
+                    </video>
+
+                    <h3>
+                        Recuerdo de Ken
+                    </h3>
+
+                </article>
+
+                <article class="video-card">
+
+                    <video controls preload="metadata" width="500" height="500">
+                        <source
+                            src="assets/videos/duke-ken-1.mp4"
+                            type="video/mp4"
+                        >
+                        Tu navegador no puede reproducir este video.
+                    </video>
+
+                    <h3>
+                        Duke y Ken
+                    </h3>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- =====================================================
+             AUDIOS
+        ====================================================== -->
+
+        <section class="seccion" id="audios">
+
+            <h2 class="titulo-seccion">
+                Audios
+            </h2>
+
+            <p class="subtitulo-seccion">
+                Espacio exclusivo para conservar voces, sonidos,
+                mensajes y otros recuerdos de audio.
+            </p>
+
+            <div class="audios">
+
+                <article class="audio-card">
+
+                    <h3>
+                        Recuerdo de Duke
+                    </h3>
+
+                    <p>
+                        Una grabación especial dedicada a Duke.
+                    </p>
+
+                    <audio controls preload="metadata">
+                        <source
+                            src="assets/audios/duke-audio.mp3"
+                            type="audio/mpeg"
+                        >
+                        Tu navegador no puede reproducir este audio.
+                    </audio>
+
+                </article>
+
+                <article class="audio-card">
+
+                    <h3>
+                        Recuerdo de Ken
+                    </h3>
+
+                    <p>
+                        Una grabación especial dedicada a Ken.
+                    </p>
+
+                    <audio controls preload="metadata">
+                        <source
+                            src="assets/audios/ken-audio.mp3"
+                            type="audio/mpeg"
+                        >
+                        Tu navegador no puede reproducir este audio.
+                    </audio>
+
+                </article>
+
+                <article class="audio-card">
+
+                    <h3>
+                        Duke y Ken
+                    </h3>
+
+                    <p>
+                        Un recuerdo dedicado a ambos.
+                    </p>
+
+                    <audio controls preload="metadata">
+                        <source
+                            src="assets/audios/duke-ken-audio.mp3"
+                            type="audio/mpeg"
+                        >
+                        Tu navegador no puede reproducir este audio.
+                    </audio>
+
+                </article>
+
+            </div>
+
+        </section>
+
+        <!-- DESPEDIDA -->
+
+        <section class="seccion" id="despedida">
+
+            <div class="despedida">
+
+                <div class="despedida-corazon">
+                    🐾
+                </div>
+
+                <h2 class="titulo-seccion">
+                    Hasta siempre
+                </h2>
+
+                <p>
+                    Duke y Ken, gracias por todos los momentos compartidos,
+                    por la compañía y por cada recuerdo que dejaron.
+                </p>
+
+                <p>
+                    Sus historias no terminan aquí. Permanecen en las
+                    fotografías, en los videos, en los sonidos y, sobre todo,
+                    en la memoria de quienes los quisieron.
+                </p>
+
+                <p>
+                    <strong>
+                        Algunas huellas no desaparecen nunca.
+                    </strong>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- =========================================================
+         MODAL DE IMAGEN
+    ========================================================= -->
+
+    <div
+        id="modalImagen"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Imagen ampliada"
+    >
+
+        <button
+            class="cerrar-modal"
+            id="cerrarModal"
+            aria-label="Cerrar imagen"
+        >
+            ×
+        </button>
+
+        <img
+            id="imagenAmpliada"
+            src=""
+            alt="Fotografía ampliada"
+        >
+
+    </div>
+
+    <!-- BOTÓN ARRIBA -->
+
+    <button
+        id="btnArriba"
+        aria-label="Volver arriba"
+        title="Volver arriba"
+    >
+        ↑
+    </button>
+
+    <!-- FOOTER -->
+
+    <footer>
+        <p>
+            En memoria de <strong>Duke y Ken</strong>.
+        </p>
+
+        <p>
+            Una huella eterna en nuestros recuerdos.
+        </p>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+
+</body>
+</html>
