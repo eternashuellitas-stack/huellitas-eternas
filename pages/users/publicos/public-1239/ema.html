@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Ema · Memorial de una eriza</title>
+    <style>
+        :root {
+            --yellow: #f3c74f;
+            --dark: #172016;
+            --paper: #fffaf0;
+            --muted: #746e5f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: #f5f0e3;
+            color: var(--dark);
+            font-family: Tahoma, sans-serif;
+            line-height: 1.7;
+        }
+
+        .header {
+            background: var(--dark);
+            color: #f7f0d8;
+            padding: 50px 6vw 70px;
+            clip-path: polygon(0 0, 100% 0, 100% 93%, 0 100%);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: #f7f0d8;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+        }
+
+        .nav a:hover {
+            border-color: var(--yellow);
+        }
+
+        .hero {
+            max-width: 1000px;
+            margin: 100px auto 20px;
+        }
+
+        .hero .symbol {
+            font-size: 4rem;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 9vw, 7rem);
+            letter-spacing: -4px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 650px;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 25px 20px 70px;
+        }
+
+        .section {
+            padding: 55px 0;
+        }
+
+        .label {
+            display: inline-block;
+            background: var(--yellow);
+            padding: 5px 9px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2.4rem;
+        }
+
+        .notebook {
+            background: var(--paper);
+            padding: 35px;
+            border: 2px dashed #d1bd7e;
+            border-radius: 16px;
+            box-shadow: 8px 8px 0 rgba(23, 32, 22, 0.07);
+        }
+
+        .columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .checklist {
+            list-style: none;
+            margin-top: 18px;
+        }
+
+        .checklist li {
+            margin: 9px 0;
+            padding-left: 27px;
+            position: relative;
+        }
+
+        .checklist li:before {
+            content: "☐";
+            position: absolute;
+            left: 0;
+            color: #94791e;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            filter: sepia(0.12);
+        }
+
+        .video {
+            width: 100%;
+            border: 6px solid var(--dark);
+            background: #000;
+        }
+
+        .audio {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        #petName {
+            border-bottom: 3px solid var(--yellow);
+            display: inline-block;
+        }
+
+        .stamp {
+            font-size: 2rem;
+            transform: rotate(-6deg);
+            display: inline-block;
+            border: 3px solid #a13d34;
+            color: #a13d34;
+            padding: 9px 13px;
+            margin-top: 20px;
+        }
+
+        footer {
+            background: var(--dark);
+            color: #f7f0d8;
+            padding: 45px 20px;
+            text-align: center;
+        }
+
+        @media (max-width: 750px) {
+
+            .columns,
+            .gallery {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero {
+                margin-top: 60px;
+            }
+
+            .nav {
+                justify-content: flex-start;
+            }
+
+            .gallery img {
+                height: 210px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <a href="#historia">Diario</a><a href="#fotos">Fotos</a><a href="#medios">Archivos</a>
+        </nav>
+        <div class="hero">
+            <div class="symbol">🦔</div>
+            <h1>Ema</h1>
+            <p>
+                Cuaderno memorial de una pequeña eriza. Una página con apariencia de
+                diario, notas y recuerdos guardados a mano.
+            </p>
+        </div>
+    </header>
+    <main>
+        <section id="historia" class="section">
+            <span class="label">PÁGINA 01</span>
+            <div class="notebook">
+                <h2>Querida memoria de Ema</h2>
+                <p>
+                    Ema tenía una curiosidad silenciosa. Se acercaba poco a poco a
+                    cualquier novedad, investigaba a su manera y después buscaba un
+                    lugar tranquilo donde descansar.
+                </p>
+                <p>
+                    Este diseño está pensado como un diario personal: cada bloque
+                    funciona como una página independiente dentro de su historia.
+                </p>
+                <ul class="checklist">
+                    <li>Su rincón favorito</li>
+                    <li>Sus pequeñas exploraciones</li>
+                    <li>Sus momentos de descanso</li>
+                    <li>Las fotografías que quedaron</li>
+                </ul>
+                <div class="stamp">PARA SIEMPRE</div>
+            </div>
+        </section>
+        <section class="section">
+            <span class="label">PÁGINA 02</span>
+            <div class="columns">
+                <article class="notebook">
+                    <h2>Nota del recuerdo</h2>
+                    <p id="note">Hoy anotamos una escena tranquila.</p>
+                    <button id="next" style="
+                margin-top: 15px;
+                padding: 10px 15px;
+                background: var(--dark);
+                color: #fff;
+                border: 0;
+                cursor: pointer;
+              ">
+                        Siguiente nota
+                    </button>
+                </article>
+                <article class="notebook">
+                    <h2>Fecha</h2>
+                    <p id="date"></p>
+                    <p>
+                        El memorial puede adaptarse para añadir la fecha real de cada
+                        recuerdo.
+                    </p>
+                </article>
+            </div>
+        </section>
+        <section id="fotos" class="section">
+            <span class="label">PÁGINA 03</span>
+            <h2>Fotografías</h2>
+            <div class="gallery" style="margin-top: 20px">
+                <img src="assets/imagenes/ema-portada.jpg" alt="Ema" /><img src="assets/imagenes/ema-01.jpg"
+                    alt="Ema caminando" /><img src="assets/imagenes/ema-02.jpg" alt="Ema descansando" /><img
+                    src="assets/imagenes/ema-03.jpg" alt="Ema de cerca" />
+            </div>
+        </section>
+        <section id="medios" class="section">
+            <span class="label">PÁGINA 04</span>
+            <div class="columns">
+                <article class="notebook">
+                    <h2>Video</h2>
+                    <video class="video" controls poster="assets/imagenes/ema-portada.jpg">
+                        <source src="assets/video/ema-recuerdo.mp4" type="video/mp4" />
+                    </video>
+                </article>
+                <article class="notebook">
+                    <h2>Audio</h2>
+                    <audio class="audio" controls>
+                        <source src="assets/audio/ema-recuerdo.mp3" type="audio/mpeg" />
+                    </audio>
+                    <p id="audioTip" style="margin-top: 14px">
+                        Presiona reproducir para escuchar.
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer>Diario memorial de Ema 🦔 · <span id="year"></span></footer>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+        document.getElementById("date").textContent = new Intl.DateTimeFormat(
+            "es-PE",
+            { dateStyle: "full" },
+        ).format(new Date());
+        const notes = [
+            "Hoy recordamos su curiosidad.",
+            "Hoy recordamos sus pasos pequeños.",
+            "Hoy recordamos un descanso tranquilo.",
+            "Hoy recordamos su rincón favorito.",
+            "Hoy simplemente decimos: gracias, Ema.",
+        ];
+        let index = 0;
+        document.getElementById("next").onclick = () => {
+            index = (index + 1) % notes.length;
+            document.getElementById("note").textContent = notes[index];
+        };
+        const audio = document.querySelector(".audio");
+        audio.addEventListener("volumechange", () => {
+            document.getElementById("audioTip").textContent =
+                `Volumen: ${Math.round(audio.volume * 100)}%`;
+        });
+        document
+            .querySelectorAll(".gallery img")
+            .forEach((img, i) =>
+                img.addEventListener(
+                    "mouseenter",
+                    () => (img.title = `Fotografía ${i + 1} de Ema`),
+                ),
+            );
+    </script>
+</body>
+
+</html>

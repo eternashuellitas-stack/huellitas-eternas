@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Niko · Memorial polar</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #dff1f7;
+            color: #183345;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .snow {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 30;
+        }
+
+        .flake {
+            position: absolute;
+            top: -20px;
+            color: #fff;
+            animation: fall linear infinite;
+            text-shadow: 0 2px 7px rgba(0, 0, 0, 0.15);
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            background: linear-gradient(#0e3347, #3e819b 65%, #dff1f7);
+            color: white;
+            padding: 30px;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 12vw, 8rem);
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 15px auto;
+        }
+
+        .hero .ice {
+            font-size: 5rem;
+        }
+
+        .nav {
+            position: absolute;
+            top: 18px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            gap: 9px;
+            flex-wrap: wrap;
+        }
+
+        .nav a,
+        .nav button {
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            background: rgba(255, 255, 255, 0.1);
+            padding: 9px 12px;
+            border-radius: 999px;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        main {
+            max-width: 1100px;
+            margin: auto;
+            padding: 30px 20px 70px;
+        }
+
+        .section {
+            padding: 65px 0;
+        }
+
+        .section h2 {
+            font-size: 2.6rem;
+        }
+
+        .ice-card {
+            background: rgba(255, 255, 255, 0.74);
+            border: 1px solid rgba(24, 51, 69, 0.1);
+            border-radius: 30px;
+            padding: 30px;
+            box-shadow: 0 16px 40px rgba(31, 76, 94, 0.12);
+            backdrop-filter: blur(10px);
+        }
+
+        .story {
+            display: grid;
+            grid-template-columns: 1.4fr 0.6fr;
+            gap: 20px;
+        }
+
+        .number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #3e819b;
+        }
+
+        .gallery {
+            display: flex;
+            overflow-x: auto;
+            gap: 14px;
+            padding-bottom: 10px;
+            scroll-snap-type: x mandatory;
+        }
+
+        .gallery figure {
+            min-width: 320px;
+            scroll-snap-align: start;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 24px;
+            display: block;
+        }
+
+        .gallery figcaption {
+            padding: 9px 3px;
+        }
+
+        .media {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .media video {
+            width: 100%;
+            border-radius: 20px;
+            background: #081b25;
+        }
+
+        .media audio {
+            width: 100%;
+        }
+
+        .toggle {
+            padding: 12px 17px;
+            border: 0;
+            border-radius: 999px;
+            background: #fff;
+            color: #183345;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 45px;
+            background: #0e3347;
+            color: #cdebf3;
+        }
+
+        @media (max-width: 800px) {
+
+            .story,
+            .media {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery figure {
+                min-width: 80vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="snow" id="snow"></div>
+    <header class="hero">
+        <nav class="nav">
+            <a href="#historia">Historia</a><a href="#galeria">Galería</a><a href="#medios">Medios</a><button
+                id="snowBtn">❄ Pausar nieve</button>
+        </nav>
+        <div>
+            <div class="ice">🧊</div>
+            <h1>Niko 🐧</h1>
+            <p>
+                Memorial polar para un pequeño pingüino. El diseño utiliza nieve,
+                tarjetas de hielo y un recorrido horizontal por las fotografías.
+            </p>
+        </div>
+    </header>
+    <main>
+        <section id="historia" class="section">
+            <div class="story">
+                <article class="ice-card">
+                    <h2>La historia de Niko</h2>
+                    <p>
+                        Niko es recordado como un pingüino de pasos cortos, curiosidad
+                        constante y una presencia capaz de llenar de vida un paisaje
+                        silencioso.
+                    </p>
+                    <p>
+                        La memoria está organizada como una travesía: primero la historia,
+                        luego las imágenes y finalmente sus archivos audiovisuales.
+                    </p>
+                </article>
+                <aside class="ice-card">
+                    <div class="number" id="steps">0</div>
+                    <p>pasos simbólicos registrados en este memorial</p>
+                </aside>
+            </div>
+        </section>
+        <section id="galeria" class="section">
+            <div class="ice-card">
+                <h2>Galería polar</h2>
+                <div class="gallery" style="margin-top: 20px">
+                    <figure>
+                        <img src="assets/imagenes/niko-portada.jpg" alt="Niko" />
+                        <figcaption>Retrato principal.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="assets/imagenes/niko-01.jpg" alt="Niko sobre hielo" />
+                        <figcaption>En el paisaje helado.</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="assets/imagenes/niko-02.jpg" alt="Niko caminando" />
+                        <figcaption>Una caminata.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+        <section id="medios" class="section">
+            <div class="media">
+                <article class="ice-card">
+                    <h2>Video</h2>
+                    <video controls poster="assets/imagenes/niko-portada.jpg">
+                        <source src="assets/video/niko-recuerdo.mp4" type="video/mp4" />
+                    </video>
+                </article>
+                <article class="ice-card">
+                    <h2>Audio</h2>
+                    <audio controls>
+                        <source src="assets/audio/niko-recuerdo.mp3" type="audio/mpeg" />
+                    </audio>
+                    <p style="margin-top: 15px">
+                        Un archivo sonoro para acompañar la visita.
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer>Niko 🐧 · Memorial polar · <span id="year"></span></footer>
+    <script>
+        const snow = document.getElementById("snow");
+        for (let i = 0; i < 45; i++) {
+            const s = document.createElement("span");
+            s.className = "flake";
+            s.textContent = ["❄", "•", "✦"][Math.floor(Math.random() * 3)];
+            s.style.left = Math.random() * 100 + "%";
+            s.style.fontSize = 8 + Math.random() * 15 + "px";
+            s.style.animationDuration = 5 + Math.random() * 8 + "s";
+            s.style.animationDelay = -Math.random() * 10 + "s";
+            snow.appendChild(s);
+        }
+        let running = true;
+        document.getElementById("snowBtn").onclick = () => {
+            running = !running;
+            snow
+                .querySelectorAll(".flake")
+                .forEach(
+                    (f) =>
+                        (f.style.animationPlayState = running ? "running" : "paused"),
+                );
+            document.getElementById("snowBtn").textContent = running
+                ? "❄ Pausar nieve"
+                : "❄ Reanudar nieve";
+        };
+        let n = 0;
+        const interval = setInterval(() => {
+            n += 4;
+            document.getElementById("steps").textContent = n;
+            if (n >= 120) clearInterval(interval);
+        }, 40);
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

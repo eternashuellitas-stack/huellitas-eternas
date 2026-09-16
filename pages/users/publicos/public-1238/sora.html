@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Sora · Memorial acuático</title>
+    <style>
+        :root {
+            --bg: #031b2a;
+            --blue: #0c6c91;
+            --cyan: #4ed4e0;
+            --text: #e8fbff;
+            --glass: rgba(255, 255, 255, 0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body.freeze .bubble {
+            animation-play-state: paused;
+        }
+
+        .ocean {
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background: radial-gradient(circle at 50% 30%, #124f6b, #021521 70%);
+        }
+
+        .ocean:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(transparent 35%, rgba(20, 160, 190, 0.15));
+            animation: water 7s ease-in-out infinite;
+        }
+
+        @keyframes water {
+            50% {
+                transform: translateY(15px);
+            }
+        }
+
+        .bubble {
+            position: fixed;
+            bottom: -30px;
+            border: 1px solid rgba(255, 255, 255, 0.35);
+            border-radius: 50%;
+            z-index: -1;
+            animation: rise linear infinite;
+        }
+
+        @keyframes rise {
+            to {
+                transform: translateY(-110vh);
+                opacity: 0;
+            }
+        }
+
+        .nav {
+            position: fixed;
+            top: 18px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            width: min(950px, calc(100% - 30px));
+            display: flex;
+            justify-content: center;
+            gap: 9px;
+            flex-wrap: wrap;
+            padding: 10px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 999px;
+            background: rgba(0, 15, 23, 0.48);
+            backdrop-filter: blur(12px);
+        }
+
+        .nav a,
+        .nav button {
+            color: white;
+            text-decoration: none;
+            background: transparent;
+            border: 0;
+            padding: 8px 12px;
+            cursor: pointer;
+            border-radius: 999px;
+        }
+
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            padding: 90px 20px;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 13vw, 9rem);
+            line-height: 0.85;
+            background: linear-gradient(90deg, #fff, #4ed4e0);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero .ring {
+            width: 220px;
+            height: 220px;
+            border: 1px solid rgba(78, 212, 224, 0.4);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            margin: 0 auto 30px;
+            box-shadow: 0 0 70px rgba(78, 212, 224, 0.15);
+        }
+
+        .container {
+            max-width: 1050px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section h2 {
+            font-size: 2.6rem;
+        }
+
+        .lead {
+            color: #b9d9df;
+            max-width: 780px;
+        }
+
+        .glass {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.11);
+            backdrop-filter: blur(14px);
+            border-radius: 28px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-top: 22px;
+        }
+
+        .cards article {
+            min-height: 180px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 22px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            border-radius: 22px;
+            filter: saturate(1.15);
+        }
+
+        .media {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .media video {
+            width: 100%;
+            border-radius: 22px;
+            background: #000;
+        }
+
+        .media audio {
+            width: 100%;
+        }
+
+        .progress-wrap {
+            height: 10px;
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 999px;
+            overflow: hidden;
+            margin-top: 18px;
+        }
+
+        .progress {
+            height: 100%;
+            width: 0;
+            background: linear-gradient(90deg, var(--blue), var(--cyan));
+        }
+
+        .reveal {
+            opacity: 0;
+            filter: blur(6px);
+            transition: 1s;
+        }
+
+        .reveal.show {
+            opacity: 1;
+            filter: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 50px;
+            color: #7faeb8;
+        }
+
+        @media (max-width: 800px) {
+
+            .cards,
+            .gallery,
+            .media {
+                grid-template-columns: 1fr;
+            }
+
+            .nav {
+                border-radius: 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ocean"></div>
+    <nav class="nav">
+        <a href="#historia">Historia</a><a href="#galeria">Galería</a><a href="#audio">Sonido</a><button
+            id="freeze">◉</button>
+    </nav>
+    <header class="hero">
+        <div>
+            <div class="ring">🐟</div>
+            <h1>Sora</h1>
+            <p style="margin-top: 22px">
+                Un pequeño pez betta cuya memoria se cuenta como si flotara bajo el
+                agua.
+            </p>
+        </div>
+    </header>
+    <main class="container">
+        <section id="historia" class="section reveal">
+            <div class="glass">
+                <h2>Historia sumergida</h2>
+                <p class="lead">
+                    Sora vivía en un pequeño mundo de agua, luz y movimiento. El cambio
+                    de una sombra, una planta o un destello podía transformarse en una
+                    escena única.
+                </p>
+                <div class="cards">
+                    <article class="glass">
+                        <h3>Color</h3>
+                        <p>Reflejos intensos y una presencia que destacaba.</p>
+                    </article>
+                    <article class="glass">
+                        <h3>Ritmo</h3>
+                        <p>Movimientos breves, pausas y recorridos.</p>
+                    </article>
+                    <article class="glass">
+                        <h3>Memoria</h3>
+                        <p>Momentos que se conservan aquí.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="galeria" class="section reveal">
+            <h2>Ventanas al agua</h2>
+            <div class="gallery">
+                <img src="assets/imagenes/sora-portada.jpg" alt="Sora" /><img src="assets/imagenes/sora-01.jpg"
+                    alt="Sora nadando" /><img src="assets/imagenes/sora-02.jpg" alt="Sora de perfil" />
+            </div>
+        </section>
+        <section id="audio" class="section reveal">
+            <div class="media">
+                <div class="glass">
+                    <h2>Video</h2>
+                    <video controls poster="assets/imagenes/sora-portada.jpg">
+                        <source src="assets/video/sora-recuerdo.mp4" type="video/mp4" />
+                    </video>
+                </div>
+                <div class="glass">
+                    <h2>Audio</h2>
+                    <audio id="track" controls>
+                        <source src="assets/audio/sora-recuerdo.mp3" type="audio/mpeg" />
+                    </audio>
+                    <p id="trackText" style="margin-top: 14px; color: #a9c7cd">
+                        Esperando reproducción.
+                    </p>
+                </div>
+            </div>
+        </section>
+        <section class="section reveal">
+            <div class="glass">
+                <h2>Tiempo de recuerdo</h2>
+                <p>
+                    Esta barra representa una visita simbólica a la memoria de Sora.
+                </p>
+                <div class="progress-wrap">
+                    <div class="progress" id="bar"></div>
+                </div>
+                <p id="percent" style="margin-top: 8px">0%</p>
+            </div>
+        </section>
+    </main>
+    <footer>Sora 🐟 · Memorial acuático · <span id="year"></span></footer>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+        const ocean = document.body;
+        for (let i = 0; i < 38; i++) {
+            const b = document.createElement("span");
+            b.className = "bubble";
+            const s = 5 + Math.random() * 22;
+            b.style.width = s + "px";
+            b.style.height = s + "px";
+            b.style.left = Math.random() * 100 + "%";
+            b.style.animationDuration = 7 + Math.random() * 11 + "s";
+            b.style.animationDelay = -Math.random() * 12 + "s";
+            document.body.appendChild(b);
+        }
+        document.getElementById("freeze").onclick = () =>
+            ocean.classList.toggle("freeze");
+        const io = new IntersectionObserver(
+            (es) =>
+                es.forEach((e) => {
+                    if (e.isIntersecting) e.target.classList.add("show");
+                }),
+            { threshold: 0.18 },
+        );
+        document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+        const track = document.getElementById("track"),
+            txt = document.getElementById("trackText");
+        track.addEventListener("timeupdate", () => {
+            const p = track.duration
+                ? (track.currentTime / track.duration) * 100
+                : 0;
+            document.getElementById("bar").style.width = p + "%";
+            document.getElementById("percent").textContent = Math.round(p) + "%";
+        });
+        track.addEventListener(
+            "play",
+            () => (txt.textContent = "Reproduciendo el recuerdo…"),
+        );
+        track.addEventListener(
+            "ended",
+            () => (txt.textContent = "El recuerdo terminó."),
+        );
+    </script>
+</body>
+
+</html>

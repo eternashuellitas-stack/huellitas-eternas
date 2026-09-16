@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Floris · Memorial de un caballito de mar</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --paper: #f4e8cf;
+            --ink: #3e3529;
+            --accent: #a76e3f;
+            --soft: #e5d2ad;
+        }
+
+        body {
+            font-family: system-ui, sans-serif;
+            background: #d5e0d3;
+            color: var(--ink);
+            line-height: 1.7;
+        }
+
+        .wrapper {
+            max-width: 980px;
+            margin: 25px auto;
+            background: var(--paper);
+            box-shadow: 0 20px 55px rgba(30, 60, 40, 0.2);
+            min-height: 100vh;
+        }
+
+        .cover {
+            padding: 70px 45px 55px;
+            text-align: center;
+            border-bottom: 2px solid var(--soft);
+            background: radial-gradient(circle at 50% 20%, #f9f0dd, #eadcbd);
+        }
+
+        .cover .seal {
+            width: 120px;
+            height: 120px;
+            border: 3px double var(--accent);
+            border-radius: 50%;
+            display: grid;
+            place-items: center;
+            margin: auto;
+            font-size: 3rem;
+        }
+
+        .cover h1 {
+            font-family: Georgia, serif;
+            font-size: clamp(4rem, 9vw, 7rem);
+            font-weight: 500;
+            margin: 20px 0 10px;
+        }
+
+        .subtitle {
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-size: 0.78rem;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            padding: 15px;
+            border-bottom: 1px solid var(--soft);
+        }
+
+        .nav a {
+            color: var(--ink);
+            text-decoration: none;
+            padding: 8px 12px;
+        }
+
+        .nav a:hover {
+            text-decoration: underline;
+        }
+
+        main {
+            padding: 20px 45px 70px;
+        }
+
+        .chapter {
+            padding: 65px 0;
+            border-bottom: 1px solid var(--soft);
+        }
+
+        .chapter:last-child {
+            border-bottom: 0;
+        }
+
+        .chapter-head {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .chapter-head small {
+            color: var(--accent);
+            letter-spacing: 3px;
+        }
+
+        .chapter-head h2 {
+            font-family: Georgia, serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+        }
+
+        .columns {
+            columns: 2;
+            column-gap: 45px;
+        }
+
+        .columns p {
+            break-inside: avoid;
+            margin-bottom: 18px;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+
+        .gallery img {
+            width: 100%;
+            aspect-ratio: 1;
+            object-fit: cover;
+            filter: sepia(0.18);
+        }
+
+        .media {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .media video {
+            width: 100%;
+            background: #111;
+        }
+
+        .media audio {
+            width: 100%;
+        }
+
+        .page-no {
+            text-align: center;
+            margin-top: 20px;
+            color: #8d7c63;
+        }
+
+        #sealText {
+            transition: 0.4s;
+        }
+
+        button {
+            border: 1px solid var(--accent);
+            background: transparent;
+            padding: 10px 14px;
+            color: var(--ink);
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 38px;
+            color: #74634c;
+        }
+
+        @media (max-width: 720px) {
+            main {
+                padding: 20px;
+            }
+
+            .columns,
+            .gallery,
+            .media {
+                columns: 1;
+                grid-template-columns: 1fr;
+            }
+
+            .cover {
+                padding: 55px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <header class="cover">
+            <div class="seal" id="sealText">🐠</div>
+            <div class="subtitle" style="margin-top: 18px">
+                Colección de memorias
+            </div>
+            <h1>Floris</h1>
+            <p>
+                Memorial con apariencia de libro antiguo, dividido en capítulos para
+                contar la vida de un pequeño caballito de mar.
+            </p>
+        </header>
+        <nav class="nav">
+            <a href="#cap1">Capítulo I</a><a href="#cap2">Capítulo II</a><a href="#cap3">Capítulo III</a><a
+                href="#cap4">Capítulo IV</a>
+        </nav>
+        <main>
+            <section class="chapter" id="cap1">
+                <div class="chapter-head">
+                    <small>CAPÍTULO I</small>
+                    <h2>El comienzo</h2>
+                </div>
+                <div class="columns">
+                    <p>
+                        Floris es el nombre de este memorial de ejemplo. Su historia
+                        comienza en un mundo acuático donde cada corriente puede cambiar
+                        el recorrido de una pequeña criatura.
+                    </p>
+                    <p>
+                        La página toma la estructura de un libro para hacer que cada
+                        sección parezca una parte independiente del recuerdo.
+                    </p>
+                </div>
+            </section>
+            <section class="chapter" id="cap2">
+                <div class="chapter-head">
+                    <small>CAPÍTULO II</small>
+                    <h2>Escenas</h2>
+                </div>
+                <div class="gallery">
+                    <img src="assets/imagenes/floris-portada.jpg" alt="Floris" /><img
+                        src="assets/imagenes/floris-01.jpg" alt="Floris entre plantas" /><img
+                        src="assets/imagenes/floris-02.jpg" alt="Floris de perfil" />
+                </div>
+            </section>
+            <section class="chapter" id="cap3">
+                <div class="chapter-head">
+                    <small>CAPÍTULO III</small>
+                    <h2>Archivos sonoros</h2>
+                </div>
+                <div class="media">
+                    <div>
+                        <video controls poster="assets/imagenes/floris-portada.jpg">
+                            <source src="assets/video/floris-recuerdo.mp4" type="video/mp4" />
+                        </video>
+                    </div>
+                    <div>
+                        <audio id="audio" controls>
+                            <source src="assets/audio/floris-recuerdo.mp3" type="audio/mpeg" />
+                        </audio>
+                        <p id="audioInfo" style="margin-top: 12px">Duración: —</p>
+                    </div>
+                </div>
+            </section>
+            <section class="chapter" id="cap4">
+                <div class="chapter-head">
+                    <small>CAPÍTULO IV</small>
+                    <h2>Última página</h2>
+                </div>
+                <p style="text-align: center; max-width: 680px; margin: auto">
+                    Que este memorial sea una puerta para volver a una historia
+                    tranquila, mirar las imágenes con tiempo y conservar aquello que no
+                    queremos perder.
+                </p>
+                <div style="text-align: center; margin-top: 22px">
+                    <button id="turn">Cambiar sello</button>
+                </div>
+                <div class="page-no">— fin del capítulo —</div>
+            </section>
+        </main>
+        <footer>Floris 🐠 · Libro memorial · <span id="year"></span></footer>
+    </div>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+        const audio = document.getElementById("audio"),
+            info = document.getElementById("audioInfo");
+        audio.addEventListener("loadedmetadata", () => {
+            info.textContent = `Duración: ${Math.floor(audio.duration / 60)}:${String(Math.floor(audio.duration % 60)).padStart(2, "0")}`;
+        });
+        const seals = ["🐠", "🪸", "🌊", "✦", "∞"];
+        let i = 0;
+        document.getElementById("turn").onclick = () => {
+            i = (i + 1) % seals.length;
+            document.getElementById("sealText").textContent = seals[i];
+        };
+        window.addEventListener(
+            "beforeprint",
+            () => (document.title = "Floris · Memorial imprimible"),
+        );
+        window.addEventListener(
+            "afterprint",
+            () => (document.title = "Floris · Memorial de un caballito de mar"),
+        );
+    </script>
+</body>
+
+</html>

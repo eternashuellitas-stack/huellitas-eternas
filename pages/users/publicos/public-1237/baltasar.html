@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Baltasar · Memorial de un caballo</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            color: #382b21;
+            background: #eee6da;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: #36291f;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            color: #fff;
+        }
+
+        .hero-image {
+            background:
+                linear-gradient(rgba(40, 30, 22, 0.2), rgba(40, 30, 22, 0.55)),
+                url("assets/images/baltasar-portada.png") center/cover;
+        }
+
+        .hero-copy {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+        }
+
+        .hero-copy div {
+            max-width: 560px;
+        }
+
+        .tiny {
+            letter-spacing: 6px;
+            font-size: 0.72rem;
+            color: #c9ab7a;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 8vw, 7rem);
+            line-height: 0.9;
+            margin: 16px 0;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #e7ddd1;
+        }
+
+        .hero a {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 17px;
+            background: #c49a67;
+            color: #20170f;
+            text-decoration: none;
+        }
+
+        main {
+            max-width: 1180px;
+            margin: auto;
+            padding: 35px 25px 80px;
+        }
+
+        .title {
+            border-left: 7px solid #c49a67;
+            padding-left: 18px;
+            margin: 65px 0 25px;
+        }
+
+        .title h2 {
+            font-size: 2.4rem;
+        }
+
+        .story {
+            columns: 2;
+            column-gap: 45px;
+            font-size: 1.08rem;
+        }
+
+        .story p {
+            break-inside: avoid;
+            margin-bottom: 17px;
+        }
+
+        .timeline {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 2px solid #bba994;
+        }
+
+        .event {
+            padding: 22px 16px;
+            border-right: 1px solid #cbbdad;
+        }
+
+        .event:last-child {
+            border-right: 0;
+        }
+
+        .event strong {
+            font-size: 1.5rem;
+            color: #9a7040;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 12px;
+        }
+
+        .gallery figure:nth-child(1) {
+            grid-column: span 7;
+        }
+
+        .gallery figure:nth-child(2) {
+            grid-column: span 5;
+        }
+
+        .gallery figure:nth-child(3) {
+            grid-column: span 5;
+        }
+
+        .gallery figure:nth-child(4) {
+            grid-column: span 7;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+            filter: saturate(0.8);
+        }
+
+        .gallery figcaption {
+            background: #d9ccb9;
+            padding: 9px 12px;
+        }
+
+        .media {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+        }
+
+        .media video {
+            width: 100%;
+            background: #000;
+        }
+
+        .media audio {
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        .counter {
+            font-size: 4rem;
+            color: #9a7040;
+            font-weight: bold;
+        }
+
+        .panel {
+            padding: 30px;
+            background: #f8f3eb;
+            border: 1px solid #d4c6b5;
+        }
+
+        footer {
+            text-align: center;
+            padding: 35px;
+            background: #2f241b;
+            color: #ddd0c1;
+        }
+
+        @media (max-width: 850px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-image {
+                min-height: 50vh;
+            }
+
+            .story,
+            .media {
+                columns: 1;
+                grid-template-columns: 1fr;
+            }
+
+            .timeline {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .gallery figure {
+                grid-column: span 12 !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="hero">
+        <div class="hero-image"></div>
+        <div class="hero-copy">
+            <div>
+                <div class="tiny">ARCHIVO DE MEMORIA · EQUINO</div>
+                <h1>Baltasar 🐎</h1>
+                <p>
+                    Un memorial con estética de álbum clásico, pensado para recordar una
+                    presencia noble y serena.
+                </p>
+                <a href="#historia">Ver historia</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section id="historia">
+            <div class="title">
+                <h2>Historia</h2>
+            </div>
+            <div class="story">
+                <p>
+                    Baltasar fue imaginado como un caballo de carácter tranquilo, fuerte
+                    y cercano. Sus recorridos, su manera de responder a las personas y
+                    sus momentos de descanso forman la columna vertebral de esta
+                    memoria.
+                </p>
+                <p>
+                    El diseño utiliza una estética editorial para que la historia
+                    parezca una página de un viejo álbum: fotografías grandes,
+                    separadores sobrios y una línea del tiempo sencilla.
+                </p>
+                <p>
+                    Este ejemplo puede reemplazarse con las imágenes, audios y videos
+                    reales de un memorial.
+                </p>
+                <p>
+                    Más que una biografía extensa, la idea es conservar escenas
+                    concretas que permitan regresar a momentos importantes.
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="title">
+                <h2>Calendario de recuerdos</h2>
+            </div>
+            <div class="timeline">
+                <div class="event">
+                    <strong>2013</strong>
+                    <p>El comienzo de su historia.</p>
+                </div>
+                <div class="event">
+                    <strong>2017</strong>
+                    <p>Nuevos lugares y rutinas.</p>
+                </div>
+                <div class="event">
+                    <strong>2021</strong>
+                    <p>Momentos que quedaron registrados.</p>
+                </div>
+                <div class="event">
+                    <strong>2026</strong>
+                    <p>El archivo memorial.</p>
+                </div>
+            </div>
+        </section>
+        <section>
+            <div class="title">
+                <h2>Una cifra simbólica</h2>
+            </div>
+            <div class="panel">
+                <div class="counter" id="counter">000</div>
+                <p>
+                    Instantes que esta página podría reunir como parte del archivo de
+                    Baltasar.
+                </p>
+            </div>
+        </section>
+        <section>
+            <div class="title">
+                <h2>Fotografías</h2>
+            </div>
+            <div class="gallery">
+                <figure>
+                    <img src="assets/imagenes/baltasar-portada.png" alt="Baltasar" />
+                    <figcaption>Retrato principal.</figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/imagenes/baltasar-01.png" alt="Baltasar en un prado" />
+                    <figcaption>Un día al aire libre.</figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/imagenes/baltasar-02.png" alt="Baltasar de perfil" />
+                    <figcaption>Una mirada tranquila.</figcaption>
+                </figure>
+                <figure>
+                    <img src="assets/imagenes/baltasar-03.png" alt="Baltasar caminando" />
+                    <figcaption>En movimiento.</figcaption>
+                </figure>
+            </div>
+        </section>
+        <section>
+            <div class="title">
+                <h2>Video y audio</h2>
+            </div>
+            <div class="media">
+                <div>
+                    <video controls poster="assets/imagenes/baltasar-portada.png">
+                        <source src="assets/video/baltasar-recuerdo.mp4" type="video/mp4" />
+                    </video>
+                </div>
+                <div>
+                    <p>Archivo sonoro</p>
+                    <audio controls>
+                        <source src="assets/audio/baltasar-recuerdo.mp3" type="audio/mpeg" />
+                    </audio>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>Baltasar 🐎 · Archivo memorial · <span id="year"></span></footer>
+    <script>
+        const counter = document.getElementById("counter");
+        let current = 0;
+        function roll() {
+            current += 7;
+            if (current >= 84) {
+                current = 84;
+                clearInterval(timer);
+            }
+            counter.textContent = String(current).padStart(3, "0");
+        }
+        const timer = setInterval(roll, 55);
+        document.querySelectorAll("img").forEach((img) =>
+            img.addEventListener("click", () => {
+                img.requestFullscreen?.();
+            }),
+        );
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && document.fullscreenElement)
+                document.exitFullscreen();
+        });
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

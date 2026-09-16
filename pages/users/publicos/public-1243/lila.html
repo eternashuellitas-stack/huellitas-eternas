@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Lila · Memorial de un cisne</title>
+    <style>
+        :root {
+            --ink: #29303a;
+            --lav: #c9c1e5;
+            --paper: #fbfaff;
+            --muted: #777787;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Georgia, serif;
+            background: linear-gradient(120deg, #f1eff9, #fff);
+            color: var(--ink);
+            line-height: 1.8;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-end;
+            padding: 50px;
+            background: url("assets/imagenes/lila-portada.jpg") center/cover;
+            position: relative;
+            color: white;
+        }
+
+        .hero:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg,
+                    rgba(24, 28, 39, 0.8),
+                    rgba(24, 28, 39, 0.08));
+        }
+
+        .hero-inner {
+            position: relative;
+            max-width: 800px;
+        }
+
+        .hero small {
+            letter-spacing: 6px;
+        }
+
+        .hero h1 {
+            font-size: clamp(5rem, 12vw, 10rem);
+            line-height: 0.8;
+            margin: 15px 0;
+        }
+
+        .nav {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            right: 20px;
+            z-index: 2;
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 9px 13px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        main {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .section h2 {
+            font-size: 2.8rem;
+            font-weight: 500;
+        }
+
+        .poem {
+            font-size: 1.35rem;
+            white-space: pre-line;
+            text-align: center;
+            max-width: 740px;
+            margin: 25px auto;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 50% 50% 10px 10px;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .divider {
+            height: 1px;
+            background: #d9d4e5;
+            margin: 40px 0;
+        }
+
+        .media {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .media video {
+            width: 100%;
+            border-radius: 50% 50% 18px 18px;
+            background: #000;
+        }
+
+        .media audio {
+            width: 100%;
+            margin-top: 13px;
+        }
+
+        .breathe {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            background: rgba(201, 193, 229, 0.55);
+            margin: 30px auto;
+            animation: breathe 5s ease-in-out infinite;
+        }
+
+        @keyframes breathe {
+            50% {
+                transform: scale(1.32);
+                opacity: 0.55;
+            }
+        }
+
+        footer {
+            text-align: center;
+            padding: 55px;
+            color: var(--muted);
+        }
+
+        @media (max-width: 800px) {
+
+            .gallery,
+            .media {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 30px 22px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="hero">
+        <nav class="nav">
+            <a href="#historia">Historia</a><a href="#poema">Poema</a><a href="#galeria">Galería</a><a
+                href="#medios">Medios</a>
+        </nav>
+        <div class="hero-inner">
+            <small>MEMORIAL · CISNE</small>
+            <h1>Lila 🦢</h1>
+            <p>Una página contemplativa construida como una pieza poética.</p>
+        </div>
+    </header>
+    <main>
+        <section id="historia" class="section">
+            <div class="center">
+                <h2>La memoria de Lila</h2>
+                <div class="divider"></div>
+            </div>
+            <p style="max-width: 760px; margin: auto">
+                Lila era imaginada como una cisne tranquila, elegante y cercana al
+                agua. Esta versión evita el formato de tarjetas y utiliza grandes
+                espacios, fotografías y textos centrados para crear una visita
+                pausada.
+            </p>
+            <div class="breathe" aria-hidden="true"></div>
+        </section>
+        <section id="poema" class="section center">
+            <h2>Palabras para Lila</h2>
+            <p class="poem">
+                Entre el agua y la luz, quedó una forma de calma. La memoria vuelve
+                despacio, como una ola que no olvida.
+            </p>
+            <button id="line" style="
+            padding: 11px 16px;
+            border-radius: 999px;
+            border: 1px solid #bbb;
+            background: white;
+            cursor: pointer;
+          ">
+                Cambiar frase
+            </button>
+        </section>
+        <section id="galeria" class="section">
+            <h2 class="center">Galería</h2>
+            <div class="gallery" style="margin-top: 25px">
+                <img src="assets/imagenes/lila-portada.jpg" alt="Lila" /><img src="assets/imagenes/lila-01.jpg"
+                    alt="Lila en el agua" /><img src="assets/imagenes/lila-02.jpg" alt="Lila de perfil" />
+            </div>
+        </section>
+        <section id="medios" class="section">
+            <div class="media">
+                <div>
+                    <video controls poster="assets/imagenes/lila-portada.jpg">
+                        <source src="assets/video/lila-recuerdo.mp4" type="video/mp4" />
+                    </video>
+                </div>
+                <div>
+                    <audio controls>
+                        <source src="assets/audio/lila-recuerdo.mp3" type="audio/mpeg" />
+                    </audio>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>Lila 🦢 · Memorial contemplativo · <span id="year"></span></footer>
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+        const lines = [
+            "El recuerdo vuelve despacio, como una ola que no olvida.",
+            "Hay silencios que siguen hablando muchos años después.",
+            "A veces recordar es simplemente volver a mirar.",
+            "Lila permanece en la calma de cada instante.",
+        ];
+        let n = 0;
+        document.getElementById("line").onclick = () => {
+            n = (n + 1) % lines.length;
+            document.querySelector(".poem").textContent = lines[n];
+        };
+        let last = 0;
+        window.addEventListener("scroll", () => {
+            const y = window.scrollY;
+            if (Math.abs(y - last) > 20) {
+                document.querySelector(".hero-inner").style.transform =
+                    `translateY(${y * 0.08}px)`;
+                last = y;
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,473 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Aurora · Memorial de una mariposa</title>
+    <style>
+        :root {
+            --bg: #fff9fc;
+            --ink: #332438;
+            --muted: #806c7d;
+            --pink: #d98bac;
+            --violet: #8d77c9;
+            --card: rgba(255, 255, 255, 0.78);
+            --line: rgba(141, 119, 201, 0.18);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Inter, system-ui, sans-serif;
+            color: var(--ink);
+            background:
+                radial-gradient(circle at 10% 10%,
+                    rgba(217, 139, 172, 0.22),
+                    transparent 24%),
+                radial-gradient(circle at 90% 30%,
+                    rgba(141, 119, 201, 0.18),
+                    transparent 28%),
+                linear-gradient(135deg, #fff9fc, #f5f1ff);
+            min-height: 100vh;
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body.mono {
+            filter: grayscale(0.78);
+        }
+
+        .shell {
+            max-width: 1150px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .topbar {
+            position: sticky;
+            top: 12px;
+            z-index: 20;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 15px;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.64);
+            backdrop-filter: blur(16px);
+            box-shadow: 0 10px 30px rgba(70, 50, 80, 0.08);
+        }
+
+        .brand {
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 9px;
+            flex-wrap: wrap;
+        }
+
+        .nav a,
+        .nav button {
+            border: 0;
+            background: transparent;
+            color: var(--ink);
+            padding: 7px 11px;
+            border-radius: 12px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .nav a:hover,
+        .nav button:hover {
+            background: rgba(141, 119, 201, 0.1);
+        }
+
+        .hero {
+            margin-top: 18px;
+            min-height: 80vh;
+            border-radius: 35px;
+            padding: 65px 30px;
+            display: grid;
+            place-items: center;
+            text-align: center;
+            background:
+                linear-gradient(120deg,
+                    rgba(217, 139, 172, 0.88),
+                    rgba(141, 119, 201, 0.78)),
+                url("assets/imagenes/aurora-portada.jpg") center/cover;
+            color: white;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero:after {
+            content: "✦  ✧  ✦  ✧  ✦";
+            position: absolute;
+            inset: auto 0 20px;
+            font-size: 1.7rem;
+            letter-spacing: 18px;
+            opacity: 0.45;
+        }
+
+        .hero h1 {
+            font-size: clamp(4rem, 11vw, 8rem);
+            line-height: 0.92;
+            text-shadow: 0 8px 25px rgba(35, 15, 45, 0.18);
+        }
+
+        .eyebrow {
+            letter-spacing: 5px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            max-width: 640px;
+            margin: 22px auto;
+            font-size: 1.15rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.16);
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        section {
+            padding: 75px 5px;
+        }
+
+        .section-head {
+            margin-bottom: 24px;
+        }
+
+        .section-head h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+        }
+
+        .section-head p {
+            color: var(--muted);
+        }
+
+        .story {
+            display: grid;
+            grid-template-columns: 1.3fr 0.7fr;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--line);
+            border-radius: 26px;
+            padding: 29px;
+            backdrop-filter: blur(12px);
+            box-shadow: 0 18px 45px rgba(70, 50, 80, 0.08);
+        }
+
+        .quote {
+            font-size: 1.35rem;
+            text-align: center;
+            display: grid;
+            place-items: center;
+            min-height: 100%;
+        }
+
+        .memory-number {
+            font-size: 3.3rem;
+            font-weight: 900;
+            color: var(--violet);
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-rows: 180px 180px;
+            gap: 15px;
+        }
+
+        .gallery figure {
+            overflow: hidden;
+            border-radius: 22px;
+            position: relative;
+        }
+
+        .gallery figure:first-child {
+            grid-row: span 2;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .gallery figure:hover img {
+            transform: scale(1.07);
+        }
+
+        .gallery figcaption {
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            color: white;
+            background: rgba(30, 20, 40, 0.55);
+            padding: 7px 10px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+
+        .media {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .media video,
+        .media audio {
+            width: 100%;
+            display: block;
+        }
+
+        .media video {
+            border-radius: 20px;
+            background: #23172a;
+        }
+
+        .lights {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .orb {
+            position: absolute;
+            width: 11px;
+            height: 11px;
+            border-radius: 50%;
+            background: #fff;
+            opacity: 0.65;
+            animation: float 8s linear infinite;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0) scale(0.5);
+            }
+
+            100% {
+                transform: translateY(-15vh) translateX(70px) scale(1.4);
+            }
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: 0.8s;
+        }
+
+        .reveal.on {
+            opacity: 1;
+            transform: none;
+        }
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            padding: 40px 0 70px;
+        }
+
+        @media (max-width: 800px) {
+            .topbar {
+                align-items: flex-start;
+                gap: 10px;
+                flex-direction: column;
+            }
+
+            .story,
+            .media {
+                grid-template-columns: 1fr;
+            }
+
+            .gallery {
+                grid-template-columns: 1fr;
+                grid-template-rows: auto;
+            }
+
+            .gallery figure:first-child {
+                grid-row: auto;
+            }
+
+            .gallery img {
+                height: 260px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lights" id="lights"></div>
+    <div class="shell">
+        <header class="topbar">
+            <div class="brand">Aurora · Memoria</div>
+            <nav class="nav">
+                <a href="#historia">Historia</a><a href="#galeria">Galería</a><a href="#medios">Recuerdos</a>
+                <button id="gray" type="button">◌</button>
+            </nav>
+        </header>
+
+        <header class="hero">
+            <div>
+                <div class="eyebrow">Memorial · Mariposa</div>
+                <h1>Aurora 🦋</h1>
+                <p>
+                    Una pequeña presencia de alas suaves que convirtió momentos
+                    cotidianos en recuerdos extraordinarios.
+                </p>
+                <a class="btn" href="#historia">Entrar a su memoria</a>
+            </div>
+        </header>
+
+        <main>
+            <section id="historia" class="reveal">
+                <div class="section-head">
+                    <h2>La historia de Aurora</h2>
+                    <p>Un recuerdo contado con calma.</p>
+                </div>
+                <div class="story">
+                    <article class="card">
+                        <p>
+                            Aurora era una mariposa delicada y llena de movimiento. Su vuelo
+                            parecía dibujar caminos en el aire y cada aparición podía
+                            convertirse en un instante especial.
+                        </p>
+                        <br />
+                        <p>
+                            Este memorial conserva una historia simbólica: un lugar para
+                            reunir fotografías, sonidos y escenas que representan su paso.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section id="galeria" class="reveal">
+                <div class="section-head">
+                    <h2>Galería</h2>
+                    <p>Fragmentos de una vida ligera.</p>
+                </div>
+                <div class="gallery">
+                    <figure>
+                        <img src="assets/imagenes/aurora-portada.jpg" alt="Aurora" />
+                        <figcaption>En el jardín</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="assets/imagenes/aurora-01.jpg" alt="Aurora entre flores" />
+                        <figcaption>Entre flores</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="assets/imagenes/aurora-02.jpg" alt="Aurora de cerca" />
+                        <figcaption>Un instante</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section id="medios" class="reveal">
+                <div class="section-head">
+                    <h2>Recuerdos multimedia</h2>
+                </div>
+                <div class="media">
+                    <article class="card">
+                        <h3>Video</h3>
+                        <video controls poster="assets/imagenes/aurora-portada.jpg">
+                            <source src="assets/video/aurora-recuerdo.mp4" type="video/mp4" />
+                        </video>
+                    </article>
+                    <article class="card">
+                        <h3>Audio</h3>
+                        <audio id="audio" controls>
+                            <source src="assets/audio/aurora-recuerdo.mp3" type="audio/mpeg" />
+                        </audio>
+                        <p id="audioState" style="margin-top: 12px; color: var(--muted)">
+                            Audio en pausa.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+            <section class="reveal">
+                <article class="card">
+                    <div class="section-head">
+                        <h2>Hasta siempre, Aurora</h2>
+                    </div>
+                    <p>
+                        Hay recuerdos que no necesitan quedarse inmóviles. Algunos siguen
+                        volando dentro de la memoria.
+                    </p>
+                </article>
+            </section>
+        </main>
+        <footer>Aurora 🦋 · Memorial de ejemplo · <span id="year"></span></footer>
+    </div>
+    <script>
+        const E = (s) => document.querySelector(s);
+        E("#year").textContent = new Date().getFullYear();
+        const lights = E("#lights");
+        for (let i = 0; i < 24; i++) {
+            const o = document.createElement("span");
+            o.className = "orb";
+            o.style.left = Math.random() * 100 + "%";
+            o.style.animationDelay = Math.random() * 8 + "s";
+            o.style.animationDuration = 6 + Math.random() * 6 + "s";
+            lights.appendChild(o);
+        }
+        let count = 0;
+        const counter = E("#memories");
+        const grow = setInterval(() => {
+            counter.textContent = ++count;
+            if (count === 42) clearInterval(grow);
+        }, 32);
+        E("#gray").addEventListener("click", () =>
+            document.body.classList.toggle("mono"),
+        );
+        E("#audio").addEventListener(
+            "play",
+            () => (E("#audioState").textContent = "Sonando un recuerdo de Aurora…"),
+        );
+        E("#audio").addEventListener(
+            "pause",
+            () => (E("#audioState").textContent = "Audio en pausa."),
+        );
+        const io = new IntersectionObserver(
+            (entries) =>
+                entries.forEach((x) => {
+                    if (x.isIntersecting) x.target.classList.add("on");
+                }),
+            { threshold: 0.12 },
+        );
+        document.querySelectorAll(".reveal").forEach((x) => io.observe(x));
+    </script>
+</body>
+
+</html>
