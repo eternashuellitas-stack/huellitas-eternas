@@ -1,0 +1,1161 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Escáner QR de Huellitas Eternas." />
+    <meta name="theme-color" content="#f2c8db" />
+    <title>Escanear QR | Huellitas Eternas</title>
+    <link rel="icon" type="image/png" href="../assets/images/icon.png" />
+
+    <style>
+        :root {
+            --bg: #fff9fc;
+            --surface: rgba(255, 255, 255, 0.82);
+            --surface-solid: #fff;
+            --text: #493744;
+            --muted: #756773;
+            --primary: #d889ad;
+            --primary-2: #b96790;
+            --accent: #f2c8db;
+            --line: #ead9e2;
+            --shadow: 0 22px 70px rgba(104, 65, 88, 0.13);
+            --radius: 24px;
+            --max: 1400px;
+            --header: 74px;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        html[data-theme="dark"] {
+            --bg: #211b20;
+            --surface: rgba(49, 39, 47, 0.86);
+            --surface-solid: #30262e;
+            --text: #f8edf3;
+            --muted: #cdbdc7;
+            --primary: #e39abc;
+            --primary-2: #f0b3cc;
+            --accent: #5a3d4d;
+            --line: #4b3b45;
+            --shadow: 0 24px 80px rgba(0, 0, 0, 0.28);
+        }
+
+        * { box-sizing: border-box; }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 92px;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at 8% 0%, color-mix(in srgb, var(--accent) 62%, transparent), transparent 27%),
+                radial-gradient(circle at 92% 70%, color-mix(in srgb, var(--primary) 13%, transparent), transparent 29%),
+                var(--bg);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            background: linear-gradient(120deg, transparent 0 45%, rgba(255,255,255,.08), transparent 70%);
+            opacity: .7;
+        }
+
+        a { color: inherit; text-decoration: none; }
+        button, input { font: inherit; }
+        button { cursor: pointer; }
+
+        .skip-link {
+            position: fixed;
+            left: 12px;
+            top: -60px;
+            z-index: 9999;
+            background: var(--text);
+            color: var(--bg);
+            padding: 10px 15px;
+            border-radius: 10px;
+        }
+
+        .skip-link:focus { top: 12px; }
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            min-height: var(--header);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 12px max(16px, calc((100vw - var(--max)) / 2));
+            background: color-mix(in srgb, var(--surface) 92%, transparent);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--line);
+            transition: .3s var(--ease);
+        }
+
+        .site-header.scrolled {
+            box-shadow: 0 10px 35px rgba(70, 40, 55, .09);
+        }
+
+        .brand {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 850;
+            white-space: nowrap;
+        }
+
+        .brand img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .brand b { color: var(--primary-2); }
+
+        .nav {
+            margin-left: auto;
+            display: flex;
+            align-items: center;
+            gap: 3px;
+        }
+
+        .nav a {
+            padding: 9px 11px;
+            border-radius: 12px;
+            color: var(--muted);
+            transition: .25s;
+        }
+
+        .nav a:hover,
+        .nav a.active {
+            background: var(--accent);
+            color: var(--text);
+        }
+
+        .nav .nav-cta {
+            color: #fff;
+            background: linear-gradient(135deg, var(--primary), var(--primary-2));
+            box-shadow: 0 8px 22px rgba(185,103,144,.18);
+        }
+
+        .theme-btn,
+        .menu-btn {
+            width: 42px;
+            height: 42px;
+            border: 1px solid var(--line);
+            border-radius: 12px;
+            background: var(--surface-solid);
+            color: var(--text);
+            display: grid;
+            place-items: center;
+            transition: .25s;
+        }
+
+        .theme-btn:hover,
+        .menu-btn:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+        }
+
+        .menu-btn { display: none; }
+
+        .progress-scroll {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 4px;
+            width: 0;
+            z-index: 1000;
+            background: linear-gradient(90deg, var(--primary), var(--primary-2));
+            box-shadow: 0 0 18px color-mix(in srgb, var(--primary) 55%, transparent);
+        }
+
+        main {
+            min-height: calc(100vh - var(--header));
+            display: grid;
+            align-items: center;
+        }
+
+        .scanner-section {
+            width: min(100%, 1060px);
+            margin: 0 auto;
+            padding: 55px 22px 90px;
+        }
+
+        .heading {
+            text-align: center;
+            max-width: 760px;
+            margin: 0 auto 30px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            padding: 7px 12px;
+            border: 1px solid var(--line);
+            border-radius: 999px;
+            background: var(--surface);
+            color: var(--primary-2);
+            font-size: .82rem;
+            font-weight: 800;
+        }
+
+        h1 {
+            font-size: clamp(2.6rem, 7vw, 5.4rem);
+            line-height: .98;
+            letter-spacing: -.055em;
+            margin: 18px 0 16px;
+        }
+
+        h1 span { color: var(--primary-2); }
+
+        .lead {
+            color: var(--muted);
+            font-size: clamp(1rem, 2vw, 1.16rem);
+            margin: 0 auto;
+            max-width: 650px;
+        }
+
+        .scanner-card {
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            grid-template-columns: 1.2fr .8fr;
+            gap: 24px;
+            padding: 24px;
+            border: 1px solid var(--line);
+            border-radius: 34px;
+            background: linear-gradient(145deg, var(--surface), var(--surface-solid));
+            box-shadow: var(--shadow);
+        }
+
+        .scanner-card::before {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            top: -130px;
+            right: -110px;
+            border-radius: 50%;
+            background: color-mix(in srgb, var(--accent) 58%, transparent);
+            filter: blur(10px);
+            pointer-events: none;
+        }
+
+        .camera-wrap {
+            position: relative;
+            overflow: hidden;
+            min-height: 520px;
+            border-radius: 26px;
+            background: #161116;
+            border: 1px solid rgba(255,255,255,.12);
+            display: grid;
+            place-items: center;
+            box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+        }
+
+        #video {
+            width: 100%;
+            height: 100%;
+            min-height: 520px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .camera-placeholder {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            display: grid;
+            place-items: center;
+            padding: 30px;
+            text-align: center;
+            color: #fff;
+            background:
+                radial-gradient(circle at 50% 35%, rgba(216,137,173,.23), transparent 35%),
+                linear-gradient(160deg, #251c22, #100d10);
+        }
+
+        .camera-placeholder.hidden { display: none; }
+
+        .placeholder-icon {
+            width: 76px;
+            height: 76px;
+            margin: 0 auto 14px;
+            border-radius: 24px;
+            display: grid;
+            place-items: center;
+            font-size: 2rem;
+            background: rgba(255,255,255,.08);
+            border: 1px solid rgba(255,255,255,.12);
+        }
+
+        .scan-frame {
+            position: absolute;
+            z-index: 3;
+            width: min(68%, 310px);
+            aspect-ratio: 1;
+            border: 3px solid rgba(255,255,255,.95);
+            border-radius: 26px;
+            box-shadow:
+                0 0 0 999px rgba(0,0,0,.18),
+                0 0 35px rgba(242,200,219,.35);
+            pointer-events: none;
+        }
+
+        .scan-frame::before,
+        .scan-frame::after {
+            content: "";
+            position: absolute;
+            width: 34px;
+            height: 34px;
+            border-color: var(--primary);
+            border-style: solid;
+        }
+
+        .scan-frame::before {
+            left: -3px;
+            top: -3px;
+            border-width: 6px 0 0 6px;
+            border-radius: 18px 0 0 0;
+        }
+
+        .scan-frame::after {
+            right: -3px;
+            bottom: -3px;
+            border-width: 0 6px 6px 0;
+            border-radius: 0 0 18px 0;
+        }
+
+        .scan-line {
+            position: absolute;
+            left: 8%;
+            right: 8%;
+            top: 9%;
+            height: 3px;
+            border-radius: 999px;
+            background: linear-gradient(90deg, transparent, #fff, transparent);
+            box-shadow: 0 0 18px var(--primary);
+            animation: scanLine 2.2s ease-in-out infinite;
+        }
+
+        .scanner-status {
+            position: absolute;
+            z-index: 4;
+            left: 50%;
+            bottom: 18px;
+            transform: translateX(-50%);
+            width: max-content;
+            max-width: 88%;
+            padding: 8px 13px;
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 999px;
+            color: #fff;
+            background: rgba(20,14,19,.62);
+            backdrop-filter: blur(10px);
+            font-weight: 700;
+            font-size: .85rem;
+        }
+
+        .panel {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 15px;
+            padding: 8px;
+        }
+
+        .panel h2 {
+            margin: 0;
+            font-size: 1.65rem;
+            letter-spacing: -.03em;
+        }
+
+        .panel p {
+            color: var(--muted);
+            margin: 0;
+        }
+
+        .result {
+            min-height: 122px;
+            padding: 16px;
+            border: 1px solid var(--line);
+            border-radius: 18px;
+            background: color-mix(in srgb, var(--accent) 20%, var(--surface-solid));
+            display: grid;
+            gap: 8px;
+            align-content: center;
+        }
+
+        .result small {
+            color: var(--muted);
+            font-weight: 700;
+        }
+
+        .result-value {
+            word-break: break-word;
+            font-weight: 800;
+        }
+
+        .actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .btn {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            min-height: 48px;
+            padding: 12px 16px;
+            border-radius: 15px;
+            border: 1px solid var(--line);
+            background: var(--surface-solid);
+            color: var(--text);
+            font-weight: 800;
+            letter-spacing: .01em;
+            transition: .28s var(--ease);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(120,70,100,.15);
+        }
+
+        .btn:active { transform: translateY(0) scale(.98); }
+
+        .btn.primary {
+            border: 0;
+            color: #fff;
+            background: linear-gradient(120deg, var(--primary), var(--primary-2), var(--primary));
+            background-size: 220% 100%;
+            animation: buttonGradient 5s ease infinite;
+        }
+
+        .btn.secondary { background: var(--surface); }
+
+        .btn:disabled {
+            opacity: .55;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .file-label {
+            width: 100%;
+        }
+
+        #fileInput { display: none; }
+
+        .hint {
+            margin-top: 3px !important;
+            font-size: .84rem;
+        }
+
+        .permission {
+            padding: 14px 16px;
+            border: 1px solid var(--line);
+            border-left: 4px solid var(--primary);
+            border-radius: 15px;
+            background: color-mix(in srgb, var(--accent) 28%, transparent);
+            color: var(--muted);
+            font-size: .9rem;
+        }
+
+        .success {
+            border-color: color-mix(in srgb, #5eb77d 45%, var(--line));
+            background: color-mix(in srgb, #8bd6a4 18%, var(--surface-solid));
+        }
+
+        .error {
+            border-color: color-mix(in srgb, #d16c7a 45%, var(--line));
+            background: color-mix(in srgb, #efabb5 18%, var(--surface-solid));
+        }
+
+        .toast-stack {
+            position: fixed;
+            right: 18px;
+            top: 88px;
+            z-index: 500;
+            display: grid;
+            gap: 9px;
+            width: min(360px, calc(100vw - 36px));
+        }
+
+        .toast {
+            padding: 13px 15px;
+            border: 1px solid var(--line);
+            border-radius: 14px;
+            background: var(--surface-solid);
+            color: var(--text);
+            box-shadow: var(--shadow);
+            font-weight: 700;
+            animation: toastIn .35s var(--ease);
+        }
+
+        .top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 80;
+            width: 46px;
+            height: 46px;
+            border: 0;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--primary-2));
+            color: #fff;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(12px);
+            transition: .25s var(--ease);
+            box-shadow: 0 10px 25px rgba(120,70,100,.2);
+        }
+
+        .top.show {
+            opacity: 1;
+            pointer-events: auto;
+            transform: none;
+        }
+
+        .cursor-glow {
+            position: fixed;
+            z-index: 0;
+            pointer-events: none;
+            width: 260px;
+            height: 260px;
+            border-radius: 50%;
+            background: radial-gradient(circle, color-mix(in srgb, var(--accent) 25%, transparent), transparent 68%);
+            transform: translate(-50%, -50%);
+            transition: left .12s ease, top .12s ease;
+        }
+
+        #particles {
+            position: fixed;
+            inset: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .particle {
+            position: absolute;
+            left: var(--x);
+            bottom: -20px;
+            width: var(--s);
+            height: var(--s);
+            border-radius: 50%;
+            background: var(--primary);
+            opacity: var(--o);
+            animation: particleUp var(--d) linear var(--delay) infinite;
+        }
+
+        @keyframes scanLine {
+            0%, 100% { top: 10%; opacity: .35; }
+            50% { top: 89%; opacity: 1; }
+        }
+
+        @keyframes buttonGradient {
+            50% { background-position: 100% 0; }
+        }
+
+        @keyframes particleUp {
+            to {
+                transform: translateY(-115vh) translateX(30px);
+                opacity: 0;
+            }
+        }
+
+        @keyframes toastIn {
+            from { opacity: 0; transform: translateY(-8px) scale(.98); }
+            to { opacity: 1; transform: none; }
+        }
+
+        @media (max-width: 980px) {
+            .nav a { padding-inline: 8px; }
+            .scanner-card { grid-template-columns: 1fr; }
+            .camera-wrap,
+            #video { min-height: 480px; }
+        }
+
+        @media (max-width: 760px) {
+            .menu-btn {
+                display: grid;
+                margin-left: auto;
+            }
+
+            .nav {
+                position: fixed;
+                left: 4%;
+                right: 4%;
+                top: 82px;
+                display: none;
+                flex-direction: column;
+                align-items: stretch;
+                padding: 10px;
+                background: var(--surface-solid);
+                border: 1px solid var(--line);
+                border-radius: 18px;
+                box-shadow: var(--shadow);
+                z-index: 120;
+            }
+
+            .nav.open { display: flex; }
+
+            .nav a {
+                text-align: center;
+                padding: 12px;
+            }
+
+            .theme-btn { order: 3; }
+
+            .scanner-section { padding-top: 40px; }
+            .scanner-card { padding: 14px; border-radius: 25px; }
+            .camera-wrap,
+            #video { min-height: 400px; }
+            .actions { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 520px) {
+            .brand span { font-size: .9rem; }
+            .scanner-section { padding-inline: 14px; }
+            h1 { font-size: clamp(2.4rem, 15vw, 4rem); }
+            .camera-wrap,
+            #video { min-height: 340px; }
+            .scan-frame { width: 72%; }
+            .top { right: 14px; bottom: 14px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: .001ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: .001ms !important;
+            }
+            .cursor-glow,
+            #particles,
+            .scan-line { display: none; }
+        }
+    </style>
+</head>
+
+<body>
+    <a class="skip-link" href="#main">Saltar al contenido</a>
+
+    <header class="site-header">
+        <a class="brand" href="home.html" aria-label="Volver a Huellitas Eternas">
+            <img src="../assets/images/icon.png" alt="Huellitas Eternas" />
+            <span>Huellitas <b>Eternas</b></span>
+        </a>
+
+        <button class="menu-btn" type="button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+
+        <nav class="nav" aria-label="Navegación principal">
+            <a href="home.html">Inicio</a>
+            <a href="producto.html">Producto</a>
+            <a href="personalizar.html">Personalizar</a>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="faq.html">Preguntas</a>
+            <a href="como-funciona.html">Cómo funciona</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+        <a class="nav-cta active" href="qr.html" aria-current="page">▧</a>
+        <button class="theme-btn" type="button" aria-label="Cambiar modo de color">◐</button>
+    </header>
+
+    <main id="main">
+        <section class="scanner-section">
+            <div class="heading">
+                <span class="eyebrow">Escáner Huellitas Eternas</span>
+                <h1>Escanea tu <span>código QR.</span></h1>
+                <p class="lead">
+                    Apunta la cámara al código QR para abrir directamente el contenido asociado.
+                    También puedes cargar una imagen de un QR desde tu dispositivo.
+                </p>
+            </div>
+
+            <div class="scanner-card">
+                <div class="camera-wrap">
+                    <video id="video" playsinline muted autoplay></video>
+
+                    <div class="camera-placeholder" id="cameraPlaceholder">
+                        <div>
+                            <div class="placeholder-icon">▧</div>
+                            <strong>La cámara está lista</strong>
+                            <p style="margin:8px 0 0;color:rgba(255,255,255,.72);">
+                                Presiona «Iniciar cámara» para comenzar a escanear.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="scan-frame" aria-hidden="true">
+                        <div class="scan-line"></div>
+                    </div>
+
+                    <div class="scanner-status" id="scannerStatus" aria-live="polite">
+                        Cámara detenida
+                    </div>
+                </div>
+
+                <div class="panel">
+                    <div>
+                        <h2>Escáner QR</h2>
+                        <p>
+                            La cámara buscará automáticamente un código QR dentro del marco.
+                        </p>
+                    </div>
+
+                    <div class="permission" id="permissionMessage">
+                        Para utilizar la cámara, tu navegador debe permitir el acceso a la cámara.
+                        En teléfonos, se recomienda abrir esta página mediante HTTPS.
+                    </div>
+
+                    <div class="result" id="resultBox">
+                        <small>Resultado</small>
+                        <div class="result-value" id="resultValue">
+                            Todavía no se ha detectado ningún QR.
+                        </div>
+                    </div>
+
+                    <div class="actions">
+                        <button class="btn primary" id="startBtn" type="button">▶ Iniciar cámara</button>
+                        <button class="btn secondary" id="stopBtn" type="button" disabled>■ Detener</button>
+                    </div>
+
+                    <label class="btn secondary file-label" for="fileInput">▣ Escanear imagen QR</label>
+                    <input id="fileInput" type="file" accept="image/*" />
+
+                    <button class="btn secondary" id="openBtn" type="button" disabled>
+                        ↗ Abrir resultado
+                    </button>
+
+                    <button class="btn secondary" id="copyBtn" type="button" disabled>
+                        ⧉ Copiar resultado
+                    </button>
+
+                    <p class="hint">
+                        Consejo: coloca el QR completo dentro del marco y evita reflejos o demasiada oscuridad.
+                    </p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <button class="top" id="topBtn" type="button" aria-label="Volver arriba">↑</button>
+
+    <script>
+        (() => {
+            "use strict";
+
+            const $ = (selector, context = document) => context.querySelector(selector);
+            const $$ = (selector, context = document) => [...context.querySelectorAll(selector)];
+            const root = document.documentElement;
+            const body = document.body;
+
+            const video = $("#video");
+            const cameraPlaceholder = $("#cameraPlaceholder");
+            const scannerStatus = $("#scannerStatus");
+            const permissionMessage = $("#permissionMessage");
+            const resultBox = $("#resultBox");
+            const resultValue = $("#resultValue");
+            const startBtn = $("#startBtn");
+            const stopBtn = $("#stopBtn");
+            const fileInput = $("#fileInput");
+            const openBtn = $("#openBtn");
+            const copyBtn = $("#copyBtn");
+            const menu = $(".menu-btn");
+            const nav = $(".nav");
+            const themeBtn = $(".theme-btn");
+            const topBtn = $("#topBtn");
+
+            const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+            let stream = null;
+            let scannerTimer = null;
+            let detector = null;
+            let lastResult = "";
+            let isScanning = false;
+
+            function toast(message, ms = 3000) {
+                let stack = $(".toast-stack");
+                if (!stack) {
+                    stack = document.createElement("div");
+                    stack.className = "toast-stack";
+                    body.appendChild(stack);
+                }
+
+                const item = document.createElement("div");
+                item.className = "toast";
+                item.textContent = message;
+                stack.appendChild(item);
+
+                setTimeout(() => item.remove(), ms);
+            }
+
+            function setResult(value, success = false) {
+                lastResult = value || "";
+                resultValue.textContent = value || "Todavía no se ha detectado ningún QR.";
+                resultBox.classList.toggle("success", !!success);
+                resultBox.classList.toggle("error", false);
+                openBtn.disabled = !value;
+                copyBtn.disabled = !value;
+            }
+
+            function setError(message) {
+                resultBox.classList.remove("success");
+                resultBox.classList.add("error");
+                resultValue.textContent = message;
+            }
+
+            function looksLikeUrl(value) {
+                try {
+                    const url = new URL(value);
+                    return ["http:", "https:"].includes(url.protocol);
+                } catch (_) {
+                    return false;
+                }
+            }
+
+            function stopCamera(message = "Cámara detenida") {
+                isScanning = false;
+
+                if (scannerTimer) {
+                    clearInterval(scannerTimer);
+                    scannerTimer = null;
+                }
+
+                if (stream) {
+                    stream.getTracks().forEach(track => track.stop());
+                    stream = null;
+                }
+
+                video.srcObject = null;
+                cameraPlaceholder.classList.remove("hidden");
+                scannerStatus.textContent = message;
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+            }
+
+            function chooseEnvironmentCamera(devices) {
+                if (!devices?.length) return undefined;
+                return devices.find(d =>
+                    /back|rear|environment|trasera|posterior/i.test(d.label)
+                )?.deviceId || devices[0].deviceId;
+            }
+
+            async function createDetector() {
+                if (!("BarcodeDetector" in window)) return null;
+
+                try {
+                    const formats = await BarcodeDetector.getSupportedFormats();
+                    if (!formats.includes("qr_code")) return null;
+                    return new BarcodeDetector({ formats: ["qr_code"] });
+                } catch (_) {
+                    return null;
+                }
+            }
+
+            async function detectFrame() {
+                if (!isScanning || !detector || video.readyState < 2) return;
+
+                try {
+                    const codes = await detector.detect(video);
+                    if (!codes?.length) return;
+
+                    const value = codes[0]?.rawValue?.trim();
+                    if (!value || value === lastResult) return;
+
+                    setResult(value, true);
+                    scannerStatus.textContent = "¡QR detectado!";
+                    toast("Código QR detectado ✓");
+
+                    if (navigator.vibrate) {
+                        try { navigator.vibrate(120); } catch (_) {}
+                    }
+
+                    stopCamera("QR detectado");
+                } catch (_) {
+                    // El detector puede fallar durante cambios de cámara/foco.
+                }
+            }
+
+            async function startCamera() {
+                if (!window.isSecureContext && location.hostname !== "localhost" && location.hostname !== "127.0.0.1") {
+                    setError("La cámara requiere una conexión segura (HTTPS) en la mayoría de navegadores.");
+                    toast("Abre qr.html mediante HTTPS para usar la cámara.");
+                    return;
+                }
+
+                if (!navigator.mediaDevices?.getUserMedia) {
+                    setError("Este navegador no permite acceder a la cámara desde esta página.");
+                    return;
+                }
+
+                detector = await createDetector();
+
+                if (!detector) {
+                    setError("Tu navegador no dispone del escáner QR integrado necesario para usar la cámara. Prueba con una versión reciente de Chrome, Edge o Safari.");
+                    toast("Escáner QR no disponible en este navegador.");
+                    return;
+                }
+
+                try {
+                    if (stream) stopCamera();
+
+                    const devicesBefore = await navigator.mediaDevices.enumerateDevices();
+                    const videoDevices = devicesBefore.filter(d => d.kind === "videoinput");
+                    const preferredId = chooseEnvironmentCamera(videoDevices);
+
+                    const constraints = preferredId
+                        ? {
+                            audio: false,
+                            video: {
+                                deviceId: { exact: preferredId },
+                                facingMode: { ideal: "environment" },
+                                width: { ideal: 1280 },
+                                height: { ideal: 720 }
+                            }
+                        }
+                        : {
+                            audio: false,
+                            video: {
+                                facingMode: { ideal: "environment" },
+                                width: { ideal: 1280 },
+                                height: { ideal: 720 }
+                            }
+                        };
+
+                    stream = await navigator.mediaDevices.getUserMedia(constraints);
+
+                    video.srcObject = stream;
+                    await video.play();
+
+                    cameraPlaceholder.classList.add("hidden");
+                    scannerStatus.textContent = "Buscando código QR…";
+                    permissionMessage.textContent = "Cámara activa. Mantén el QR dentro del marco.";
+                    startBtn.disabled = true;
+                    stopBtn.disabled = false;
+                    isScanning = true;
+
+                    scannerTimer = window.setInterval(detectFrame, 140);
+                    detectFrame();
+                } catch (error) {
+                    stopCamera("No se pudo iniciar la cámara");
+
+                    if (error?.name === "NotAllowedError") {
+                        setError("Permiso de cámara denegado. Activa el permiso de cámara para este sitio y vuelve a intentarlo.");
+                    } else if (error?.name === "NotFoundError") {
+                        setError("No se encontró ninguna cámara disponible.");
+                    } else {
+                        setError("No se pudo iniciar la cámara. Comprueba los permisos del navegador.");
+                    }
+
+                    toast("No se pudo acceder a la cámara.");
+                }
+            }
+
+            async function scanImage(file) {
+                if (!file) return;
+
+                if (!("BarcodeDetector" in window)) {
+                    setError("Tu navegador no permite leer QR desde imágenes con esta función.");
+                    return;
+                }
+
+                try {
+                    const image = await createImageBitmap(file);
+                    const imageDetector = await createDetector();
+
+                    if (!imageDetector) {
+                        setError("El navegador no admite la lectura de QR desde imágenes.");
+                        image.close?.();
+                        return;
+                    }
+
+                    const codes = await imageDetector.detect(image);
+                    image.close?.();
+
+                    if (!codes?.length) {
+                        setResult("");
+                        setError("No se encontró ningún código QR en la imagen.");
+                        toast("No se detectó ningún QR.");
+                        return;
+                    }
+
+                    const value = codes[0]?.rawValue?.trim() || "";
+                    if (!value) {
+                        setError("Se detectó un QR, pero no contiene un resultado legible.");
+                        return;
+                    }
+
+                    setResult(value, true);
+                    scannerStatus.textContent = "QR detectado desde imagen";
+                    toast("Código QR detectado ✓");
+                } catch (_) {
+                    setError("No se pudo analizar la imagen seleccionada.");
+                } finally {
+                    fileInput.value = "";
+                }
+            }
+
+            openBtn.addEventListener("click", () => {
+                if (!lastResult) return;
+
+                if (looksLikeUrl(lastResult)) {
+                    window.location.href = lastResult;
+                    return;
+                }
+
+                toast("El resultado no parece ser un enlace web.");
+            });
+
+            copyBtn.addEventListener("click", async () => {
+                if (!lastResult) return;
+
+                try {
+                    await navigator.clipboard.writeText(lastResult);
+                    toast("Resultado copiado ✓");
+                } catch (_) {
+                    toast("No se pudo copiar automáticamente.");
+                }
+            });
+
+            startBtn.addEventListener("click", startCamera);
+            stopBtn.addEventListener("click", () => stopCamera());
+            fileInput.addEventListener("change", event => scanImage(event.target.files?.[0]));
+
+            menu?.addEventListener("click", () => {
+                const open = !nav.classList.contains("open");
+                nav.classList.toggle("open", open);
+                menu.setAttribute("aria-expanded", String(open));
+            });
+
+            $$(".nav a").forEach(a => {
+                a.addEventListener("click", () => {
+                    nav.classList.remove("open");
+                    menu?.setAttribute("aria-expanded", "false");
+                });
+            });
+
+            try {
+                const saved = localStorage.getItem("he-theme");
+                if (saved === "dark" || saved === "light") root.dataset.theme = saved;
+            } catch (_) {}
+
+            themeBtn?.addEventListener("click", () => {
+                const next = root.dataset.theme === "dark" ? "light" : "dark";
+                root.dataset.theme = next;
+                try { localStorage.setItem("he-theme", next); } catch (_) {}
+                toast(next === "dark" ? "Modo oscuro activado" : "Modo claro activado");
+            });
+
+            function scrollFX() {
+                $(".site-header")?.classList.toggle("scrolled", window.scrollY > 12);
+                topBtn?.classList.toggle("show", window.scrollY > 450);
+            }
+
+            window.addEventListener("scroll", scrollFX, { passive: true });
+            scrollFX();
+
+            topBtn?.addEventListener("click", () =>
+                window.scrollTo({ top: 0, behavior: reduce ? "auto" : "smooth" })
+            );
+
+            if (!reduce && window.matchMedia("(pointer:fine)").matches) {
+                const glow = document.createElement("div");
+                glow.className = "cursor-glow";
+                body.appendChild(glow);
+
+                window.addEventListener("pointermove", event => {
+                    glow.style.left = event.clientX + "px";
+                    glow.style.top = event.clientY + "px";
+                }, { passive: true });
+            }
+
+            if (!reduce) {
+                const box = document.createElement("div");
+                box.id = "particles";
+                const count = innerWidth < 600 ? 10 : 20;
+
+                for (let i = 0; i < count; i++) {
+                    const p = document.createElement("i");
+                    p.className = "particle";
+                    p.style.cssText =
+                        `--s:${2 + Math.random() * 6}px;` +
+                        `--x:${Math.random() * 100}%;` +
+                        `--o:${0.06 + Math.random() * 0.16};` +
+                        `--d:${11 + Math.random() * 15}s;` +
+                        `--delay:${-Math.random() * 20}s`;
+                    box.appendChild(p);
+                }
+
+                body.prepend(box);
+            }
+
+            document.addEventListener("visibilitychange", () => {
+                if (document.hidden && stream) stopCamera("Cámara pausada");
+            });
+
+            window.addEventListener("pagehide", () => stopCamera("Cámara detenida"));
+
+            window.addEventListener("offline", () => toast("Sin conexión: algunas funciones pueden no estar disponibles."));
+            window.addEventListener("online", () => toast("Conexión recuperada ✓"));
+
+            // Botones con efecto ripple.
+            $$(".btn").forEach(btn => {
+                btn.addEventListener("pointerdown", event => {
+                    if (reduce || btn.disabled) return;
+
+                    const rect = btn.getBoundingClientRect();
+                    const size = Math.max(rect.width, rect.height);
+                    const ripple = document.createElement("span");
+
+                    ripple.style.cssText = `
+                        position:absolute;
+                        z-index:-1;
+                        width:${size}px;
+                        height:${size}px;
+                        left:${event.clientX - rect.left - size / 2}px;
+                        top:${event.clientY - rect.top - size / 2}px;
+                        border-radius:50%;
+                        background:rgba(255,255,255,.34);
+                        pointer-events:none;
+                    `;
+
+                    btn.appendChild(ripple);
+
+                    ripple.animate(
+                        [
+                            { transform: "scale(0)", opacity: .65 },
+                            { transform: "scale(2.4)", opacity: 0 }
+                        ],
+                        { duration: 600, easing: "ease-out" }
+                    ).onfinish = () => ripple.remove();
+                });
+            });
+
+            // Comprobación visual inicial.
+            window.HuellitasEternasQR = {
+                start: startCamera,
+                stop: stopCamera,
+                version: "1.0.0"
+            };
+        })();
+    </script>
+</body>
+</html>
