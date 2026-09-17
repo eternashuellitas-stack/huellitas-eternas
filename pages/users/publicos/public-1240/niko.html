@@ -1,312 +1,179 @@
 <!doctype html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Niko · Memorial polar</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #dff1f7;
-            color: #183345;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .snow {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 30;
-        }
-
-        .flake {
-            position: absolute;
-            top: -20px;
-            color: #fff;
-            animation: fall linear infinite;
-            text-shadow: 0 2px 7px rgba(0, 0, 0, 0.15);
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(110vh) rotate(360deg);
-            }
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: grid;
-            place-items: center;
-            text-align: center;
-            background: linear-gradient(#0e3347, #3e819b 65%, #dff1f7);
-            color: white;
-            padding: 30px;
-        }
-
-        .hero h1 {
-            font-size: clamp(4rem, 12vw, 8rem);
-        }
-
-        .hero p {
-            max-width: 700px;
-            margin: 15px auto;
-        }
-
-        .hero .ice {
-            font-size: 5rem;
-        }
-
-        .nav {
-            position: absolute;
-            top: 18px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            gap: 9px;
-            flex-wrap: wrap;
-        }
-
-        .nav a,
-        .nav button {
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.35);
-            background: rgba(255, 255, 255, 0.1);
-            padding: 9px 12px;
-            border-radius: 999px;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        main {
-            max-width: 1100px;
-            margin: auto;
-            padding: 30px 20px 70px;
-        }
-
-        .section {
-            padding: 65px 0;
-        }
-
-        .section h2 {
-            font-size: 2.6rem;
-        }
-
-        .ice-card {
-            background: rgba(255, 255, 255, 0.74);
-            border: 1px solid rgba(24, 51, 69, 0.1);
-            border-radius: 30px;
-            padding: 30px;
-            box-shadow: 0 16px 40px rgba(31, 76, 94, 0.12);
-            backdrop-filter: blur(10px);
-        }
-
-        .story {
-            display: grid;
-            grid-template-columns: 1.4fr 0.6fr;
-            gap: 20px;
-        }
-
-        .number {
-            font-size: 3.5rem;
-            font-weight: 900;
-            color: #3e819b;
-        }
-
-        .gallery {
-            display: flex;
-            overflow-x: auto;
-            gap: 14px;
-            padding-bottom: 10px;
-            scroll-snap-type: x mandatory;
-        }
-
-        .gallery figure {
-            min-width: 320px;
-            scroll-snap-align: start;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 300px;
-            object-fit: cover;
-            border-radius: 24px;
-            display: block;
-        }
-
-        .gallery figcaption {
-            padding: 9px 3px;
-        }
-
-        .media {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .media video {
-            width: 100%;
-            border-radius: 20px;
-            background: #081b25;
-        }
-
-        .media audio {
-            width: 100%;
-        }
-
-        .toggle {
-            padding: 12px 17px;
-            border: 0;
-            border-radius: 999px;
-            background: #fff;
-            color: #183345;
-            cursor: pointer;
-            font-weight: 700;
-        }
-
-        footer {
-            text-align: center;
-            padding: 45px;
-            background: #0e3347;
-            color: #cdebf3;
-        }
-
-        @media (max-width: 800px) {
-
-            .story,
-            .media {
-                grid-template-columns: 1fr;
-            }
-
-            .gallery figure {
-                min-width: 80vw;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#72a7c7">
+<meta name="description" content="Memorial de Niko">
+<title>Niko</title>
+<link rel="stylesheet" href="assets/css/memorial.css">
 </head>
+<body data-theme="light" class="theme-parakeet" style="--accent:#248e84;--accent-2:#f2b34e">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-<body>
-    <div class="snow" id="snow"></div>
-    <header class="hero">
-        <nav class="nav">
-            <a href="#historia">Historia</a><a href="#galeria">Galería</a><a href="#medios">Medios</a><button
-                id="snowBtn">❄ Pausar nieve</button>
-        </nav>
-        <div>
-            <div class="ice">🧊</div>
-            <h1>Niko 🐧</h1>
-            <p>
-                Memorial polar para un pequeño pingüino. El diseño utiliza nieve,
-                tarjetas de hielo y un recorrido horizontal por las fotografías.
-            </p>
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio del memorial">
+      <span class="brand-mark" aria-hidden="true">🐾</span>
+      <span>Espacio conmemorativo<small>Que el recuerdo de Niko siga encontrando un lugar sereno donde quedarse.</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><span>☰</span></button>
+    <nav class="nav-links" aria-label="Navegación del memorial">
+      <a href="#historia">Historia</a>
+      <a href="#recuerdos">Recuerdos</a>
+      <a href="#media">Archivos</a>
+      <a href="#reflexion">Reflexión</a>
+      <button class="theme-btn" type="button" data-theme-toggle aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">🌙</span><span class="theme-label">Modo oscuro</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <section id="inicio" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy animate">
+        <span class="eyebrow">Color, canto y compañía</span>
+        <h1>N i k o</h1>
+        <p class="lead">Un espacio vivo para recordar la alegría, los sonidos y los colores de Niko.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#historia">Entrar al recuerdo <span aria-hidden="true">↓</span></a>
+          <button class="btn btn-soft" type="button" data-share>Compartir</button>
+          <button class="btn btn-soft" type="button" data-copy>Copiar enlace</button>
         </div>
-    </header>
-    <main>
-        <section id="historia" class="section">
-            <div class="story">
-                <article class="ice-card">
-                    <h2>La historia de Niko</h2>
-                    <p>
-                        Niko es recordado como un pingüino de pasos cortos, curiosidad
-                        constante y una presencia capaz de llenar de vida un paisaje
-                        silencioso.
-                    </p>
-                    <p>
-                        La memoria está organizada como una travesía: primero la historia,
-                        luego las imágenes y finalmente sus archivos audiovisuales.
-                    </p>
-                </article>
-                <aside class="ice-card">
-                    <div class="number" id="steps">0</div>
-                    <p>pasos simbólicos registrados en este memorial</p>
-                </aside>
-            </div>
-        </section>
-        <section id="galeria" class="section">
-            <div class="ice-card">
-                <h2>Galería polar</h2>
-                <div class="gallery" style="margin-top: 20px">
-                    <figure>
-                        <img src="assets/imagenes/niko-portada.jpg" alt="Niko" />
-                        <figcaption>Retrato principal.</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="assets/imagenes/niko-01.jpg" alt="Niko sobre hielo" />
-                        <figcaption>En el paisaje helado.</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="assets/imagenes/niko-02.jpg" alt="Niko caminando" />
-                        <figcaption>Una caminata.</figcaption>
-                    </figure>
-                </div>
-            </div>
-        </section>
-        <section id="medios" class="section">
-            <div class="media">
-                <article class="ice-card">
-                    <h2>Video</h2>
-                    <video controls poster="assets/imagenes/niko-portada.jpg">
-                        <source src="assets/video/niko-recuerdo.mp4" type="video/mp4" />
-                    </video>
-                </article>
-                <article class="ice-card">
-                    <h2>Audio</h2>
-                    <audio controls>
-                        <source src="assets/audio/niko-recuerdo.mp3" type="audio/mpeg" />
-                    </audio>
-                    <p style="margin-top: 15px">
-                        Un archivo sonoro para acompañar la visita.
-                    </p>
-                </article>
-            </div>
-        </section>
-    </main>
-    <footer>Niko 🐧 · Memorial polar · <span id="year"></span></footer>
-    <script>
-        const snow = document.getElementById("snow");
-        for (let i = 0; i < 45; i++) {
-            const s = document.createElement("span");
-            s.className = "flake";
-            s.textContent = ["❄", "•", "✦"][Math.floor(Math.random() * 3)];
-            s.style.left = Math.random() * 100 + "%";
-            s.style.fontSize = 8 + Math.random() * 15 + "px";
-            s.style.animationDuration = 5 + Math.random() * 8 + "s";
-            s.style.animationDelay = -Math.random() * 10 + "s";
-            snow.appendChild(s);
-        }
-        let running = true;
-        document.getElementById("snowBtn").onclick = () => {
-            running = !running;
-            snow
-                .querySelectorAll(".flake")
-                .forEach(
-                    (f) =>
-                        (f.style.animationPlayState = running ? "running" : "paused"),
-                );
-            document.getElementById("snowBtn").textContent = running
-                ? "❄ Pausar nieve"
-                : "❄ Reanudar nieve";
-        };
-        let n = 0;
-        const interval = setInterval(() => {
-            n += 4;
-            document.getElementById("steps").textContent = n;
-            if (n >= 120) clearInterval(interval);
-        }, 40);
-        document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-</body>
+      </div>
+      <div class="hero-art animate" aria-label="Representación visual del memorial">
+        <div class="animal-orbit">
+          <div class="animal-emoji" aria-label="Símbolo visual del recuerdo">🦜</div>
+        </div>
+        <span class="orbit-note">Siempre en el corazón ✦</span>
+      </div>
+    </div>
+  </section>
 
+  <section id="historia" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Historia</h2><p>Un lugar para volver, sin prisa.</p></div>
+      </div>
+      <div class="story-grid">
+        <article class="panel animate">
+          <p class="story-text">Niko permanece entre estos recuerdos como una pequeña nota de color: un compañero de plumas, sonidos y momentos que alegraban el ambiente.</p>
+        </article>
+        <aside class="panel paper animate">
+          <span class="paper-note">Nota para recordar</span>
+          <h3>Lo importante no siempre ocupa mucho espacio</h3>
+          <p>Este memorial está pensado para que cada visita sea sencilla, amable y personal. Puedes recorrerlo, pausar y volver cuando lo necesites.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="recuerdos" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Recuerdos</h2><p>Tres pequeñas puertas hacia la memoria.</p></div>
+      </div>
+      <div class="memories">
+        
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">✦</div>
+          <h3>Canto</h3>
+          <p>Hay sonidos que se convierten en parte de la identidad de un hogar.</p>
+        </article>
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">♡</div>
+          <h3>Color</h3>
+          <p>Algunos recuerdos llegan primero por los ojos y luego por el corazón.</p>
+        </article>
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">◌</div>
+          <h3>Vuelo</h3>
+          <p>Cada movimiento podía llenar de vida un espacio entero.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="panel animate">
+        <div class="section-head"><div><h2>Un momento para guardar</h2><p>Haz clic en cualquier tarjeta para verla con más calma.</p></div></div>
+        <div class="visual-grid">
+        <button class="visual-card animate" type="button" data-emoji="🦜" data-title="Canto" data-text="Hay sonidos que se convierten en parte de la identidad de un hogar.">
+          <span class="visual-top" aria-hidden="true">🦜</span>
+          <span class="visual-body"><strong>Canto</strong><span>Hay sonidos que se convierten en parte de la identidad de un hogar.</span></span>
+        </button>
+        <button class="visual-card animate" type="button" data-emoji="✦" data-title="Color" data-text="Algunos recuerdos llegan primero por los ojos y luego por el corazón.">
+          <span class="visual-top" aria-hidden="true">✦</span>
+          <span class="visual-body"><strong>Color</strong><span>Algunos recuerdos llegan primero por los ojos y luego por el corazón.</span></span>
+        </button>
+        <button class="visual-card animate" type="button" data-emoji="◌" data-title="Vuelo" data-text="Cada movimiento podía llenar de vida un espacio entero.">
+          <span class="visual-top" aria-hidden="true">◌</span>
+          <span class="visual-body"><strong>Vuelo</strong><span>Cada movimiento podía llenar de vida un espacio entero.</span></span>
+        </button></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="media" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Archivos</h2><p>La memoria también puede escucharse y verse.</p></div>
+      </div>
+      <div class="media-box">
+          <article class="media-slot paper animate">
+            <span class="paper-note">Zona de recuerdos</span>
+            <h3>Un espacio para tus archivos</h3>
+            <p>Este memorial queda listo para añadir fotografías, audios o videos propios sin cambiar el diseño. Los bloques visuales de arriba también pueden abrirse para leer cada recuerdo.</p>
+            <div class="media-empty">♡ Tu contenido puede ir aquí</div>
+          </article>
+          <article class="media-slot paper animate">
+            <span class="paper-note">Sugerencia</span>
+            <h3>Conserva lo que más importa</h3>
+            <p>Una foto, una grabación o una frase puede convertirse en una de las piezas más valiosas de este lugar.</p>
+            <div class="media-empty">✦ Un pequeño archivo, una gran memoria</div>
+          </article>
+        </div>
+    </div>
+  </section>
+
+  <section id="reflexion" class="section">
+    <div class="container">
+      <div class="quote-card animate">
+        <p>“Algunas presencias dejan color incluso después de haberse ido.”</p>
+        <small>Que Niko permanezca en la memoria como una presencia serena y querida.</small>
+        <div class="tools">
+          <a class="btn btn-primary" href="#inicio">Volver arriba ↑</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-box">
+      <div><strong>Espacio conmemorativo</strong><br><span>Un lugar para conservar recuerdos.</span></div>
+      <div>© <span id="year">2026</span></div>
+    </div>
+  </div>
+</footer>
+
+<button class="fab" type="button" data-back-top aria-label="Volver arriba">↑</button>
+<div class="toast" data-toast role="status" aria-live="polite"></div>
+
+<div class="modal" data-modal role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-card">
+    <div class="modal-visual" data-modal-visual aria-hidden="true">♡</div>
+    <div class="modal-content">
+      <button class="modal-close" type="button" aria-label="Cerrar">✕</button>
+      <h2 id="modal-title" data-modal-title>Recuerdo</h2>
+      <p data-modal-text></p>
+    </div>
+  </div>
+</div>
+<script src="assets/js/memorial.js" defer></script>
+</body>
 </html>

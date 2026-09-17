@@ -1,364 +1,179 @@
 <!doctype html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-    <title>Baltasar · Memorial de un caballo</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: Georgia, serif;
-            color: #382b21;
-            background: #eee6da;
-        }
-
-        .hero {
-            min-height: 100vh;
-            background: #36291f;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            color: #fff;
-        }
-
-        .hero-image {
-            background:
-                linear-gradient(rgba(40, 30, 22, 0.2), rgba(40, 30, 22, 0.55)),
-                url("assets/images/baltasar-portada.png") center/cover;
-        }
-
-        .hero-copy {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 60px;
-        }
-
-        .hero-copy div {
-            max-width: 560px;
-        }
-
-        .tiny {
-            letter-spacing: 6px;
-            font-size: 0.72rem;
-            color: #c9ab7a;
-        }
-
-        .hero h1 {
-            font-size: clamp(4rem, 8vw, 7rem);
-            line-height: 0.9;
-            margin: 16px 0;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #e7ddd1;
-        }
-
-        .hero a {
-            display: inline-block;
-            margin-top: 25px;
-            padding: 12px 17px;
-            background: #c49a67;
-            color: #20170f;
-            text-decoration: none;
-        }
-
-        main {
-            max-width: 1180px;
-            margin: auto;
-            padding: 35px 25px 80px;
-        }
-
-        .title {
-            border-left: 7px solid #c49a67;
-            padding-left: 18px;
-            margin: 65px 0 25px;
-        }
-
-        .title h2 {
-            font-size: 2.4rem;
-        }
-
-        .story {
-            columns: 2;
-            column-gap: 45px;
-            font-size: 1.08rem;
-        }
-
-        .story p {
-            break-inside: avoid;
-            margin-bottom: 17px;
-        }
-
-        .timeline {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            border-top: 2px solid #bba994;
-        }
-
-        .event {
-            padding: 22px 16px;
-            border-right: 1px solid #cbbdad;
-        }
-
-        .event:last-child {
-            border-right: 0;
-        }
-
-        .event strong {
-            font-size: 1.5rem;
-            color: #9a7040;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 12px;
-        }
-
-        .gallery figure:nth-child(1) {
-            grid-column: span 7;
-        }
-
-        .gallery figure:nth-child(2) {
-            grid-column: span 5;
-        }
-
-        .gallery figure:nth-child(3) {
-            grid-column: span 5;
-        }
-
-        .gallery figure:nth-child(4) {
-            grid-column: span 7;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            display: block;
-            filter: saturate(0.8);
-        }
-
-        .gallery figcaption {
-            background: #d9ccb9;
-            padding: 9px 12px;
-        }
-
-        .media {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-
-        .media video {
-            width: 100%;
-            background: #000;
-        }
-
-        .media audio {
-            width: 100%;
-            margin-top: 15px;
-        }
-
-        .counter {
-            font-size: 4rem;
-            color: #9a7040;
-            font-weight: bold;
-        }
-
-        .panel {
-            padding: 30px;
-            background: #f8f3eb;
-            border: 1px solid #d4c6b5;
-        }
-
-        footer {
-            text-align: center;
-            padding: 35px;
-            background: #2f241b;
-            color: #ddd0c1;
-        }
-
-        @media (max-width: 850px) {
-            .hero {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-image {
-                min-height: 50vh;
-            }
-
-            .story,
-            .media {
-                columns: 1;
-                grid-template-columns: 1fr;
-            }
-
-            .timeline {
-                grid-template-columns: 1fr 1fr;
-            }
-
-            .gallery figure {
-                grid-column: span 12 !important;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#c79668">
+<meta name="description" content="Memorial de Baltasar">
+<title>Baltasar</title>
+<link rel="stylesheet" href="assets/css/memorial.css">
 </head>
+<body data-theme="light" class="theme-hamster" style="--accent:#c97848;--accent-2:#f1bd72">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-<body>
-    <header class="hero">
-        <div class="hero-image"></div>
-        <div class="hero-copy">
-            <div>
-                <div class="tiny">ARCHIVO DE MEMORIA · EQUINO</div>
-                <h1>Baltasar 🐎</h1>
-                <p>
-                    Un memorial con estética de álbum clásico, pensado para recordar una
-                    presencia noble y serena.
-                </p>
-                <a href="#historia">Ver historia</a>
-            </div>
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio del memorial">
+      <span class="brand-mark" aria-hidden="true">🐾</span>
+      <span>Espacio conmemorativo<small>Que el recuerdo de Baltasar siga encontrando un lugar sereno donde quedarse.</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><span>☰</span></button>
+    <nav class="nav-links" aria-label="Navegación del memorial">
+      <a href="#historia">Historia</a>
+      <a href="#recuerdos">Recuerdos</a>
+      <a href="#media">Archivos</a>
+      <a href="#reflexion">Reflexión</a>
+      <button class="theme-btn" type="button" data-theme-toggle aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">🌙</span><span class="theme-label">Modo oscuro</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <section id="inicio" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy animate">
+        <span class="eyebrow">Pequeño, curioso y lleno de vida</span>
+        <h1>Baltasar</h1>
+        <p class="lead">Un espacio cálido para guardar la energía, la curiosidad y las pequeñas aventuras de Baltasar.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#historia">Entrar al recuerdo <span aria-hidden="true">↓</span></a>
+          <button class="btn btn-soft" type="button" data-share>Compartir</button>
+          <button class="btn btn-soft" type="button" data-copy>Copiar enlace</button>
         </div>
-    </header>
-    <main>
-        <section id="historia">
-            <div class="title">
-                <h2>Historia</h2>
-            </div>
-            <div class="story">
-                <p>
-                    Baltasar fue imaginado como un caballo de carácter tranquilo, fuerte
-                    y cercano. Sus recorridos, su manera de responder a las personas y
-                    sus momentos de descanso forman la columna vertebral de esta
-                    memoria.
-                </p>
-                <p>
-                    El diseño utiliza una estética editorial para que la historia
-                    parezca una página de un viejo álbum: fotografías grandes,
-                    separadores sobrios y una línea del tiempo sencilla.
-                </p>
-                <p>
-                    Este ejemplo puede reemplazarse con las imágenes, audios y videos
-                    reales de un memorial.
-                </p>
-                <p>
-                    Más que una biografía extensa, la idea es conservar escenas
-                    concretas que permitan regresar a momentos importantes.
-                </p>
-            </div>
-        </section>
-        <section>
-            <div class="title">
-                <h2>Calendario de recuerdos</h2>
-            </div>
-            <div class="timeline">
-                <div class="event">
-                    <strong>2013</strong>
-                    <p>El comienzo de su historia.</p>
-                </div>
-                <div class="event">
-                    <strong>2017</strong>
-                    <p>Nuevos lugares y rutinas.</p>
-                </div>
-                <div class="event">
-                    <strong>2021</strong>
-                    <p>Momentos que quedaron registrados.</p>
-                </div>
-                <div class="event">
-                    <strong>2026</strong>
-                    <p>El archivo memorial.</p>
-                </div>
-            </div>
-        </section>
-        <section>
-            <div class="title">
-                <h2>Una cifra simbólica</h2>
-            </div>
-            <div class="panel">
-                <div class="counter" id="counter">000</div>
-                <p>
-                    Instantes que esta página podría reunir como parte del archivo de
-                    Baltasar.
-                </p>
-            </div>
-        </section>
-        <section>
-            <div class="title">
-                <h2>Fotografías</h2>
-            </div>
-            <div class="gallery">
-                <figure>
-                    <img src="assets/imagenes/baltasar-portada.png" alt="Baltasar" />
-                    <figcaption>Retrato principal.</figcaption>
-                </figure>
-                <figure>
-                    <img src="assets/imagenes/baltasar-01.png" alt="Baltasar en un prado" />
-                    <figcaption>Un día al aire libre.</figcaption>
-                </figure>
-                <figure>
-                    <img src="assets/imagenes/baltasar-02.png" alt="Baltasar de perfil" />
-                    <figcaption>Una mirada tranquila.</figcaption>
-                </figure>
-                <figure>
-                    <img src="assets/imagenes/baltasar-03.png" alt="Baltasar caminando" />
-                    <figcaption>En movimiento.</figcaption>
-                </figure>
-            </div>
-        </section>
-        <section>
-            <div class="title">
-                <h2>Video y audio</h2>
-            </div>
-            <div class="media">
-                <div>
-                    <video controls poster="assets/imagenes/baltasar-portada.png">
-                        <source src="assets/video/baltasar-recuerdo.mp4" type="video/mp4" />
-                    </video>
-                </div>
-                <div>
-                    <p>Archivo sonoro</p>
-                    <audio controls>
-                        <source src="assets/audio/baltasar-recuerdo.mp3" type="audio/mpeg" />
-                    </audio>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer>Baltasar 🐎 · Archivo memorial · <span id="year"></span></footer>
-    <script>
-        const counter = document.getElementById("counter");
-        let current = 0;
-        function roll() {
-            current += 7;
-            if (current >= 84) {
-                current = 84;
-                clearInterval(timer);
-            }
-            counter.textContent = String(current).padStart(3, "0");
-        }
-        const timer = setInterval(roll, 55);
-        document.querySelectorAll("img").forEach((img) =>
-            img.addEventListener("click", () => {
-                img.requestFullscreen?.();
-            }),
-        );
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape" && document.fullscreenElement)
-                document.exitFullscreen();
-        });
-        document.getElementById("year").textContent = new Date().getFullYear();
-    </script>
-</body>
+      </div>
+      <div class="hero-art animate" aria-label="Representación visual del memorial">
+        <div class="animal-orbit">
+          <div class="animal-emoji" aria-label="Símbolo visual del recuerdo">🐹</div>
+        </div>
+        <span class="orbit-note">Siempre en el corazón ✦</span>
+      </div>
+    </div>
+  </section>
 
+  <section id="historia" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Historia</h2><p>Un lugar para volver, sin prisa.</p></div>
+      </div>
+      <div class="story-grid">
+        <article class="panel animate">
+          <p class="story-text">Baltasar vive en este recuerdo como esas pequeñas presencias que transforman un día común en una colección de instantes tiernos y divertidos.</p>
+        </article>
+        <aside class="panel paper animate">
+          <span class="paper-note">Nota para recordar</span>
+          <h3>Lo importante no siempre ocupa mucho espacio</h3>
+          <p>Este memorial está pensado para que cada visita sea sencilla, amable y personal. Puedes recorrerlo, pausar y volver cuando lo necesites.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="recuerdos" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Recuerdos</h2><p>Tres pequeñas puertas hacia la memoria.</p></div>
+      </div>
+      <div class="memories">
+        
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">✦</div>
+          <h3>Explorar</h3>
+          <p>Cada rincón podía convertirse en una nueva aventura.</p>
+        </article>
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">♡</div>
+          <h3>Pequeñas cosas</h3>
+          <p>Los gestos más simples también pueden quedarse para siempre.</p>
+        </article>
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">◌</div>
+          <h3>Carrera</h3>
+          <p>La energía y la curiosidad eran parte de su encanto.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="panel animate">
+        <div class="section-head"><div><h2>Un momento para guardar</h2><p>Haz clic en cualquier tarjeta para verla con más calma.</p></div></div>
+        <div class="visual-grid">
+        <button class="visual-card animate" type="button" data-emoji="🐹" data-title="Explorar" data-text="Cada rincón podía convertirse en una nueva aventura.">
+          <span class="visual-top" aria-hidden="true">🐹</span>
+          <span class="visual-body"><strong>Explorar</strong><span>Cada rincón podía convertirse en una nueva aventura.</span></span>
+        </button>
+        <button class="visual-card animate" type="button" data-emoji="✦" data-title="Pequeñas cosas" data-text="Los gestos más simples también pueden quedarse para siempre.">
+          <span class="visual-top" aria-hidden="true">✦</span>
+          <span class="visual-body"><strong>Pequeñas cosas</strong><span>Los gestos más simples también pueden quedarse para siempre.</span></span>
+        </button>
+        <button class="visual-card animate" type="button" data-emoji="◌" data-title="Carrera" data-text="La energía y la curiosidad eran parte de su encanto.">
+          <span class="visual-top" aria-hidden="true">◌</span>
+          <span class="visual-body"><strong>Carrera</strong><span>La energía y la curiosidad eran parte de su encanto.</span></span>
+        </button></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="media" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Archivos</h2><p>La memoria también puede escucharse y verse.</p></div>
+      </div>
+      <div class="media-box">
+          <article class="media-slot paper animate">
+            <span class="paper-note">Zona de recuerdos</span>
+            <h3>Un espacio para tus archivos</h3>
+            <p>Este memorial queda listo para añadir fotografías, audios o videos propios sin cambiar el diseño. Los bloques visuales de arriba también pueden abrirse para leer cada recuerdo.</p>
+            <div class="media-empty">♡ Tu contenido puede ir aquí</div>
+          </article>
+          <article class="media-slot paper animate">
+            <span class="paper-note">Sugerencia</span>
+            <h3>Conserva lo que más importa</h3>
+            <p>Una foto, una grabación o una frase puede convertirse en una de las piezas más valiosas de este lugar.</p>
+            <div class="media-empty">✦ Un pequeño archivo, una gran memoria</div>
+          </article>
+        </div>
+    </div>
+  </section>
+
+  <section id="reflexion" class="section">
+    <div class="container">
+      <div class="quote-card animate">
+        <p>“Las memorias más grandes a veces nacen de los momentos más pequeños.”</p>
+        <small>Que el nombre de Baltasar siempre encuentre un lugar tranquilo donde ser recordado.</small>
+        <div class="tools">
+          <a class="btn btn-primary" href="#inicio">Volver arriba ↑</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-box">
+      <div><strong>Espacio conmemorativo</strong><br><span>Un lugar para conservar recuerdos.</span></div>
+      <div>© <span id="year">2026</span></div>
+    </div>
+  </div>
+</footer>
+
+<button class="fab" type="button" data-back-top aria-label="Volver arriba">↑</button>
+<div class="toast" data-toast role="status" aria-live="polite"></div>
+
+<div class="modal" data-modal role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-card">
+    <div class="modal-visual" data-modal-visual aria-hidden="true">♡</div>
+    <div class="modal-content">
+      <button class="modal-close" type="button" aria-label="Cerrar">✕</button>
+      <h2 id="modal-title" data-modal-title>Recuerdo</h2>
+      <p data-modal-text></p>
+    </div>
+  </div>
+</div>
+<script src="assets/js/memorial.js" defer></script>
+</body>
 </html>

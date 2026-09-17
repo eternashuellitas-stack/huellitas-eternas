@@ -1,271 +1,179 @@
 <!doctype html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Lila · Memorial de un cisne</title>
-    <style>
-        :root {
-            --ink: #29303a;
-            --lav: #c9c1e5;
-            --paper: #fbfaff;
-            --muted: #777787;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Georgia, serif;
-            background: linear-gradient(120deg, #f1eff9, #fff);
-            color: var(--ink);
-            line-height: 1.8;
-        }
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: flex-end;
-            padding: 50px;
-            background: url("assets/imagenes/lila-portada.jpg") center/cover;
-            position: relative;
-            color: white;
-        }
-
-        .hero:before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(0deg,
-                    rgba(24, 28, 39, 0.8),
-                    rgba(24, 28, 39, 0.08));
-        }
-
-        .hero-inner {
-            position: relative;
-            max-width: 800px;
-        }
-
-        .hero small {
-            letter-spacing: 6px;
-        }
-
-        .hero h1 {
-            font-size: clamp(5rem, 12vw, 10rem);
-            line-height: 0.8;
-            margin: 15px 0;
-        }
-
-        .nav {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            right: 20px;
-            z-index: 2;
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .nav a {
-            color: #fff;
-            text-decoration: none;
-            padding: 9px 13px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-        }
-
-        main {
-            max-width: 1000px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        .section {
-            padding: 80px 0;
-        }
-
-        .section h2 {
-            font-size: 2.8rem;
-            font-weight: 500;
-        }
-
-        .poem {
-            font-size: 1.35rem;
-            white-space: pre-line;
-            text-align: center;
-            max-width: 740px;
-            margin: 25px auto;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 50% 50% 10px 10px;
-        }
-
-        .center {
-            text-align: center;
-        }
-
-        .divider {
-            height: 1px;
-            background: #d9d4e5;
-            margin: 40px 0;
-        }
-
-        .media {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-        }
-
-        .media video {
-            width: 100%;
-            border-radius: 50% 50% 18px 18px;
-            background: #000;
-        }
-
-        .media audio {
-            width: 100%;
-            margin-top: 13px;
-        }
-
-        .breathe {
-            width: 130px;
-            height: 130px;
-            border-radius: 50%;
-            background: rgba(201, 193, 229, 0.55);
-            margin: 30px auto;
-            animation: breathe 5s ease-in-out infinite;
-        }
-
-        @keyframes breathe {
-            50% {
-                transform: scale(1.32);
-                opacity: 0.55;
-            }
-        }
-
-        footer {
-            text-align: center;
-            padding: 55px;
-            color: var(--muted);
-        }
-
-        @media (max-width: 800px) {
-
-            .gallery,
-            .media {
-                grid-template-columns: 1fr;
-            }
-
-            .hero {
-                padding: 30px 22px;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#94a7e8">
+<meta name="description" content="Memorial de Lila">
+<title>Lila</title>
+<link rel="stylesheet" href="assets/css/memorial.css">
 </head>
+<body data-theme="light" class="theme-mouse" style="--accent:#8b6b9b;--accent-2:#d6b6e2">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-<body>
-    <header class="hero">
-        <nav class="nav">
-            <a href="#historia">Historia</a><a href="#poema">Poema</a><a href="#galeria">Galería</a><a
-                href="#medios">Medios</a>
-        </nav>
-        <div class="hero-inner">
-            <small>MEMORIAL · CISNE</small>
-            <h1>Lila 🦢</h1>
-            <p>Una página contemplativa construida como una pieza poética.</p>
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio del memorial">
+      <span class="brand-mark" aria-hidden="true">🐾</span>
+      <span>Espacio conmemorativo<small>Que el recuerdo de Lila siga encontrando un lugar sereno donde quedarse.</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><span>☰</span></button>
+    <nav class="nav-links" aria-label="Navegación del memorial">
+      <a href="#historia">Historia</a>
+      <a href="#recuerdos">Recuerdos</a>
+      <a href="#media">Archivos</a>
+      <a href="#reflexion">Reflexión</a>
+      <button class="theme-btn" type="button" data-theme-toggle aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">🌙</span><span class="theme-label">Modo oscuro</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <section id="inicio" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy animate">
+        <span class="eyebrow">Pequeña, curiosa y encantadora</span>
+        <h1>Lila</h1>
+        <p class="lead">Un pequeño álbum de recuerdos para celebrar la personalidad y la ternura de Lila.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#historia">Entrar al recuerdo <span aria-hidden="true">↓</span></a>
+          <button class="btn btn-soft" type="button" data-share>Compartir</button>
+          <button class="btn btn-soft" type="button" data-copy>Copiar enlace</button>
         </div>
-    </header>
-    <main>
-        <section id="historia" class="section">
-            <div class="center">
-                <h2>La memoria de Lila</h2>
-                <div class="divider"></div>
-            </div>
-            <p style="max-width: 760px; margin: auto">
-                Lila era imaginada como una cisne tranquila, elegante y cercana al
-                agua. Esta versión evita el formato de tarjetas y utiliza grandes
-                espacios, fotografías y textos centrados para crear una visita
-                pausada.
-            </p>
-            <div class="breathe" aria-hidden="true"></div>
-        </section>
-        <section id="poema" class="section center">
-            <h2>Palabras para Lila</h2>
-            <p class="poem">
-                Entre el agua y la luz, quedó una forma de calma. La memoria vuelve
-                despacio, como una ola que no olvida.
-            </p>
-            <button id="line" style="
-            padding: 11px 16px;
-            border-radius: 999px;
-            border: 1px solid #bbb;
-            background: white;
-            cursor: pointer;
-          ">
-                Cambiar frase
-            </button>
-        </section>
-        <section id="galeria" class="section">
-            <h2 class="center">Galería</h2>
-            <div class="gallery" style="margin-top: 25px">
-                <img src="assets/imagenes/lila-portada.jpg" alt="Lila" /><img src="assets/imagenes/lila-01.jpg"
-                    alt="Lila en el agua" /><img src="assets/imagenes/lila-02.jpg" alt="Lila de perfil" />
-            </div>
-        </section>
-        <section id="medios" class="section">
-            <div class="media">
-                <div>
-                    <video controls poster="assets/imagenes/lila-portada.jpg">
-                        <source src="assets/video/lila-recuerdo.mp4" type="video/mp4" />
-                    </video>
-                </div>
-                <div>
-                    <audio controls>
-                        <source src="assets/audio/lila-recuerdo.mp3" type="audio/mpeg" />
-                    </audio>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer>Lila 🦢 · Memorial contemplativo · <span id="year"></span></footer>
-    <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-        const lines = [
-            "El recuerdo vuelve despacio, como una ola que no olvida.",
-            "Hay silencios que siguen hablando muchos años después.",
-            "A veces recordar es simplemente volver a mirar.",
-            "Lila permanece en la calma de cada instante.",
-        ];
-        let n = 0;
-        document.getElementById("line").onclick = () => {
-            n = (n + 1) % lines.length;
-            document.querySelector(".poem").textContent = lines[n];
-        };
-        let last = 0;
-        window.addEventListener("scroll", () => {
-            const y = window.scrollY;
-            if (Math.abs(y - last) > 20) {
-                document.querySelector(".hero-inner").style.transform =
-                    `translateY(${y * 0.08}px)`;
-                last = y;
-            }
-        });
-    </script>
-</body>
+      </div>
+      <div class="hero-art animate" aria-label="Representación visual del memorial">
+        <div class="animal-orbit">
+          <div class="animal-emoji" aria-label="Símbolo visual del recuerdo">🐭</div>
+        </div>
+        <span class="orbit-note">Siempre en el corazón ✦</span>
+      </div>
+    </div>
+  </section>
 
+  <section id="historia" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Historia</h2><p>Un lugar para volver, sin prisa.</p></div>
+      </div>
+      <div class="story-grid">
+        <article class="panel animate">
+          <p class="story-text">Lila tiene un espacio amplio y delicado donde cada detalle puede respirar: sus pequeñas rutinas, sus ocurrencias y la cercanía que dejó.</p>
+        </article>
+        <aside class="panel paper animate">
+          <span class="paper-note">Nota para recordar</span>
+          <h3>Lo importante no siempre ocupa mucho espacio</h3>
+          <p>Este memorial está pensado para que cada visita sea sencilla, amable y personal. Puedes recorrerlo, pausar y volver cuando lo necesites.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="recuerdos" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Recuerdos</h2><p>Tres pequeñas puertas hacia la memoria.</p></div>
+      </div>
+      <div class="memories">
+        
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">✦</div>
+          <h3>Curiosidad</h3>
+          <p>Cada novedad podía convertirse en una pequeña aventura.</p>
+        </article>
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">♡</div>
+          <h3>Refugio</h3>
+          <p>Un lugar seguro puede quedarse para siempre en la memoria.</p>
+        </article>
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">◌</div>
+          <h3>Detalle</h3>
+          <p>Lo diminuto también puede ser inolvidable.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="panel animate">
+        <div class="section-head"><div><h2>Un momento para guardar</h2><p>Haz clic en cualquier tarjeta para verla con más calma.</p></div></div>
+        <div class="visual-grid">
+        <button class="visual-card animate" type="button" data-emoji="🐭" data-title="Curiosidad" data-text="Cada novedad podía convertirse en una pequeña aventura.">
+          <span class="visual-top" aria-hidden="true">🐭</span>
+          <span class="visual-body"><strong>Curiosidad</strong><span>Cada novedad podía convertirse en una pequeña aventura.</span></span>
+        </button>
+        <button class="visual-card animate" type="button" data-emoji="✦" data-title="Refugio" data-text="Un lugar seguro puede quedarse para siempre en la memoria.">
+          <span class="visual-top" aria-hidden="true">✦</span>
+          <span class="visual-body"><strong>Refugio</strong><span>Un lugar seguro puede quedarse para siempre en la memoria.</span></span>
+        </button>
+        <button class="visual-card animate" type="button" data-emoji="◌" data-title="Detalle" data-text="Lo diminuto también puede ser inolvidable.">
+          <span class="visual-top" aria-hidden="true">◌</span>
+          <span class="visual-body"><strong>Detalle</strong><span>Lo diminuto también puede ser inolvidable.</span></span>
+        </button></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="media" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Archivos</h2><p>La memoria también puede escucharse y verse.</p></div>
+      </div>
+      <div class="media-box">
+          <article class="media-slot paper animate">
+            <span class="paper-note">Zona de recuerdos</span>
+            <h3>Un espacio para tus archivos</h3>
+            <p>Este memorial queda listo para añadir fotografías, audios o videos propios sin cambiar el diseño. Los bloques visuales de arriba también pueden abrirse para leer cada recuerdo.</p>
+            <div class="media-empty">♡ Tu contenido puede ir aquí</div>
+          </article>
+          <article class="media-slot paper animate">
+            <span class="paper-note">Sugerencia</span>
+            <h3>Conserva lo que más importa</h3>
+            <p>Una foto, una grabación o una frase puede convertirse en una de las piezas más valiosas de este lugar.</p>
+            <div class="media-empty">✦ Un pequeño archivo, una gran memoria</div>
+          </article>
+        </div>
+    </div>
+  </section>
+
+  <section id="reflexion" class="section">
+    <div class="container">
+      <div class="quote-card animate">
+        <p>“No hay recuerdo demasiado pequeño cuando fue amado.”</p>
+        <small>Que el recuerdo de Lila vuelva con calma cada vez que alguien visite este lugar.</small>
+        <div class="tools">
+          <a class="btn btn-primary" href="#inicio">Volver arriba ↑</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-box">
+      <div><strong>Espacio conmemorativo</strong><br><span>Un lugar para conservar recuerdos.</span></div>
+      <div>© <span id="year">2026</span></div>
+    </div>
+  </div>
+</footer>
+
+<button class="fab" type="button" data-back-top aria-label="Volver arriba">↑</button>
+<div class="toast" data-toast role="status" aria-live="polite"></div>
+
+<div class="modal" data-modal role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-card">
+    <div class="modal-visual" data-modal-visual aria-hidden="true">♡</div>
+    <div class="modal-content">
+      <button class="modal-close" type="button" aria-label="Cerrar">✕</button>
+      <h2 id="modal-title" data-modal-title>Recuerdo</h2>
+      <p data-modal-text></p>
+    </div>
+  </div>
+</div>
+<script src="assets/js/memorial.js" defer></script>
+</body>
 </html>

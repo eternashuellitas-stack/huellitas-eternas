@@ -1,306 +1,179 @@
 <!doctype html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Tamara · Memorial de un flamenco</title>
-    <style>
-        :root {
-            --red: #b32132;
-            --cream: #f7efe2;
-            --black: #161616;
-            --pink: #f0b2bc;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Georgia, serif;
-            background: var(--cream);
-            color: var(--black);
-            line-height: 1.7;
-        }
-
-        .hero {
-            min-height: 90vh;
-            display: grid;
-            grid-template-columns: 1.1fr 0.9fr;
-        }
-
-        .hero-left {
-            background: var(--red);
-            color: white;
-            padding: 70px 8vw;
-            display: flex;
-            align-items: center;
-        }
-
-        .hero-left h1 {
-            font-size: clamp(4rem, 10vw, 8rem);
-            line-height: 0.85;
-            text-transform: uppercase;
-        }
-
-        .hero-left p {
-            max-width: 560px;
-            margin-top: 25px;
-            font-size: 1.15rem;
-        }
-
-        .hero-right {
-            background: url("assets/imagenes/tamara-portada.jpg") center/cover;
-            min-height: 500px;
-        }
-
-        .ribbon {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: var(--black);
-            color: #fff;
-            padding: 10px 15px;
-            z-index: 10;
-            letter-spacing: 2px;
-        }
-
-        .nav {
-            position: absolute;
-            right: 25px;
-            top: 20px;
-            z-index: 11;
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .nav a {
-            color: #fff;
-            text-decoration: none;
-            background: rgba(0, 0, 0, 0.35);
-            padding: 9px 12px;
-            border-radius: 3px;
-        }
-
-        main {
-            max-width: 1080px;
-            margin: auto;
-            padding: 20px;
-        }
-
-        .section {
-            padding: 70px 0;
-        }
-
-        .title {
-            font-size: 2.7rem;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .duo {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 25px;
-        }
-
-        .panel {
-            padding: 30px;
-            background: white;
-            border: 1px solid #e5d7c6;
-        }
-
-        .quote {
-            border-left: 8px solid var(--red);
-            font-size: 1.5rem;
-            padding: 25px;
-            background: #fff7ef;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 330px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .media video {
-            width: 100%;
-            background: #000;
-        }
-
-        .media audio {
-            width: 100%;
-            margin-top: 12px;
-        }
-
-        .scoreboard {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 15px;
-            background: var(--black);
-            color: #fff;
-            padding: 18px 22px;
-        }
-
-        .scoreboard span {
-            font-size: 2rem;
-            color: var(--pink);
-        }
-
-        button {
-            cursor: pointer;
-        }
-
-        footer {
-            text-align: center;
-            background: var(--black);
-            color: #fff;
-            padding: 50px 20px;
-        }
-
-        body.rose {
-            filter: hue-rotate(15deg);
-        }
-
-        @media (max-width: 800px) {
-            .hero {
-                grid-template-columns: 1fr;
-            }
-
-            .hero-right {
-                min-height: 55vh;
-            }
-
-            .duo,
-            .gallery {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#d87574">
+<meta name="description" content="Memorial de Tamara">
+<title>Tamara</title>
+<link rel="stylesheet" href="assets/css/memorial.css">
 </head>
+<body data-theme="light" class="theme-turtle" style="--accent:#4b8860;--accent-2:#93ba72">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-<body>
-    <div class="ribbon">TAMARA</div>
-    <header class="hero">
-        <div class="hero-left">
-            <div>
-                <nav class="nav">
-                    <a href="#historia">Historia</a><a href="#galeria">Galería</a><a href="#ritmo">Ritmo</a>
-                </nav>
-                <div style="font-size: 4rem">🦩</div>
-                <h1>Tamara</h1>
-                <p>
-                    Memorial inspirado en un cartel editorial: bloques fuertes, rojo
-                    profundo y una composición de doble columna.
-                </p>
-            </div>
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio del memorial">
+      <span class="brand-mark" aria-hidden="true">🐾</span>
+      <span>Espacio conmemorativo<small>Que el recuerdo de Tamara siga encontrando un lugar sereno donde quedarse.</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><span>☰</span></button>
+    <nav class="nav-links" aria-label="Navegación del memorial">
+      <a href="#historia">Historia</a>
+      <a href="#recuerdos">Recuerdos</a>
+      <a href="#media">Archivos</a>
+      <a href="#reflexion">Reflexión</a>
+      <button class="theme-btn" type="button" data-theme-toggle aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">🌙</span><span class="theme-label">Modo oscuro</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <section id="inicio" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy animate">
+        <span class="eyebrow">Paciente, serena y única</span>
+        <h1>Tamara</h1>
+        <p class="lead">Un jardín de memoria para recordar a Tamara sin prisa, con cariño y serenidad.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#historia">Entrar al recuerdo <span aria-hidden="true">↓</span></a>
+          <button class="btn btn-soft" type="button" data-share>Compartir</button>
+          <button class="btn btn-soft" type="button" data-copy>Copiar enlace</button>
         </div>
-        <div class="hero-right"></div>
-    </header>
-    <main>
-        <section id="historia" class="section">
-            <h2 class="title">La historia</h2>
-            <div class="duo">
-                <article class="panel">
-                    <p>
-                        Tamara era una flamenca imaginada como una figura elegante y
-                        curiosa. Su manera de caminar y permanecer quieta crea una memoria
-                        visual muy marcada.
-                    </p>
-                    <p style="margin-top: 15px">
-                        Aquí la historia se presenta como una pieza editorial, con textos
-                        breves y fotografías protagonistas.
-                    </p>
-                </article>
-                <article class="quote">
-                    “Hay recuerdos que conservan su color incluso cuando pasa el
-                    tiempo.”
-                </article>
-            </div>
-        </section>
-        <section id="ritmo" class="section">
-            <h2 class="title">Ritmo del recuerdo</h2>
-            <div class="scoreboard">
-                <span id="beats">00</span>
-                <p>instantes marcados por este memorial</p>
-                <button id="beatBtn" style="padding: 10px 14px; border: 0">
-                    Marcar
-                </button>
-            </div>
-        </section>
-        <section id="galeria" class="section">
-            <h2 class="title">Fotografías</h2>
-            <div class="gallery">
-                <img src="assets/imagenes/tamara-portada.jpg" alt="Tamara" /><img src="assets/imagenes/tamara-01.jpg"
-                    alt="Tamara caminando" /><img src="assets/imagenes/tamara-02.jpg" alt="Tamara junto al agua" /><img
-                    src="assets/imagenes/tamara-03.jpg" alt="Tamara de perfil" />
-            </div>
-        </section>
-        <section class="section">
-            <h2 class="title">Archivos</h2>
-            <div class="duo">
-                <article class="panel media">
-                    <h3>Video</h3>
-                    <video controls poster="assets/imagenes/tamara-portada.jpg">
-                        <source src="assets/video/tamara-recuerdo.mp4" type="video/mp4" />
-                    </video>
-                </article>
-                <article class="panel media">
-                    <h3>Audio</h3>
-                    <audio controls>
-                        <source src="assets/audio/tamara-recuerdo.mp3" type="audio/mpeg" />
-                    </audio>
-                </article>
-            </div>
-        </section>
-    </main>
-    <footer>Memorial de Tamara 🦩 · <span id="year"></span></footer>
-    <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-        let beats = 0;
-        document.getElementById("beatBtn").addEventListener("click", () => {
-            beats = (beats + 1) % 100;
-            document.getElementById("beats").textContent = String(beats).padStart(
-                2,
-                "0",
-            );
-        });
-        let tilt = 0;
-        window.addEventListener("mousemove", (e) => {
-            tilt = (e.clientX / window.innerWidth - 0.5) * 2;
-            document.querySelector(".hero-right").style.transform =
-                `skewX(${tilt}deg)`;
-        });
-        document
-            .querySelector(".hero-right")
-            .addEventListener(
-                "mouseleave",
-                () =>
-                (document.querySelector(".hero-right").style.transform =
-                    "skewX(0)"),
-            );
-        const pics = [...document.querySelectorAll(".gallery img")];
-        pics.forEach((p) =>
-            p.addEventListener("click", () =>
-                pics.forEach((x) => x.classList.remove("selected")),
-            ),
-        );
-        document.addEventListener("keydown", (e) => {
-            if (e.key.toLowerCase() === "r") document.body.classList.toggle("rose");
-        });
-    </script>
-</body>
+      </div>
+      <div class="hero-art animate" aria-label="Representación visual del memorial">
+        <div class="animal-orbit">
+          <div class="animal-emoji" aria-label="Símbolo visual del recuerdo">🐢</div>
+        </div>
+        <span class="orbit-note">Siempre en el corazón ✦</span>
+      </div>
+    </div>
+  </section>
 
+  <section id="historia" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Historia</h2><p>Un lugar para volver, sin prisa.</p></div>
+      </div>
+      <div class="story-grid">
+        <article class="panel animate">
+          <p class="story-text">Tamara representa ese tipo de compañía que enseña a mirar el tiempo de otra manera: con paciencia, atención y cariño.</p>
+        </article>
+        <aside class="panel paper animate">
+          <span class="paper-note">Nota para recordar</span>
+          <h3>Lo importante no siempre ocupa mucho espacio</h3>
+          <p>Este memorial está pensado para que cada visita sea sencilla, amable y personal. Puedes recorrerlo, pausar y volver cuando lo necesites.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="recuerdos" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Recuerdos</h2><p>Tres pequeñas puertas hacia la memoria.</p></div>
+      </div>
+      <div class="memories">
+        
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">✦</div>
+          <h3>Camino</h3>
+          <p>Cada paso tenía su propio ritmo y su propia historia.</p>
+        </article>
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">♡</div>
+          <h3>Refugio</h3>
+          <p>Un hogar también se recuerda por la tranquilidad que brindaba.</p>
+        </article>
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">◌</div>
+          <h3>Tiempo</h3>
+          <p>Las memorias profundas no necesitan ir deprisa.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="panel animate">
+        <div class="section-head"><div><h2>Un momento para guardar</h2><p>Haz clic en cualquier tarjeta para verla con más calma.</p></div></div>
+        <div class="visual-grid">
+        <button class="visual-card animate" type="button" data-emoji="🐢" data-title="Camino" data-text="Cada paso tenía su propio ritmo y su propia historia.">
+          <span class="visual-top" aria-hidden="true">🐢</span>
+          <span class="visual-body"><strong>Camino</strong><span>Cada paso tenía su propio ritmo y su propia historia.</span></span>
+        </button>
+        <button class="visual-card animate" type="button" data-emoji="✦" data-title="Refugio" data-text="Un hogar también se recuerda por la tranquilidad que brindaba.">
+          <span class="visual-top" aria-hidden="true">✦</span>
+          <span class="visual-body"><strong>Refugio</strong><span>Un hogar también se recuerda por la tranquilidad que brindaba.</span></span>
+        </button>
+        <button class="visual-card animate" type="button" data-emoji="◌" data-title="Tiempo" data-text="Las memorias profundas no necesitan ir deprisa.">
+          <span class="visual-top" aria-hidden="true">◌</span>
+          <span class="visual-body"><strong>Tiempo</strong><span>Las memorias profundas no necesitan ir deprisa.</span></span>
+        </button></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="media" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Archivos</h2><p>La memoria también puede escucharse y verse.</p></div>
+      </div>
+      <div class="media-box">
+          <article class="media-slot paper animate">
+            <span class="paper-note">Zona de recuerdos</span>
+            <h3>Un espacio para tus archivos</h3>
+            <p>Este memorial queda listo para añadir fotografías, audios o videos propios sin cambiar el diseño. Los bloques visuales de arriba también pueden abrirse para leer cada recuerdo.</p>
+            <div class="media-empty">♡ Tu contenido puede ir aquí</div>
+          </article>
+          <article class="media-slot paper animate">
+            <span class="paper-note">Sugerencia</span>
+            <h3>Conserva lo que más importa</h3>
+            <p>Una foto, una grabación o una frase puede convertirse en una de las piezas más valiosas de este lugar.</p>
+            <div class="media-empty">✦ Un pequeño archivo, una gran memoria</div>
+          </article>
+        </div>
+    </div>
+  </section>
+
+  <section id="reflexion" class="section">
+    <div class="container">
+      <div class="quote-card animate">
+        <p>“El cariño también sabe caminar despacio.”</p>
+        <small>Que Tamara siga llenando de color las historias donde su nombre aparece.</small>
+        <div class="tools">
+          <a class="btn btn-primary" href="#inicio">Volver arriba ↑</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-box">
+      <div><strong>Espacio conmemorativo</strong><br><span>Un lugar para conservar recuerdos.</span></div>
+      <div>© <span id="year">2026</span></div>
+    </div>
+  </div>
+</footer>
+
+<button class="fab" type="button" data-back-top aria-label="Volver arriba">↑</button>
+<div class="toast" data-toast role="status" aria-live="polite"></div>
+
+<div class="modal" data-modal role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-card">
+    <div class="modal-visual" data-modal-visual aria-hidden="true">♡</div>
+    <div class="modal-content">
+      <button class="modal-close" type="button" aria-label="Cerrar">✕</button>
+      <h2 id="modal-title" data-modal-title>Recuerdo</h2>
+      <p data-modal-text></p>
+    </div>
+  </div>
+</div>
+<script src="assets/js/memorial.js" defer></script>
+</body>
 </html>

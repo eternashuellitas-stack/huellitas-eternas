@@ -1,304 +1,179 @@
 <!doctype html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Floris · Memorial de un caballito de mar</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        :root {
-            --paper: #f4e8cf;
-            --ink: #3e3529;
-            --accent: #a76e3f;
-            --soft: #e5d2ad;
-        }
-
-        body {
-            font-family: system-ui, sans-serif;
-            background: #d5e0d3;
-            color: var(--ink);
-            line-height: 1.7;
-        }
-
-        .wrapper {
-            max-width: 980px;
-            margin: 25px auto;
-            background: var(--paper);
-            box-shadow: 0 20px 55px rgba(30, 60, 40, 0.2);
-            min-height: 100vh;
-        }
-
-        .cover {
-            padding: 70px 45px 55px;
-            text-align: center;
-            border-bottom: 2px solid var(--soft);
-            background: radial-gradient(circle at 50% 20%, #f9f0dd, #eadcbd);
-        }
-
-        .cover .seal {
-            width: 120px;
-            height: 120px;
-            border: 3px double var(--accent);
-            border-radius: 50%;
-            display: grid;
-            place-items: center;
-            margin: auto;
-            font-size: 3rem;
-        }
-
-        .cover h1 {
-            font-family: Georgia, serif;
-            font-size: clamp(4rem, 9vw, 7rem);
-            font-weight: 500;
-            margin: 20px 0 10px;
-        }
-
-        .subtitle {
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            font-size: 0.78rem;
-        }
-
-        .nav {
-            display: flex;
-            justify-content: center;
-            gap: 10px;
-            flex-wrap: wrap;
-            padding: 15px;
-            border-bottom: 1px solid var(--soft);
-        }
-
-        .nav a {
-            color: var(--ink);
-            text-decoration: none;
-            padding: 8px 12px;
-        }
-
-        .nav a:hover {
-            text-decoration: underline;
-        }
-
-        main {
-            padding: 20px 45px 70px;
-        }
-
-        .chapter {
-            padding: 65px 0;
-            border-bottom: 1px solid var(--soft);
-        }
-
-        .chapter:last-child {
-            border-bottom: 0;
-        }
-
-        .chapter-head {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .chapter-head small {
-            color: var(--accent);
-            letter-spacing: 3px;
-        }
-
-        .chapter-head h2 {
-            font-family: Georgia, serif;
-            font-size: 2.5rem;
-            font-weight: 500;
-        }
-
-        .columns {
-            columns: 2;
-            column-gap: 45px;
-        }
-
-        .columns p {
-            break-inside: avoid;
-            margin-bottom: 18px;
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-        }
-
-        .gallery img {
-            width: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
-            filter: sepia(0.18);
-        }
-
-        .media {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 18px;
-        }
-
-        .media video {
-            width: 100%;
-            background: #111;
-        }
-
-        .media audio {
-            width: 100%;
-        }
-
-        .page-no {
-            text-align: center;
-            margin-top: 20px;
-            color: #8d7c63;
-        }
-
-        #sealText {
-            transition: 0.4s;
-        }
-
-        button {
-            border: 1px solid var(--accent);
-            background: transparent;
-            padding: 10px 14px;
-            color: var(--ink);
-            cursor: pointer;
-        }
-
-        footer {
-            text-align: center;
-            padding: 38px;
-            color: #74634c;
-        }
-
-        @media (max-width: 720px) {
-            main {
-                padding: 20px;
-            }
-
-            .columns,
-            .gallery,
-            .media {
-                columns: 1;
-                grid-template-columns: 1fr;
-            }
-
-            .cover {
-                padding: 55px 20px;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#67a9c2">
+<meta name="description" content="Memorial de Floris">
+<title>Floris</title>
+<link rel="stylesheet" href="assets/css/memorial.css">
 </head>
+<body data-theme="light" class="theme-hedgehog" style="--accent:#765a43;--accent-2:#d3a16d">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-<body>
-    <div class="wrapper">
-        <header class="cover">
-            <div class="seal" id="sealText">🐠</div>
-            <div class="subtitle" style="margin-top: 18px">
-                Colección de memorias
-            </div>
-            <h1>Floris</h1>
-            <p>
-                Memorial con apariencia de libro antiguo, dividido en capítulos para
-                contar la vida de un pequeño caballito de mar.
-            </p>
-        </header>
-        <nav class="nav">
-            <a href="#cap1">Capítulo I</a><a href="#cap2">Capítulo II</a><a href="#cap3">Capítulo III</a><a
-                href="#cap4">Capítulo IV</a>
-        </nav>
-        <main>
-            <section class="chapter" id="cap1">
-                <div class="chapter-head">
-                    <small>CAPÍTULO I</small>
-                    <h2>El comienzo</h2>
-                </div>
-                <div class="columns">
-                    <p>
-                        Floris es el nombre de este memorial de ejemplo. Su historia
-                        comienza en un mundo acuático donde cada corriente puede cambiar
-                        el recorrido de una pequeña criatura.
-                    </p>
-                    <p>
-                        La página toma la estructura de un libro para hacer que cada
-                        sección parezca una parte independiente del recuerdo.
-                    </p>
-                </div>
-            </section>
-            <section class="chapter" id="cap2">
-                <div class="chapter-head">
-                    <small>CAPÍTULO II</small>
-                    <h2>Escenas</h2>
-                </div>
-                <div class="gallery">
-                    <img src="assets/imagenes/floris-portada.jpg" alt="Floris" /><img
-                        src="assets/imagenes/floris-01.jpg" alt="Floris entre plantas" /><img
-                        src="assets/imagenes/floris-02.jpg" alt="Floris de perfil" />
-                </div>
-            </section>
-            <section class="chapter" id="cap3">
-                <div class="chapter-head">
-                    <small>CAPÍTULO III</small>
-                    <h2>Archivos sonoros</h2>
-                </div>
-                <div class="media">
-                    <div>
-                        <video controls poster="assets/imagenes/floris-portada.jpg">
-                            <source src="assets/video/floris-recuerdo.mp4" type="video/mp4" />
-                        </video>
-                    </div>
-                    <div>
-                        <audio id="audio" controls>
-                            <source src="assets/audio/floris-recuerdo.mp3" type="audio/mpeg" />
-                        </audio>
-                        <p id="audioInfo" style="margin-top: 12px">Duración: —</p>
-                    </div>
-                </div>
-            </section>
-            <section class="chapter" id="cap4">
-                <div class="chapter-head">
-                    <small>CAPÍTULO IV</small>
-                    <h2>Última página</h2>
-                </div>
-                <p style="text-align: center; max-width: 680px; margin: auto">
-                    Que este memorial sea una puerta para volver a una historia
-                    tranquila, mirar las imágenes con tiempo y conservar aquello que no
-                    queremos perder.
-                </p>
-                <div style="text-align: center; margin-top: 22px">
-                    <button id="turn">Cambiar sello</button>
-                </div>
-                <div class="page-no">— fin del capítulo —</div>
-            </section>
-        </main>
-        <footer>Floris 🐠 · Libro memorial · <span id="year"></span></footer>
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio del memorial">
+      <span class="brand-mark" aria-hidden="true">🐾</span>
+      <span>Espacio conmemorativo<small>Que el recuerdo de Floris siga encontrando un lugar sereno donde quedarse.</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><span>☰</span></button>
+    <nav class="nav-links" aria-label="Navegación del memorial">
+      <a href="#historia">Historia</a>
+      <a href="#recuerdos">Recuerdos</a>
+      <a href="#media">Archivos</a>
+      <a href="#reflexion">Reflexión</a>
+      <button class="theme-btn" type="button" data-theme-toggle aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">🌙</span><span class="theme-label">Modo oscuro</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <section id="inicio" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy animate">
+        <span class="eyebrow">Pequeño, valiente y entrañable</span>
+        <h1>Floris</h1>
+        <p class="lead">Un rincón acogedor para recordar a Floris con cercanía, ternura y calma.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#historia">Entrar al recuerdo <span aria-hidden="true">↓</span></a>
+          <button class="btn btn-soft" type="button" data-share>Compartir</button>
+          <button class="btn btn-soft" type="button" data-copy>Copiar enlace</button>
+        </div>
+      </div>
+      <div class="hero-art animate" aria-label="Representación visual del memorial">
+        <div class="animal-orbit">
+          <div class="animal-emoji" aria-label="Símbolo visual del recuerdo">🦔</div>
+        </div>
+        <span class="orbit-note">Siempre en el corazón ✦</span>
+      </div>
     </div>
-    <script>
-        document.getElementById("year").textContent = new Date().getFullYear();
-        const audio = document.getElementById("audio"),
-            info = document.getElementById("audioInfo");
-        audio.addEventListener("loadedmetadata", () => {
-            info.textContent = `Duración: ${Math.floor(audio.duration / 60)}:${String(Math.floor(audio.duration % 60)).padStart(2, "0")}`;
-        });
-        const seals = ["🐠", "🪸", "🌊", "✦", "∞"];
-        let i = 0;
-        document.getElementById("turn").onclick = () => {
-            i = (i + 1) % seals.length;
-            document.getElementById("sealText").textContent = seals[i];
-        };
-        window.addEventListener(
-            "beforeprint",
-            () => (document.title = "Floris · Memorial imprimible"),
-        );
-        window.addEventListener(
-            "afterprint",
-            () => (document.title = "Floris · Memorial de un caballito de mar"),
-        );
-    </script>
-</body>
+  </section>
 
+  <section id="historia" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Historia</h2><p>Un lugar para volver, sin prisa.</p></div>
+      </div>
+      <div class="story-grid">
+        <article class="panel animate">
+          <p class="story-text">Floris queda en este espacio como una memoria acogedora: una pequeña presencia con carácter propio, capaz de convertir lo cotidiano en algo especial.</p>
+        </article>
+        <aside class="panel paper animate">
+          <span class="paper-note">Nota para recordar</span>
+          <h3>Lo importante no siempre ocupa mucho espacio</h3>
+          <p>Este memorial está pensado para que cada visita sea sencilla, amable y personal. Puedes recorrerlo, pausar y volver cuando lo necesites.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="recuerdos" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Recuerdos</h2><p>Tres pequeñas puertas hacia la memoria.</p></div>
+      </div>
+      <div class="memories">
+        
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">✦</div>
+          <h3>Abrigo</h3>
+          <p>Algunos recuerdos se sienten como una pequeña manta de seguridad.</p>
+        </article>
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">♡</div>
+          <h3>Pasos</h3>
+          <p>Cada pequeño recorrido puede esconder una gran historia.</p>
+        </article>
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">◌</div>
+          <h3>Cercanía</h3>
+          <p>Lo importante no siempre necesita ser grande para sentirse enorme.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="panel animate">
+        <div class="section-head"><div><h2>Un momento para guardar</h2><p>Haz clic en cualquier tarjeta para verla con más calma.</p></div></div>
+        <div class="visual-grid">
+        <button class="visual-card animate" type="button" data-emoji="🦔" data-title="Abrigo" data-text="Algunos recuerdos se sienten como una pequeña manta de seguridad.">
+          <span class="visual-top" aria-hidden="true">🦔</span>
+          <span class="visual-body"><strong>Abrigo</strong><span>Algunos recuerdos se sienten como una pequeña manta de seguridad.</span></span>
+        </button>
+        <button class="visual-card animate" type="button" data-emoji="✦" data-title="Pasos" data-text="Cada pequeño recorrido puede esconder una gran historia.">
+          <span class="visual-top" aria-hidden="true">✦</span>
+          <span class="visual-body"><strong>Pasos</strong><span>Cada pequeño recorrido puede esconder una gran historia.</span></span>
+        </button>
+        <button class="visual-card animate" type="button" data-emoji="◌" data-title="Cercanía" data-text="Lo importante no siempre necesita ser grande para sentirse enorme.">
+          <span class="visual-top" aria-hidden="true">◌</span>
+          <span class="visual-body"><strong>Cercanía</strong><span>Lo importante no siempre necesita ser grande para sentirse enorme.</span></span>
+        </button></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="media" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Archivos</h2><p>La memoria también puede escucharse y verse.</p></div>
+      </div>
+      <div class="media-box">
+          <article class="media-slot paper animate">
+            <span class="paper-note">Zona de recuerdos</span>
+            <h3>Un espacio para tus archivos</h3>
+            <p>Este memorial queda listo para añadir fotografías, audios o videos propios sin cambiar el diseño. Los bloques visuales de arriba también pueden abrirse para leer cada recuerdo.</p>
+            <div class="media-empty">♡ Tu contenido puede ir aquí</div>
+          </article>
+          <article class="media-slot paper animate">
+            <span class="paper-note">Sugerencia</span>
+            <h3>Conserva lo que más importa</h3>
+            <p>Una foto, una grabación o una frase puede convertirse en una de las piezas más valiosas de este lugar.</p>
+            <div class="media-empty">✦ Un pequeño archivo, una gran memoria</div>
+          </article>
+        </div>
+    </div>
+  </section>
+
+  <section id="reflexion" class="section">
+    <div class="container">
+      <div class="quote-card animate">
+        <p>“Una pequeña presencia puede dejar una memoria inmensa.”</p>
+        <small>Que Floris siga siendo una historia que siempre merezca volver a leerse.</small>
+        <div class="tools">
+          <a class="btn btn-primary" href="#inicio">Volver arriba ↑</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-box">
+      <div><strong>Espacio conmemorativo</strong><br><span>Un lugar para conservar recuerdos.</span></div>
+      <div>© <span id="year">2026</span></div>
+    </div>
+  </div>
+</footer>
+
+<button class="fab" type="button" data-back-top aria-label="Volver arriba">↑</button>
+<div class="toast" data-toast role="status" aria-live="polite"></div>
+
+<div class="modal" data-modal role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-card">
+    <div class="modal-visual" data-modal-visual aria-hidden="true">♡</div>
+    <div class="modal-content">
+      <button class="modal-close" type="button" aria-label="Cerrar">✕</button>
+      <h2 id="modal-title" data-modal-title>Recuerdo</h2>
+      <p data-modal-text></p>
+    </div>
+  </div>
+</div>
+<script src="assets/js/memorial.js" defer></script>
+</body>
 </html>

@@ -1,314 +1,179 @@
 <!doctype html>
 <html lang="es">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Coco · Memorial de un gecko</title>
-    <style>
-        :root {
-            --lime: #d7ff4f;
-            --dark: #0d110d;
-            --panel: #151c15;
-            --text: #eaf4df;
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: "Courier New", monospace;
-            background: var(--dark);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        body.scan .scanline {
-            opacity: 0.9;
-        }
-
-        .scanline {
-            position: fixed;
-            left: 0;
-            right: 0;
-            height: 2px;
-            background: rgba(215, 255, 79, 0.5);
-            z-index: 50;
-            pointer-events: none;
-            animation: scan 4s linear infinite;
-        }
-
-        @keyframes scan {
-            from {
-                top: -5px;
-            }
-
-            to {
-                top: 105vh;
-            }
-        }
-
-        header {
-            min-height: 100vh;
-            padding: 35px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            border: 4px solid var(--lime);
-            margin: 15px;
-            background:
-                linear-gradient(rgba(13, 17, 13, 0.7), rgba(13, 17, 13, 0.9)),
-                url("assets/imagenes/coco-portada.jpg") center/cover;
-        }
-
-        .top {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-        }
-
-        .top a {
-            color: var(--lime);
-            text-decoration: none;
-        }
-
-        .tag {
-            color: var(--lime);
-        }
-
-        .hero h1 {
-            font-size: clamp(4rem, 11vw, 8rem);
-            color: var(--lime);
-            text-shadow: 0 0 18px rgba(215, 255, 79, 0.3);
-        }
-
-        .hero p {
-            max-width: 650px;
-            font-size: 1.1rem;
-        }
-
-        main {
-            max-width: 1100px;
-            margin: auto;
-            padding: 25px;
-        }
-
-        .section {
-            padding: 65px 0;
-        }
-
-        .section h2 {
-            font-size: 2rem;
-            color: var(--lime);
-        }
-
-        .console {
-            background: var(--panel);
-            border: 2px solid #344032;
-            padding: 24px;
-            box-shadow: 0 0 30px rgba(215, 255, 79, 0.05);
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 15px;
-        }
-
-        .box {
-            background: #0c100c;
-            border: 1px solid #344032;
-            padding: 22px;
-        }
-
-        .metric {
-            font-size: 2.8rem;
-            color: var(--lime);
-        }
-
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 260px;
-            object-fit: cover;
-            filter: saturate(0.8) contrast(1.1);
-            border: 2px solid #344032;
-        }
-
-        .media {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        .media video {
-            width: 100%;
-            background: #000;
-        }
-
-        .media audio {
-            width: 100%;
-        }
-
-        .cmd {
-            display: flex;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
-        .cmd button {
-            background: var(--lime);
-            color: #10140f;
-            border: 0;
-            padding: 10px 14px;
-            font: inherit;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .log {
-            margin-top: 16px;
-            height: 140px;
-            overflow: auto;
-            background: #050805;
-            border: 1px solid #293329;
-            padding: 12px;
-            color: #a6bb9b;
-        }
-
-        footer {
-            text-align: center;
-            padding: 50px;
-            color: #647160;
-        }
-
-        @media (max-width: 780px) {
-            .top {
-                flex-direction: column;
-            }
-
-            .grid,
-            .gallery,
-            .media {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#72b79e">
+<meta name="description" content="Memorial de Coco">
+<title>Coco</title>
+<link rel="stylesheet" href="assets/css/memorial.css">
 </head>
+<body data-theme="light" class="theme-rat" style="--accent:#75658d;--accent-2:#b4a0c5">
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-<body>
-    <div class="scanline"></div>
-    <header class="hero" id="home">
-        <div class="top">
-            <span class="tag">MEMORY_SYSTEM://COCO</span>
-            <nav>
-                <a href="#bio">BIO</a> · <a href="#gallery">GALLERY</a> ·
-                <a href="#media">MEDIA</a>
-            </nav>
+<header class="site-header">
+  <div class="nav-wrap">
+    <a class="brand" href="#inicio" aria-label="Ir al inicio del memorial">
+      <span class="brand-mark" aria-hidden="true">🐾</span>
+      <span>Espacio conmemorativo<small>Que el recuerdo de Coco siga encontrando un lugar sereno donde quedarse.</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-label="Abrir menú" aria-expanded="false"><span>☰</span></button>
+    <nav class="nav-links" aria-label="Navegación del memorial">
+      <a href="#historia">Historia</a>
+      <a href="#recuerdos">Recuerdos</a>
+      <a href="#media">Archivos</a>
+      <a href="#reflexion">Reflexión</a>
+      <button class="theme-btn" type="button" data-theme-toggle aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">🌙</span><span class="theme-label">Modo oscuro</span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<main id="contenido">
+  <section id="inicio" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy animate">
+        <span class="eyebrow">Inquieto, curioso y singular</span>
+        <h1>Coco</h1>
+        <p class="lead">Un rincón diferente para recordar a Coco y su forma tan particular de hacerse presente.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#historia">Entrar al recuerdo <span aria-hidden="true">↓</span></a>
+          <button class="btn btn-soft" type="button" data-share>Compartir</button>
+          <button class="btn btn-soft" type="button" data-copy>Copiar enlace</button>
         </div>
-        <div>
-            <div class="tag">SPECIES: GECKO</div>
-            <h1>Coco 🦎</h1>
-            <p>
-                Memorial con estética de terminal digital. La navegación y las
-                interacciones simulan un pequeño archivo tecnológico.
-            </p>
+      </div>
+      <div class="hero-art animate" aria-label="Representación visual del memorial">
+        <div class="animal-orbit">
+          <div class="animal-emoji" aria-label="Símbolo visual del recuerdo">🐀</div>
         </div>
-    </header>
-    <main>
-        <section id="bio" class="section">
-            <div class="console">
-                <h2>01 / BIOGRAFÍA</h2>
-                <p style="margin-top: 15px">
-                    Coco era un gecko curioso, rápido y atento a los movimientos de su
-                    entorno. Este memorial transforma su historia en una ficha de
-                    archivo, con métricas simbólicas y registros.
-                </p>
-                <div class="grid" style="margin-top: 20px">
-                    <div class="box">
-                        <span class="metric" id="uptime">0</span>
-                        <p>recuerdos cargados</p>
-                    </div>
-                    <div class="box">
-                        <span class="metric">∞</span>
-                        <p>valor de la memoria</p>
-                    </div>
-                    <div class="box">
-                        <span class="metric" id="signal">--</span>
-                        <p>señal emocional</p>
-                    </div>
-                </div>
-                <div class="cmd">
-                    <button id="run">EJECUTAR REGISTRO</button><button id="clear">LIMPIAR</button>
-                </div>
-                <div class="log" id="log">> sistema preparado…</div>
-            </div>
-        </section>
-        <section id="gallery" class="section">
-            <h2>02 / GALLERY</h2>
-            <div class="gallery" style="margin-top: 18px">
-                <img src="assets/imagenes/coco-portada.jpg" alt="Coco" /><img src="assets/imagenes/coco-01.jpg"
-                    alt="Coco sobre una superficie" /><img src="assets/imagenes/coco-02.jpg" alt="Coco de cerca" />
-            </div>
-        </section>
-        <section id="media" class="section">
-            <h2>03 / MEDIA</h2>
-            <div class="media" style="margin-top: 18px">
-                <div class="console">
-                    <video controls poster="assets/imagenes/coco-portada.jpg">
-                        <source src="assets/video/coco-recuerdo.mp4" type="video/mp4" />
-                    </video>
-                </div>
-                <div class="console">
-                    <audio controls>
-                        <source src="assets/audio/coco-recuerdo.mp3" type="audio/mpeg" />
-                    </audio>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer>COCO 🦎 · MEMORY SYSTEM · <span id="year"></span></footer>
-    <script>
-        const log = document.getElementById("log"),
-            signal = document.getElementById("signal"),
-            uptime = document.getElementById("uptime");
-        document.getElementById("run").onclick = async () => {
-            const lines = [
-                "> indexando fotografías…",
-                "> comprobando archivos…",
-                "> leyendo memoria…",
-                "> restaurando recuerdos…",
-                "> archivo completado.",
-            ];
-            for (const line of lines) {
-                await new Promise((r) => setTimeout(r, 450));
-                log.innerHTML += `<br>${line}`;
-                log.scrollTop = log.scrollHeight;
-            }
-            uptime.textContent = Math.floor(30 + Math.random() * 70);
-            signal.textContent = ["OK", "HIGH", "STABLE"][
-                Math.floor(Math.random() * 3)
-            ];
-        };
-        document.getElementById("clear").onclick = () => {
-            log.textContent = "> consola limpia…";
-            uptime.textContent = "0";
-            signal.textContent = "--";
-        };
-        document.getElementById("year").textContent = new Date().getFullYear();
-        document.body.classList.add("scan");
-        document.addEventListener("keydown", (e) => {
-            if (e.key.toLowerCase() === "s") document.body.classList.toggle("scan");
-        });
-    </script>
+        <span class="orbit-note">Siempre en el corazón ✦</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="historia" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Historia</h2><p>Un lugar para volver, sin prisa.</p></div>
+      </div>
+      <div class="story-grid">
+        <article class="panel animate">
+          <p class="story-text">Coco queda aquí como un recuerdo distinto y lleno de personalidad: pequeño, curioso y siempre capaz de llamar la atención.</p>
+        </article>
+        <aside class="panel paper animate">
+          <span class="paper-note">Nota para recordar</span>
+          <h3>Lo importante no siempre ocupa mucho espacio</h3>
+          <p>Este memorial está pensado para que cada visita sea sencilla, amable y personal. Puedes recorrerlo, pausar y volver cuando lo necesites.</p>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section id="recuerdos" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Recuerdos</h2><p>Tres pequeñas puertas hacia la memoria.</p></div>
+      </div>
+      <div class="memories">
+        
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">✦</div>
+          <h3>Descubrir</h3>
+          <p>Cada rincón podía esconder una nueva sorpresa.</p>
+        </article>
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">♡</div>
+          <h3>Compañía</h3>
+          <p>La cercanía también puede encontrarse en las formas más inesperadas.</p>
+        </article>
+        <article class="memory-card animate">
+          <div class="memory-icon" aria-hidden="true">◌</div>
+          <h3>Carácter</h3>
+          <p>Una personalidad especial no se olvida fácilmente.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="panel animate">
+        <div class="section-head"><div><h2>Un momento para guardar</h2><p>Haz clic en cualquier tarjeta para verla con más calma.</p></div></div>
+        <div class="visual-grid">
+        <button class="visual-card animate" type="button" data-emoji="🐀" data-title="Descubrir" data-text="Cada rincón podía esconder una nueva sorpresa.">
+          <span class="visual-top" aria-hidden="true">🐀</span>
+          <span class="visual-body"><strong>Descubrir</strong><span>Cada rincón podía esconder una nueva sorpresa.</span></span>
+        </button>
+        <button class="visual-card animate" type="button" data-emoji="✦" data-title="Compañía" data-text="La cercanía también puede encontrarse en las formas más inesperadas.">
+          <span class="visual-top" aria-hidden="true">✦</span>
+          <span class="visual-body"><strong>Compañía</strong><span>La cercanía también puede encontrarse en las formas más inesperadas.</span></span>
+        </button>
+        <button class="visual-card animate" type="button" data-emoji="◌" data-title="Carácter" data-text="Una personalidad especial no se olvida fácilmente.">
+          <span class="visual-top" aria-hidden="true">◌</span>
+          <span class="visual-body"><strong>Carácter</strong><span>Una personalidad especial no se olvida fácilmente.</span></span>
+        </button></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="media" class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2>Archivos</h2><p>La memoria también puede escucharse y verse.</p></div>
+      </div>
+      <div class="media-box">
+          <article class="media-slot paper animate">
+            <span class="paper-note">Zona de recuerdos</span>
+            <h3>Un espacio para tus archivos</h3>
+            <p>Este memorial queda listo para añadir fotografías, audios o videos propios sin cambiar el diseño. Los bloques visuales de arriba también pueden abrirse para leer cada recuerdo.</p>
+            <div class="media-empty">♡ Tu contenido puede ir aquí</div>
+          </article>
+          <article class="media-slot paper animate">
+            <span class="paper-note">Sugerencia</span>
+            <h3>Conserva lo que más importa</h3>
+            <p>Una foto, una grabación o una frase puede convertirse en una de las piezas más valiosas de este lugar.</p>
+            <div class="media-empty">✦ Un pequeño archivo, una gran memoria</div>
+          </article>
+        </div>
+    </div>
+  </section>
+
+  <section id="reflexion" class="section">
+    <div class="container">
+      <div class="quote-card animate">
+        <p>“Lo diferente también puede convertirse en una memoria preciosa.”</p>
+        <small>Que Coco permanezca siempre como un registro imposible de borrar del corazón.</small>
+        <div class="tools">
+          <a class="btn btn-primary" href="#inicio">Volver arriba ↑</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-box">
+      <div><strong>Espacio conmemorativo</strong><br><span>Un lugar para conservar recuerdos.</span></div>
+      <div>© <span id="year">2026</span></div>
+    </div>
+  </div>
+</footer>
+
+<button class="fab" type="button" data-back-top aria-label="Volver arriba">↑</button>
+<div class="toast" data-toast role="status" aria-live="polite"></div>
+
+<div class="modal" data-modal role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-card">
+    <div class="modal-visual" data-modal-visual aria-hidden="true">♡</div>
+    <div class="modal-content">
+      <button class="modal-close" type="button" aria-label="Cerrar">✕</button>
+      <h2 id="modal-title" data-modal-title>Recuerdo</h2>
+      <p data-modal-text></p>
+    </div>
+  </div>
+</div>
+<script src="assets/js/memorial.js" defer></script>
 </body>
-
 </html>
