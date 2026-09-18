@@ -12,14 +12,11 @@
   // Tema claro/oscuro: persistente, seguro y por memorial.
   // ---------------------------------------------------------
   const themeKey = 'memorial-theme';
-  let savedTheme = null;
-  try { savedTheme = localStorage.getItem(themeKey); } catch (_) {}
+  const savedTheme = localStorage.getItem(themeKey);
 
   const setTheme = (theme) => {
     const cleanTheme = theme === 'dark' ? 'dark' : 'light';
     body.dataset.theme = cleanTheme;
-    document.documentElement.dataset.theme = cleanTheme;
-    document.documentElement.style.colorScheme = cleanTheme;
     const dark = cleanTheme === 'dark';
     const label = themeBtn?.querySelector('.theme-label');
     const icon = themeBtn?.querySelector('.theme-icon');
@@ -28,12 +25,10 @@
     if (icon) icon.textContent = dark ? '☀️' : '🌙';
     const meta = document.querySelector('meta[name="theme-color"]');
     if (meta) meta.setAttribute('content', dark ? '#121117' : (getComputedStyle(body).getPropertyValue('--accent').trim() || '#e68bb0'));
-    try { localStorage.setItem(themeKey, cleanTheme); } catch (_) {}
+    localStorage.setItem(themeKey, cleanTheme);
   };
   setTheme(savedTheme === 'dark' ? 'dark' : 'light');
-  themeBtn?.addEventListener('click', () => {
-    setTheme(body.dataset.theme === 'dark' ? 'light' : 'dark');
-  });
+  themeBtn?.addEventListener('click', () => setTheme(body.dataset.theme === 'dark' ? 'light' : 'dark'));
 
   // ---------------------------------------------------------
   // Menú móvil

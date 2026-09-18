@@ -480,7 +480,7 @@
                 img.style.padding = "30px";
 
                 img.alt =
-                    "Imagen pendiente de agregar";
+                    "assets/images/Chispas-Publico.png";
 
             });
 
